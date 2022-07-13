@@ -370,18 +370,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96881505}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &114295309 stripped
+--- !u!1 &137798103 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1757656481039862, guid: a02ce749f148249039a33e6457063ccd, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1122329030659392, guid: a02ce749f148249039a33e6457063ccd, type: 3}
   m_PrefabInstance: {fileID: 1039037590}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &114295314
+--- !u!65 &137798104
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137798103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9431143, y: 4.9528594, z: 1}
+  m_Center: {x: 1.9715576, y: -1.9764297, z: 0}
+--- !u!114 &137798105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114295309}
+  m_GameObject: {fileID: 137798103}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae07628d3cadf441c98594bcc256becd, type: 3}
@@ -389,7 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   deathAnimLength: 1
-  deathAngle: 5
+  deathAngle: 30
   tombstonePrefab: {fileID: 0}
 --- !u!1 &187635129
 GameObject:
@@ -1406,27 +1419,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &888538474 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1278267228540944, guid: a02ce749f148249039a33e6457063ccd, type: 3}
-  m_PrefabInstance: {fileID: 1039037590}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &888538479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888538474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae07628d3cadf441c98594bcc256becd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isDead: 0
-  deathAnimLength: 1
-  deathAngle: 5
-  tombstonePrefab: {fileID: 0}
 --- !u!1 &907435103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,11 +1618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4074057185741792, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.378
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 4074057185741792, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.718
+      value: 3.69
       objectReference: {fileID: 0}
     - target: {fileID: 4074057185741792, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1710,11 +1702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65197425097048956, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65438013914609564, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a02ce749f148249039a33e6457063ccd, type: 3}
