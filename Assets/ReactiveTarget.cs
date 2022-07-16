@@ -14,7 +14,7 @@ public class ReactiveTarget : MonoBehaviour {
 	public TMP_Text operandOne;
 	public TMP_Text operandTwo;
 	public TMP_Text operation;
-	public TMP_Text answer;
+	public TMP_InputField answer;
 	int parseOne;
 	int parseTwo;
 	int answerParse;
@@ -44,13 +44,8 @@ public class ReactiveTarget : MonoBehaviour {
 		
 		parseOne = int.Parse(operandOne.text);
 		parseTwo = int.Parse(operandTwo.text);
-		if (!int.TryParse(answer.text, out answerParse)){
-			answerParse = 0;
-		}
-		else{
-			answerParse = int.Parse(answer.text);
-		}
-
+		answerParse = int.Parse(answer.text);
+		
 		if(operation.text == "x"){
 			if(parseOne * parseTwo == answerParse){
 				startAnim = true;
