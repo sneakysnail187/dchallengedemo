@@ -52,7 +52,7 @@ public class ReactiveTarget : MonoBehaviour {
 				StartCoroutine(Die());
 			}
 		}
-		else if(operation.text == "/"){
+		else if(operation.text == "÷"){
 			if(parseOne / parseTwo == answerParse){
 				startAnim = true;
 				StartCoroutine(Die());
