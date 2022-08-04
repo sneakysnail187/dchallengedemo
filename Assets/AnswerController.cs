@@ -10,7 +10,7 @@ public class AnswerController : MonoBehaviour
 
 
     void Update(){
-        if(Input.GetKeyDown("escape")){
+        if(Input.GetKeyDown("tab")){
             if(isPaused){
                 Resume();
             }
