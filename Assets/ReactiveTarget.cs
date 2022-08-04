@@ -19,7 +19,6 @@ public class ReactiveTarget : MonoBehaviour {
 	int parseTwo;
 	int answerParse;
 
-
 	void Update(){
 		if(startAnim){
 			startAnim = false;
