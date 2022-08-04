@@ -12,14 +12,24 @@ public class FPSInput : MonoBehaviour {
 
 	private CharacterController _charController;
 	private AnswerController AnswerUI;
+	public float forceconst = 7f;
+	private bool canJump;
+	private Rigidbody self;
 	
 	void Start() {
 		_charController = GetComponent<CharacterController>();
 		AnswerUI = GetComponent<AnswerController>();
+		self = GetComponent<Rigidbody>();
 	}
 	
 	void Update() {
 		//transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
+		if(canJump){
+          	if (Input.GetButtonDown("Jump")){
+       			self.AddForce(Vector3.up * forceconst);
+       		}
+     	}
+		
 		float deltaX = Input.GetAxis("Horizontal") * speed;
 		float deltaZ = Input.GetAxis("Vertical") * speed;
 		Vector3 movement = new Vector3(deltaX, 0, deltaZ);
@@ -31,4 +41,15 @@ public class FPSInput : MonoBehaviour {
 		movement = transform.TransformDirection(movement);
 		_charController.Move(movement);
 	}
+	void OnCollisionEnter(Collision other){
+    	if (other.gameObject.tag == "Ground"){
+        	canJump = true;
+    	}
+ 	}
+	void OnCollisionExit(Collision other)
+ 	{
+    	if (other.gameObject.tag == "Ground"){
+        	canJump = false;
+     	}
+ 	}
 }
