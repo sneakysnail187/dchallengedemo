@@ -42277,7 +42277,6 @@ GameObject:
   - component: {fileID: 1891640221}
   - component: {fileID: 1891640222}
   - component: {fileID: 1891640223}
-  - component: {fileID: 1891640224}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -42297,7 +42296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314c27cd5653f4078861f1504c5cdb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 6
   gravity: -9.8
   groundDist: 0.4
   groundMask:
@@ -42451,22 +42450,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &1891640224
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891640214}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &1901236992
 PrefabInstance:
   m_ObjectHideFlags: 0

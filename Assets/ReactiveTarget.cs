@@ -53,6 +53,7 @@ public class ReactiveTarget : MonoBehaviour {
 			}
 		}
 		else if(operation.text == "÷"){
+			Debug.Log(Math.Round(parseOne/ parseTwo));
 			if(Math.Round(parseOne/ parseTwo, 5) == answerParse){
 				startAnim = true;
 				StartCoroutine(Die());
