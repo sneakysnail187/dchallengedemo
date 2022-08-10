@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33466106300228726}
   - component: {fileID: 23795915273837570}
   - component: {fileID: 64179008000869982}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor_Angle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4252482140939760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor_Angle_01
   m_TagString: Ground
   m_Icon: {fileID: 0}

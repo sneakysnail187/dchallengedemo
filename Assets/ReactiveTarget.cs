@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ReactiveTarget : MonoBehaviour {
 
@@ -15,9 +16,9 @@ public class ReactiveTarget : MonoBehaviour {
 	public TMP_Text operandTwo;
 	public TMP_Text operation;
 	public TMP_InputField answer;
-	int parseOne;
-	int parseTwo;
-	int answerParse;
+	float parseOne;
+	float parseTwo;
+	float answerParse;
 
 	void Update(){
 		if(startAnim){
@@ -43,7 +44,7 @@ public class ReactiveTarget : MonoBehaviour {
 		
 		parseOne = int.Parse(operandOne.text);
 		parseTwo = int.Parse(operandTwo.text);
-		answerParse = int.Parse(answer.text);
+		answerParse = float.Parse(answer.text);
 		
 		if(operation.text == "x"){
 			if(parseOne * parseTwo == answerParse){
@@ -52,7 +53,7 @@ public class ReactiveTarget : MonoBehaviour {
 			}
 		}
 		else if(operation.text == "÷"){
-			if(parseOne / parseTwo == answerParse){
+			if(Math.Round(parseOne/ parseTwo, 5) == answerParse){
 				startAnim = true;
 				StartCoroutine(Die());
 			}

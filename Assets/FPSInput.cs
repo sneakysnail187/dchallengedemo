@@ -9,47 +9,51 @@ using System.Collections;
 public class FPSInput : MonoBehaviour {
 	public float speed = 6.0f;
 	public float gravity = -9.8f;
+	public float groundDist = 0.4f;
+	public LayerMask groundMask;
 
 	private CharacterController _charController;
 	private AnswerController AnswerUI;
-	public float forceconst = 7f;
+	public float forceconst = 5f;
 	private bool canJump;
-	private Rigidbody self;
+	public Transform groundCheck;
+
+	Vector3 velocity;
 	
 	void Start() {
 		_charController = GetComponent<CharacterController>();
 		AnswerUI = GetComponent<AnswerController>();
-		self = GetComponent<Rigidbody>();
 	}
 	
 	void Update() {
 		//transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
-		if(canJump){
-          	if (Input.GetButtonDown("Jump")){
-       			self.AddForce(Vector3.up * forceconst);
-       		}
-     	}
 		
-		float deltaX = Input.GetAxis("Horizontal") * speed;
-		float deltaZ = Input.GetAxis("Vertical") * speed;
-		Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-		movement = Vector3.ClampMagnitude(movement, speed);
+		canJump = Physics.CheckSphere(groundCheck.position, groundDist, groundMask);
+		
+		if(canJump && velocity.y < 0){
+			velocity.y = -2f;
+		}
 
-		movement.y = gravity;
 
-		movement *= Time.deltaTime;
-		movement = transform.TransformDirection(movement);
-		_charController.Move(movement);
-	}
-	void OnCollisionEnter(Collision other){
-    	if (other.gameObject.tag == "Ground"){
-        	canJump = true;
-    	}
- 	}
-	void OnCollisionExit(Collision other)
- 	{
-    	if (other.gameObject.tag == "Ground"){
-        	canJump = false;
+		float deltaX = Input.GetAxis("Horizontal");
+		float deltaZ = Input.GetAxis("Vertical");
+
+		Vector3 movement = transform.right * deltaX + transform.forward * deltaZ;
+		
+		_charController.Move(movement * speed * Time.deltaTime);
+
+		if(canJump && Input.GetKeyDown(KeyCode.Space)){
+          	Debug.Log("hi");
+			velocity.y = Mathf.Sqrt(forceconst * -2f * gravity);
      	}
- 	}
+
+		velocity.y += gravity * Time.deltaTime;
+		if ((_charController.collisionFlags & CollisionFlags.Above) != 0) {
+         if (velocity.y > 0) {
+             velocity.y = -velocity.y;
+         }
+     }
+
+		_charController.Move(velocity * Time.deltaTime);
+	}
 }

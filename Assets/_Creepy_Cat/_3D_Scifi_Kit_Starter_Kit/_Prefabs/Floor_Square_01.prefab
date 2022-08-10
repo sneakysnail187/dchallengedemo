@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4864367381693804}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor_Square_01
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33114246090542196}
   - component: {fileID: 23002993696875794}
   - component: {fileID: 65217605061145152}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor_Square_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

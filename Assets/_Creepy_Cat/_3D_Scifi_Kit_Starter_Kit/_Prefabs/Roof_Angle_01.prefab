@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33429688792734784}
   - component: {fileID: 23976270365620352}
   - component: {fileID: 64208728472648850}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roof_Angle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4661810341059080}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roof_Angle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
