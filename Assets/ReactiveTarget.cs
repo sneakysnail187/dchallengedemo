@@ -16,9 +16,9 @@ public class ReactiveTarget : MonoBehaviour {
 	public TMP_Text operandTwo;
 	public TMP_Text operation;
 	public TMP_InputField answer;
-	float parseOne;
-	float parseTwo;
-	float answerParse;
+	decimal parseOne;
+	decimal parseTwo;
+	decimal answerParse;
 
 	void Update(){
 		if(startAnim){
@@ -44,7 +44,7 @@ public class ReactiveTarget : MonoBehaviour {
 		
 		parseOne = int.Parse(operandOne.text);
 		parseTwo = int.Parse(operandTwo.text);
-		answerParse = float.Parse(answer.text);
+		answerParse = decimal.Parse(answer.text);
 		
 		if(operation.text == "x"){
 			if(parseOne * parseTwo == answerParse){
@@ -53,10 +53,17 @@ public class ReactiveTarget : MonoBehaviour {
 			}
 		}
 		else if(operation.text == "÷"){
-			Debug.Log(Math.Round(parseOne/ parseTwo));
-			if(Math.Round(parseOne/ parseTwo, 5) == answerParse){
-				startAnim = true;
-				StartCoroutine(Die());
+			if(BitConverter.GetBytes(decimal.GetBits(parseOne/parseTwo)[3])[2] > 5){
+				if(Math.Round(parseOne/ parseTwo, 5) == answerParse){
+					startAnim = true;
+					StartCoroutine(Die());
+				}
+			}
+			else{
+				if(parseOne/parseTwo == answerParse){
+					startAnim = true;
+					StartCoroutine(Die());
+				}
 			}
 		}
 		else if(operation.text == "-"){
