@@ -13,7 +13,7 @@ public class FPSInput : MonoBehaviour {
 	public LayerMask groundMask;
 
 	private CharacterController _charController;
-	private AnswerController AnswerUI;
+	private UIController myUI;
 	public float forceconst = 5f;
 	private bool canJump;
 	public Transform groundCheck;
@@ -22,7 +22,7 @@ public class FPSInput : MonoBehaviour {
 	
 	void Start() {
 		_charController = GetComponent<CharacterController>();
-		AnswerUI = GetComponent<AnswerController>();
+		myUI = GetComponent<UIController>();
 	}
 	
 	void Update() {
@@ -43,7 +43,6 @@ public class FPSInput : MonoBehaviour {
 		_charController.Move(movement * speed * Time.deltaTime);
 
 		if(canJump && Input.GetKeyDown(KeyCode.Space)){
-          	Debug.Log("hi");
 			velocity.y = Mathf.Sqrt(forceconst * -2f * gravity);
      	}
 

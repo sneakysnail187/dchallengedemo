@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnswerController : MonoBehaviour
+public class UIController : MonoBehaviour
 {
     public GameObject answerUI;
+    public GameObject quitUI;
     public static GameObject mainCam;
     public static bool isPaused = false;
 
@@ -15,14 +16,29 @@ public class AnswerController : MonoBehaviour
                 Resume();
             }
             else{
-                Pause();
+                Pause(false);
+            }
+        }
+        if(Input.GetKeyDown("escape")){
+            if(isPaused){
+                Resume();
+            }
+            else{
+                Pause(true);
             }
         }
     }
 
-    public void Pause()
+    public void Pause(bool isQuit)
     {
-        answerUI.SetActive(true);
+        if(!isQuit){
+            answerUI.SetActive(true);
+        }
+
+        else{
+            quitUI.SetActive(true);
+        }
+
         Time.timeScale = 0f;
         isPaused = true;
         gameObject.GetComponent<FPSInput>().enabled = false;
@@ -39,6 +55,7 @@ public class AnswerController : MonoBehaviour
     public void Resume()
     {
         answerUI.SetActive(false);
+        quitUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         gameObject.GetComponent<FPSInput>().enabled = true;
