@@ -175,7 +175,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 40.027393
+  field of view: 10.966551
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -544,7 +544,10 @@ MonoBehaviour:
 
 
     Try
-    a Door/Shoot: Left Click'
+    a Door/Shoot: Left Click
+
+
+    Quit: Escape'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -711,8 +714,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704892001}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 6.033, y: -1.641, z: -320.4}
-  m_LocalScale: {x: 84.59886, y: 4.235219, z: 47.703682}
+  m_LocalPosition: {x: 4.3, y: -1.641, z: -320.4}
+  m_LocalScale: {x: 118.16221, y: 4.235219, z: 47.703682}
   m_Children: []
   m_Father: {fileID: 435819554}
   m_RootOrder: 0
@@ -1047,7 +1050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -294.09375, y: 133}
+  m_AnchoredPosition: {x: -413, y: 133}
   m_SizeDelta: {x: 61.813, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743569256
