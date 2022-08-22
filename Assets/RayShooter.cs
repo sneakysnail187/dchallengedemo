@@ -5,10 +5,14 @@ using UnityEngine.UI; /* Required for controlling Canvas UI system */
 
 public class RayShooter : MonoBehaviour {
 	private Camera _camera;
+	private bool hasSword;
+	private Animator anim;
 	[SerializeField] private GameObject reticle;
 
 	void Start() {
 		_camera = GetComponent<Camera>();
+		anim = GetComponentInChildren<Animator>();
+		hasSword = true;
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -25,6 +29,10 @@ public class RayShooter : MonoBehaviour {
 
 	void Update() {
 		if (Input.GetMouseButtonDown(0)) {
+			if(hasSword){
+				anim.SetBool("Attack", true);
+			}
+			else{
 			Vector3 point = new Vector3(_camera.pixelWidth/2, _camera.pixelHeight/2, 0);
 			Ray ray = _camera.ScreenPointToRay(point);
 			RaycastHit hit;
@@ -37,6 +45,9 @@ public class RayShooter : MonoBehaviour {
 					StartCoroutine(SphereIndicator(hit.point));
 				}
 			}
+			anim.SetBool("Attack", false);
+			}
+			
 		}
 	}
 
