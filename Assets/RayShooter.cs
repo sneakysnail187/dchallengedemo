@@ -45,9 +45,11 @@ public class RayShooter : MonoBehaviour {
 					StartCoroutine(SphereIndicator(hit.point));
 				}
 			}
-			anim.SetBool("Attack", false);
 			}
 			
+		}
+		else{
+			anim.SetBool("Attack", false);
 		}
 	}
 
