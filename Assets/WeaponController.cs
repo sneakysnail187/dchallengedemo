@@ -9,14 +9,14 @@ public class WeaponController : MonoBehaviour
     public GameObject shrinkRay;
     public GameObject controller;
     public bool canAttack = true;
-    public Animator anim;
+    private Animator anim;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Animator anim = sword.GetComponent<Animator>();
+        anim = sword.GetComponent<Animator>();
     }
 
     // Update is called once per frame

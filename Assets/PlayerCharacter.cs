@@ -5,9 +5,17 @@ public class PlayerCharacter : MonoBehaviour {
 	private int _health;
 	[SerializeField]private GameObject healthUI;
 	[SerializeField]private GameObject death;
+	[SerializeField] Pack backpack = null;
 
 	void Start() {
 		_health = 2;
+	}
+
+	private void OnTriggerEnter(Collider collision){
+		if(collision.CompareTag("Item")){
+			backpack.AddItem(collision.gameObject);
+			Destroy(collision.gameObject);
+		}
 	}
 
 	public void Hurt(int damage) {
