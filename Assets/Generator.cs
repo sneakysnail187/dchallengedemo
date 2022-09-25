@@ -10,8 +10,6 @@ public class Generator : MonoBehaviour
     public TMP_Text operandTwo;
     void Start()
     {
-        
-        
         if(Difficulty == 1){
             operandOne.text = (Random.Range(1,6)*2).ToString();
             operandTwo.text = (Random.Range(1,6)*2).ToString();
@@ -48,11 +46,5 @@ public class Generator : MonoBehaviour
             operandOne.text = (Random.Range(1,1000)).ToString();
             operandTwo.text = (Random.Range(1,1000)).ToString();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

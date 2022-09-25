@@ -6,9 +6,24 @@ public class SceneController : MonoBehaviour {
 	[SerializeField] private GameObject enemyPrefab = null;
 	private List<GameObject> _enemies = new List<GameObject>(); 
 	public int enemiesToAdd = 0;
+	Generator[] doors;
 
-	private void Start() {
-		
+	private void Awake() {
+		doors = (Generator[]) GameObject.FindObjectsOfType(typeof(Generator));
+		for(int i = 0; i<doors.Length;i++){
+			if(doors[i].transform.position.x > 275){
+				doors[i].GetComponent<Generator>().Difficulty = DiffManager.sub;
+			}
+			else if(doors[i].transform.position.z > 130){
+				doors[i].GetComponent<Generator>().Difficulty = DiffManager.add;
+			}
+			else if(doors[i].transform.position.x < 160){
+				doors[i].GetComponent<Generator>().Difficulty = DiffManager.mult;
+			}
+			else{
+				doors[i].GetComponent<Generator>().Difficulty = DiffManager.div;
+			}
+		}
 	}
 	public GameObject SpawnEnemy(){
 		GameObject _enemy = Instantiate(enemyPrefab) as GameObject;
