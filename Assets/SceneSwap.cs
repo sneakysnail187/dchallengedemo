@@ -33,14 +33,14 @@ public class SceneSwap : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other){
+    void OnTriggerEnter(Collider other){
         if(other.CompareTag("Player")){
             StartCoroutine(LoadLevel(other.transform));
         }
     }
 
     IEnumerator LoadLevel (Transform playerTrans){
-        yield return new WaitForSeconds(0);
+        yield return null;
         SceneManager.LoadScene("Game");
         playerTrans.position = tp;
     }

@@ -8,8 +8,10 @@ public class UIController : MonoBehaviour
     public GameObject quitUI;
     public static GameObject mainCam;
     public static bool isPaused = false;
-
-
+    void Awake(){
+        DontDestroyOnLoad(answerUI);
+        DontDestroyOnLoad(quitUI);
+    }
     void Update(){
         if(Input.GetKeyDown("tab")){
             if(isPaused){

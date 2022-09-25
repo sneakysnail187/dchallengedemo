@@ -7,6 +7,9 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField]private GameObject death;
 	[SerializeField] Pack backpack = null;
 
+	void Awake(){
+		DontDestroyOnLoad(this.gameObject);
+	}
 	void Start() {
 		_health = 2;
 	}
