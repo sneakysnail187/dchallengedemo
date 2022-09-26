@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1813326644615372896}
   m_Layer: 0
   m_Name: Wall_Door_02
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -63,6 +63,7 @@ MonoBehaviour:
   isDead: 0
   deathAnimLength: 1
   deathAngle: 30
+  tier: 0
   operandOne: {fileID: 6649808332547957322}
   operandTwo: {fileID: 4857632352892346001}
   operation: {fileID: 5491646670138278396}

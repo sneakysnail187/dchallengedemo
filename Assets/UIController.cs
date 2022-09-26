@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public GameObject answerUI;
-    public GameObject quitUI;
+    public GameObject canvas;
     public static GameObject mainCam;
     public static bool isPaused = false;
-    void Awake(){
-        DontDestroyOnLoad(answerUI);
-        DontDestroyOnLoad(quitUI);
+    void Start(){
+        canvas = GameObject.Find("Canvas");
     }
     void Update(){
         if(Input.GetKeyDown("tab")){
-            if(isPaused){
-                Resume();
-            }
-            else{
+            if(!isPaused){
                 Pause(false);
             }
+        }
+        if(Input.GetKeyDown("return") && isPaused){
+            Resume();
         }
         if(Input.GetKeyDown("escape")){
             if(isPaused){
@@ -34,11 +32,11 @@ public class UIController : MonoBehaviour
     public void Pause(bool isQuit)
     {
         if(!isQuit){
-            answerUI.SetActive(true);
+            canvas.transform.Find("Answer UI").gameObject.SetActive(true);
         }
 
         else{
-            quitUI.SetActive(true);
+            canvas.transform.Find("Quit UI").gameObject.SetActive(true);
         }
 
         Time.timeScale = 0f;
@@ -56,8 +54,8 @@ public class UIController : MonoBehaviour
 
     public void Resume()
     {
-        answerUI.SetActive(false);
-        quitUI.SetActive(false);
+        canvas.transform.Find("Answer UI").gameObject.SetActive(false);
+        canvas.transform.Find("Quit UI").gameObject.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
         gameObject.GetComponent<FPSInput>().enabled = true;

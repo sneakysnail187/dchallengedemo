@@ -16,11 +16,13 @@ public class ReactiveTarget : MonoBehaviour {
 	public TMP_Text operandOne;
 	public TMP_Text operandTwo;
 	public TMP_Text operation;
-	public TMP_InputField answer;
+	public GameObject answer;
 	decimal parseOne;
 	decimal parseTwo;
 	decimal answerParse;
-
+	void Start(){
+		answer = GameObject.Find("Canvas");
+	}
 	void Update(){
 		if(startAnim){
 			startAnim = false;
@@ -41,11 +43,10 @@ public class ReactiveTarget : MonoBehaviour {
 		}
 	}
 
-	public void ReactToHit() {
-		
+	public void ReactToHit() {	
 		parseOne = int.Parse(operandOne.text);
 		parseTwo = int.Parse(operandTwo.text);
-		answerParse = decimal.Parse(answer.text);
+		answerParse = decimal.Parse(answer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
 		
 		if(operation.text == "x"){
 			if(parseOne * parseTwo == answerParse){

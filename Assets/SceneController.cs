@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour {
 	GameObject[] doors;
 
 	void Awake() {
-		doors = (GameObject[]) GameObject.FindObjectsOfType(typeof(Generator));
+		doors = GameObject.FindGameObjectsWithTag("Door");
 		for(int i = 0; i<doors.Length;i++){
 			if(doors[i].GetComponent<ReactiveTarget>().tier == 1){
 				doors[i].GetComponent<Generator>().Difficulty = 1;

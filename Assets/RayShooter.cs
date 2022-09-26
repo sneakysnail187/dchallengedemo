@@ -7,12 +7,13 @@ public class RayShooter : MonoBehaviour {
 	private Camera _camera;
 	private bool hasSword;
 	private Animator anim;
-	[SerializeField] private GameObject reticle;
+	private GameObject reticle;
 
 	void Start() {
+		reticle = GameObject.Find("Reticle");
 		_camera = GetComponent<Camera>();
 		anim = GetComponentInChildren<Animator>();
-		hasSword = true;
+		hasSword = false;
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;

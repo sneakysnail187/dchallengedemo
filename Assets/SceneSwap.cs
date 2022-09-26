@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,10 +10,16 @@ public class SceneSwap : MonoBehaviour
     private float ypos = -38.91979f;
     private float zpos = 0;
     private Vector3 tp;
+    public GameObject canvas;
+    private AsyncOperation sceneAsync;
+    private SphereCollider tpBox;
+    public string target;
 
     public int wingNum;
     void Start()
     {
+        tpBox = GetComponent<SphereCollider>();
+        canvas = GameObject.Find("Canvas");
         if(wingNum == 1){
             xPos = -2.890938f;
             zpos = 146.1741f;
@@ -25,9 +32,14 @@ public class SceneSwap : MonoBehaviour
             xPos = -175.56f;
             zpos = -5.7f;
         }
-        else{
+        else if(wingNum == 4){
             xPos = 14.15857f;
             zpos = -132.387f;
+        }
+        else{
+            xPos = 2.77f;
+            ypos = 0;
+            zpos = -3;
         }
         tp = new Vector3(xPos,ypos,zpos);
 
@@ -40,8 +52,33 @@ public class SceneSwap : MonoBehaviour
     }
 
     IEnumerator LoadLevel (Transform playerTrans){
-        yield return null;
-        SceneManager.LoadScene("Game");
+        AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
+        scene.allowSceneActivation = false;
+        sceneAsync = scene;
+        tpBox.enabled = false;
+        Time.timeScale = 0f;
+        while(scene.progress < 0.9f){
+            Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
+            yield return null;
+        }
+        sceneAsync.allowSceneActivation = true;
+        while(!scene.isDone){
+            yield return null;
+        }
+        OnFinishedLoading();
+        Time.timeScale = 1f;
         playerTrans.position = tp;
+    }
+
+    void enableScene(string scene){
+        UnityEngine.SceneManagement.Scene sceneToLoad = SceneManager.GetSceneByName(scene);
+        if(sceneToLoad.IsValid()){
+            SceneManager.MoveGameObjectToScene(canvas, sceneToLoad);
+            SceneManager.SetActiveScene(sceneToLoad);
+        }
+    }
+
+    void OnFinishedLoading(){
+        enableScene(target);
     }
 }
