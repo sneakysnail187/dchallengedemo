@@ -6,22 +6,45 @@ public class SceneController : MonoBehaviour {
 	[SerializeField] private GameObject enemyPrefab = null;
 	private List<GameObject> _enemies = new List<GameObject>(); 
 	public int enemiesToAdd = 0;
-	Generator[] doors;
+	GameObject[] doors;
 
-	private void Awake() {
-		doors = (Generator[]) GameObject.FindObjectsOfType(typeof(Generator));
+	void Awake() {
+		doors = (GameObject[]) GameObject.FindObjectsOfType(typeof(Generator));
 		for(int i = 0; i<doors.Length;i++){
-			if(doors[i].transform.position.x > 275){
-				doors[i].GetComponent<Generator>().Difficulty = DiffManager.sub;
+			if(doors[i].GetComponent<ReactiveTarget>().tier == 1){
+				doors[i].GetComponent<Generator>().Difficulty = 1;
+			}
+			else if(doors[i].transform.position.x > 275){
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.sub){
+					doors[i].GetComponent<Generator>().Difficulty = 2;
+				}
+				else{
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.sub;
+				}
 			}
 			else if(doors[i].transform.position.z > 130){
-				doors[i].GetComponent<Generator>().Difficulty = DiffManager.add;
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.add){
+					doors[i].GetComponent<Generator>().Difficulty = 2;
+				}
+				else{
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.add;
+				}
 			}
-			else if(doors[i].transform.position.x < 160){
-				doors[i].GetComponent<Generator>().Difficulty = DiffManager.mult;
+			else if(doors[i].transform.position.x < -160){
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.mult){
+					doors[i].GetComponent<Generator>().Difficulty = 2;
+				}
+				else{
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.mult;
+				}
 			}
 			else{
-				doors[i].GetComponent<Generator>().Difficulty = DiffManager.div;
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.div){
+					doors[i].GetComponent<Generator>().Difficulty = 2;
+				}
+				else{
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.div;
+				}
 			}
 		}
 	}
