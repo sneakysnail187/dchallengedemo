@@ -24639,6 +24639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Door_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1033516715095484223, guid: a02ce749f148249039a33e6457063ccd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3460737394579408845, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: Difficulty
       value: 3
