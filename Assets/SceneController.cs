@@ -14,25 +14,28 @@ public class SceneController : MonoBehaviour {
 			if(doors[i].GetComponent<ReactiveTarget>().tier == 1){
 				doors[i].GetComponent<Generator>().Difficulty = 1;
 			}
-			else if(doors[i].transform.position.x > 275){
+			else if(doors[i].GetComponent<ReactiveTarget>().operation.text.Equals("-")){
 				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.sub){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
+					Debug.Log("dchanges");
 				}
 				else{
 					doors[i].GetComponent<Generator>().Difficulty = DiffManager.sub;
 				}
 			}
-			else if(doors[i].transform.position.z > 130){
+			else if(doors[i].GetComponent<ReactiveTarget>().operation.text.Equals("+")){
 				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.add){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
+					Debug.Log("dchangea");
 				}
 				else{
 					doors[i].GetComponent<Generator>().Difficulty = DiffManager.add;
 				}
 			}
-			else if(doors[i].transform.position.x < -160){
+			else if(doors[i].GetComponent<ReactiveTarget>().operation.text.Equals("x")){
 				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.mult){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
+					Debug.Log("dchangem");
 				}
 				else{
 					doors[i].GetComponent<Generator>().Difficulty = DiffManager.mult;
@@ -41,6 +44,7 @@ public class SceneController : MonoBehaviour {
 			else{
 				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.div){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
+					Debug.Log("dchanged");
 				}
 				else{
 					doors[i].GetComponent<Generator>().Difficulty = DiffManager.div;

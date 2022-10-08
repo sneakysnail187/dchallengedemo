@@ -81,8 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Difficulty: 1
-  operandOne: {fileID: 6649808332547957322}
-  operandTwo: {fileID: 4857632352892346001}
 --- !u!65 &1171837493519389542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1087,7 +1085,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 7.5997086, y: 0.70594025, z: 10.072964, w: 2.9913747}
+  m_margin: {x: 7.5997086, y: 0.70594025, z: 9.58221, w: 2.9913747}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

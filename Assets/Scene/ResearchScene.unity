@@ -2009,7 +2009,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 187635131}
-  - component: {fileID: 187635130}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2017,20 +2016,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &187635130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187635129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3798f5abfcd4ca2bb7e721a9f38083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6105582560020169777, guid: 2df887f0489e2a54fa5b12c4562ef2c0, type: 3}
-  enemiesToAdd: 0
 --- !u!4 &187635131
 Transform:
   m_ObjectHideFlags: 0

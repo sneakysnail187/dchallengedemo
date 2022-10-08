@@ -6,21 +6,20 @@ using TMPro;
 public class Generator : MonoBehaviour
 {
     public int Difficulty;
-    public TMP_Text operandOne;
-    public TMP_Text operandTwo;
     void Start()
     {
+        Debug.Log(Difficulty);
         if(Difficulty == 1){
-            operandOne.text = (Random.Range(1,10)).ToString();
-            operandTwo.text = (Random.Range(1,10)).ToString();
+            gameObject.GetComponent<ReactiveTarget>().operandOne.text = (Random.Range(1,10)).ToString();
+            gameObject.GetComponent<ReactiveTarget>().operandTwo.text = (Random.Range(1,10)).ToString();
         }
         if(Difficulty == 2){
-            operandOne.text = (Random.Range(1,100)).ToString();
-            operandTwo.text = (Random.Range(1,100)).ToString();
+            gameObject.GetComponent<ReactiveTarget>().operandOne.text = (Random.Range(10,100)).ToString();
+            gameObject.GetComponent<ReactiveTarget>().operandTwo.text = (Random.Range(10,100)).ToString();
         }
         if(Difficulty == 3){
-            operandOne.text = (Random.Range(1,1000)).ToString();
-            operandTwo.text = (Random.Range(1,1000)).ToString();
+            gameObject.GetComponent<ReactiveTarget>().operandOne.text = (Random.Range(100,1000)).ToString();
+            gameObject.GetComponent<ReactiveTarget>().operandTwo.text = (Random.Range(100,1000)).ToString();
         }
     }
 }
