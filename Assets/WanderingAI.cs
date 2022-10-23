@@ -49,27 +49,13 @@ public class WanderingAI : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (_alive && !broken) {
-			if(transform.position != points[curPoint].position){
-				transform.position = Vector3.MoveTowards(transform.position, points[curPoint].position, speed*Time.deltaTime);
+		if(_alive){
+			View();
+			if(!patrolling){
+				chase();
 			}
-			
 			else{
-				curPoint = (curPoint + 1)%points.Length;
-			}
-			
-			Ray ray = new Ray(transform.position, transform.forward);
-			RaycastHit hit;
-			if (Physics.SphereCast(ray, 0.75f, out hit)) {
-				GameObject hitObject = hit.transform.gameObject;
-				if (hitObject.GetComponent<PlayerCharacter>()) {
-					anim.SetBool("Spotted", true);
-					speed = 5.0f;
-				}
-				else if (hit.distance < obstacleRange) {
-					float angle = Random.Range(-100, 100);
-					transform.Rotate(0, angle, 0);
-				}
+				patrol();
 			}
 		}
 	}
@@ -78,6 +64,7 @@ public class WanderingAI : MonoBehaviour {
 		near = false;
 		playLastPos = Vector3.zero;
 		if(!seen){
+			anim.SetBool("Spotted", true);
 			Move(5.0f);
 			navMeshAgent.SetDestination(playerPos);
 		}
@@ -91,7 +78,10 @@ public class WanderingAI : MonoBehaviour {
 				navMeshAgent.SetDestination(points[curPoint].position);
 			}
 			else{
-				
+				if(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position)>=2.5f){
+					Stop();
+					waitTime -= Time.deltaTime;
+				}
 			}
 		}
 	}
