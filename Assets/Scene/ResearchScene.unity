@@ -9631,7 +9631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &746206448
 Transform:
   m_ObjectHideFlags: 0
@@ -12099,10 +12099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37170533934c38459eee7f7d9f12624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mDiff: 1
-  dDiff: 1
-  sDiff: 1
-  aDiff: 1
 --- !u!114 &928966110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15263,6 +15259,7 @@ GameObject:
   - component: {fileID: 1116060319}
   - component: {fileID: 1116060318}
   - component: {fileID: 1116060317}
+  - component: {fileID: 1116060320}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -15334,7 +15331,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 928966109}
         m_TargetAssemblyTypeName: Scene, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -15384,6 +15381,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116060315}
   m_CullTransparentMesh: 1
+--- !u!114 &1116060320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116060315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37170533934c38459eee7f7d9f12624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1120416146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18681,7 +18690,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   obstacleRange: 4
+  points: []
   broken: 0
+  navMeshAgent: {fileID: 0}
+  initWaitTime: 4
+  initRotate: 2
+  viewAng: 90
+  viewRad: 15
+  player:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 0
+  meshRes: 1
+  edgeIter: 4
+  edgeDist: 0.5
 --- !u!1001 &1353437265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27427,7 +27451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 928966111}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
