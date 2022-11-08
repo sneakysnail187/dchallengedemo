@@ -664,6 +664,10 @@ MonoBehaviour:
   operatorCheck: 
   answerInput: 0
   doorReference: {fileID: 5949246560788061421}
+  operand1Door: {fileID: 4025381882704153847}
+  operand2Door: {fileID: 2396249419366512093}
+  operatorDoor: {fileID: 1428038552615085687}
+  warning: {fileID: 8113295155187955598}
   hasBeenOverlapped: 0
   doorOpen: 0
 --- !u!1 &2396249419366512093

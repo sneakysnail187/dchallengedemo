@@ -6,7 +6,7 @@ using System;
 
 public class AnswerUICollider : MonoBehaviour
 {
-  //stores the canvas
+  //stores the canvas - The canvas is obtained during gameplay
   public GameObject playerAnswer;
   //stores the integers to be tested
   public int firstNumberCheck;
@@ -19,6 +19,12 @@ public class AnswerUICollider : MonoBehaviour
   Animator openDoorAnim;
   //stores a reference to the door of this collider
   public GameObject doorReference;
+
+  //stores references to the doorUI elements
+  public GameObject operand1Door;
+  public GameObject operand2Door;
+  public GameObject operatorDoor;
+  public GameObject warning;
 
   public bool hasBeenOverlapped = false;
   public bool doorOpen = false;
@@ -121,7 +127,12 @@ public class AnswerUICollider : MonoBehaviour
 
   //called for a correct answer
   public void correctAnswer(){
-    //destroy the stuff
+
+    //destroy the Door UI Elements by setting active to false
+    operand1Door.SetActive(false);
+    operand2Door.SetActive(false);
+    operatorDoor.SetActive(false);
+    warning.SetActive(false);
 
     //remove UI
     //Resume(): UIController: remove the Answer UI
