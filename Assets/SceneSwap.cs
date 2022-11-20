@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwap : MonoBehaviour
 {
+    //reference to animator of the cross fade
+    public Animator transitioner;
+    //variable to control transition duration
+    public float transitionTime = 1f;
+    //stores if the object has been overlapped to avoid multiple loading
+    public bool hasBeenOverlapped = false;
+
     private float xPos = 0;
     private float ypos = -38.91979f;
     private float zpos = 0;
@@ -46,16 +53,27 @@ public class SceneSwap : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && !hasBeenOverlapped){
+            hasBeenOverlapped = true;
+            //---------------------------------------------------
+            //Animation code begins and everyhting else runs in the background
+            //Play animation
+            transitioner.SetTrigger("Start");
             StartCoroutine(LoadLevel(other.transform));
         }
     }
 
     IEnumerator LoadLevel (Transform playerTrans){
+        //Time.timeScale = 0.5f;
+        //wait
+        yield return new WaitForSeconds(transitionTime);
+        //----------------------------------------------------
         AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
         scene.allowSceneActivation = false;
         sceneAsync = scene;
+        //animation begin
         tpBox.enabled = false;
+        //time pause - so animation must begin before time pause
         Time.timeScale = 0f;
         while(scene.progress < 0.9f){
             Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
@@ -80,5 +98,7 @@ public class SceneSwap : MonoBehaviour
 
     void OnFinishedLoading(){
         enableScene(target);
+        //done loading so end the transition by triggering End
+        transitioner.SetTrigger("End");
     }
 }

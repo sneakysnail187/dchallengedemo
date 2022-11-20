@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class Audiomanager1 : MonoBehaviour
 {
+    //reference to the GameObject contianing the canvas group
+    public GameObject canvasImage;
+    //stores how much of the transition effect has hapened using the alpha value of canvasImage
+    public float completion;
+    //stores whether we are at the beginning of loading the scene
+    //to make sure the sound reducing effect does not trigger at beginning of scene load
+    public static bool atStart = true;
+
     public Sound[] sounds;
     //Awake called before start
     void Awake()
@@ -18,10 +26,20 @@ public class Audiomanager1 : MonoBehaviour
         }
     }
 
-    //void STart plays the sound on Start
+    //void Start plays the sound on Start
     void Start()
     {
         play("Theme");
+    }
+
+    //void update
+    void Update(){
+        if(!atStart){
+             //set the update method to get the current alpha of the canvas and set the volume to the level of completion of the animation
+            completion = canvasImage.GetComponent<CanvasGroup>().alpha;
+            //sound volume
+            sounds[0].source.volume = 1 - completion;
+        }
     }
 
     //PLAY METHOD

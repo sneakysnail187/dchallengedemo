@@ -51,6 +51,8 @@ public class AnswerUICollider : MonoBehaviour
     if(Input.GetKeyDown("return")){
       //get the input answer
       answerInput = int.Parse(playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
+      //clear the answer
+      playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text = "";
       //check wrong or right
       //if answers are same
       if (answerCheck(answerInput)){
@@ -96,7 +98,7 @@ public class AnswerUICollider : MonoBehaviour
 
     //if the sign is minus
     else if(operatorCheck == "-"){
-      if(playerGuess == (secondNumberCheck-firstNumberCheck)){
+      if(playerGuess == (firstNumberCheck-secondNumberCheck)){
         return true;
       }
       else{
@@ -116,7 +118,7 @@ public class AnswerUICollider : MonoBehaviour
 
     //if the sign is division
     else {
-      if(playerGuess == (secondNumberCheck/firstNumberCheck)){
+      if(playerGuess == (firstNumberCheck/secondNumberCheck)){
         return true;
       }
       else{
