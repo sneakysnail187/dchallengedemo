@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class WeaponController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class WeaponController : MonoBehaviour
     public GameObject controller;
     public bool canAttack = true;
     private Animator anim;
+    public SoundEffectsManager manager;
 
 
 
@@ -34,5 +36,7 @@ public class WeaponController : MonoBehaviour
 
     public void swordAttack(){
         anim.SetBool("Attack", true);
+        //play sword sound
+        manager.play("SwordAttack");
     }
 }

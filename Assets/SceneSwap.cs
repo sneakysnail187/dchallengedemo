@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class SceneSwap : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class SceneSwap : MonoBehaviour
     public float transitionTime = 1f;
     //stores if the object has been overlapped to avoid multiple loading
     public bool hasBeenOverlapped = false;
+    //stores a reference to the SoundEffectsManager
+    public SoundEffectsManager manager;
+    //stores a reference to the AudioManger2
+    public Audiomanager2 musicManager;
 
     private float xPos = 0;
     private float ypos = -38.91979f;
@@ -56,6 +61,8 @@ public class SceneSwap : MonoBehaviour
         if(other.CompareTag("Player") && !hasBeenOverlapped){
             hasBeenOverlapped = true;
             //---------------------------------------------------
+            //Play the terelportation sound
+            manager.play("TeleportAmbience");
             //Animation code begins and everyhting else runs in the background
             //Play animation
             transitioner.SetTrigger("Start");
@@ -67,6 +74,9 @@ public class SceneSwap : MonoBehaviour
         //Time.timeScale = 0.5f;
         //wait
         yield return new WaitForSeconds(transitionTime);
+        //by this point, the animation of transition has ended (UIPopup) and now alpha is max.
+            //we can stop the music
+        musicManager.stop("CommonsUpbeat");
         //----------------------------------------------------
         AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
         scene.allowSceneActivation = false;

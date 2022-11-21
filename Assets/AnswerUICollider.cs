@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.Audio;
 
 public class AnswerUICollider : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class AnswerUICollider : MonoBehaviour
   Animator openDoorAnim;
   //stores a reference to the door of this collider
   public GameObject doorReference;
+  //stores a reference to the audioManager
+  public SoundEffectsManager manager;
+  //stores a reference to the indicator lights
+  public GameObject indicator1;
+  public GameObject indicator2;
 
   //stores references to the doorUI elements
   public GameObject operand1Door;
@@ -30,17 +36,18 @@ public class AnswerUICollider : MonoBehaviour
   public bool doorOpen = false;
 
   void OnTriggerEnter (Collider other){
-    //get the canvas
+    //get the canvas to obtain the answer
     playerAnswer = GameObject.Find("Canvas");
-    //get the Animator to the door of this collider
+    //get the Animator to the door of this collider in order to open the door later
     openDoorAnim = doorReference.GetComponent<Animator>();
 
     if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped && !doorOpen){
         Debug.Log ("AHHHH!!!");
-        //Set AnswerTriggerFire of the UI controller to true
+        //Set AnswerTriggerFire of the UI controller class to true
         UIController.AnswerTriggerFire = true;
         hasBeenOverlapped = true;
-        
+        //fire the answer UI sound
+        manager.play("AnswerPopup");
     }
   } 
 
@@ -135,6 +142,14 @@ public class AnswerUICollider : MonoBehaviour
     operand2Door.SetActive(false);
     operatorDoor.SetActive(false);
     warning.SetActive(false);
+    
+    //play the openDoor sound: the sound for doorClosing is used for both opening and closing scenarios
+    manager.play("DoorClosing");
+    //play the correctAnswer sound
+    manager.play("CorrectAnswer");
+    //turn the indicator lights green - Using GameObject.Indicator.ColorChange.changeLight();
+    indicator1.GetComponent<ColorChange>().changeLight("green");
+    indicator2.GetComponent<ColorChange>().changeLight("green");
 
     //remove UI
     //Resume(): UIController: remove the Answer UI
@@ -147,6 +162,10 @@ public class AnswerUICollider : MonoBehaviour
 
     //called for a wrong answer
     public void wrongAnswer(){
-        
+      //play the Wrong Answer sound
+      manager.play("WrongAnswer");
+      //turn the indicator lights green - Using GameObject.Indicator.ColorChange.changeLight();
+      indicator1.GetComponent<ColorChange>().changeLight("red");
+      indicator2.GetComponent<ColorChange>().changeLight("red");
     } 
 }
