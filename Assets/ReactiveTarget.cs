@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 
 public class ReactiveTarget : MonoBehaviour {
 
@@ -16,7 +17,7 @@ public class ReactiveTarget : MonoBehaviour {
 	public TMP_Text operandOne;
 	public TMP_Text operandTwo;
 	public TMP_Text operation;
-	public GameObject answer;
+	public GameObject answer = null;
 	decimal parseOne;
 	decimal parseTwo;
 	decimal answerParse;
@@ -44,9 +45,13 @@ public class ReactiveTarget : MonoBehaviour {
 	}
 
 	public void ReactToHit() {	
+		if(answer == null) answer = GameObject.Find("Canvas");
 		parseOne = int.Parse(operandOne.text);
 		parseTwo = int.Parse(operandTwo.text);
-		answerParse = decimal.Parse(answer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
+		if(answer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text.Any(char.IsDigit)){
+			answerParse = decimal.Parse(answer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
+		}
+		else return;
 		
 		if(operation.text == "x"){
 			if(parseOne * parseTwo == answerParse){

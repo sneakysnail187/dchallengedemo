@@ -42,8 +42,6 @@ public class RayShooter : MonoBehaviour {
 				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
 				if (target != null) {
 					target.ReactToHit();
-				} else {
-					StartCoroutine(SphereIndicator(hit.point));
 				}
 			}
 			}

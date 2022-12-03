@@ -21,7 +21,7 @@ public class WanderingAI : MonoBehaviour {
 	public float meshRes = 1f;
 	public int edgeIter = 4;
 	public float edgeDist = 0.5f;
-	public bool left;
+	public bool left = true;
 	Vector3 playLastPos = Vector3.zero;
 	Vector3 playerPos;
 	float waitTime;

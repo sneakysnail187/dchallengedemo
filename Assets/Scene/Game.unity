@@ -3983,6 +3983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6105582560020169777, guid: 2df887f0489e2a54fa5b12c4562ef2c0, type: 3}
   enemiesToAdd: 0
+  isMaze: 1
 --- !u!4 &187635131
 Transform:
   m_ObjectHideFlags: 0
@@ -4062,7 +4063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3460737394579408845, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: Difficulty
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4025381882704153847, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -24390,7 +24391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3460737394579408845, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: Difficulty
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4025381882704153847, guid: a02ce749f148249039a33e6457063ccd, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -38264,9 +38265,13 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2036755522328808854, guid: 55567c256a6884a158741388f339b8d0, type: 3}
+      propertyPath: Difficulty
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2053930150311633558, guid: 55567c256a6884a158741388f339b8d0, type: 3}
       propertyPath: Difficulty
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2713820655212724866, guid: 55567c256a6884a158741388f339b8d0, type: 3}
       propertyPath: Difficulty
@@ -38362,7 +38367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7329785367969507577, guid: 55567c256a6884a158741388f339b8d0, type: 3}
       propertyPath: Difficulty
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7696174246743583754, guid: 55567c256a6884a158741388f339b8d0, type: 3}
       propertyPath: m_LocalPosition.z

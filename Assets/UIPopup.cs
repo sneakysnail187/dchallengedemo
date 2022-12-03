@@ -10,7 +10,7 @@ public class UIPopup : MonoBehaviour
     //stores whether we have overlapped with this trigger before
     public bool hasBeenOverlapped = false;
     //stores whether it is a first time entry
-    public bool firstTimeEntry = true;
+    public bool firstTimeEntry = false;
     //stores the GameObject containing the UI component teleporter help
     public GameObject UIComponentTeleporters;
     //stores the GameObject containing the welcome UI component

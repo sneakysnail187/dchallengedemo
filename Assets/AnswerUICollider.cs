@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 using UnityEngine.Audio;
 
 public class AnswerUICollider : MonoBehaviour
@@ -57,7 +58,9 @@ public class AnswerUICollider : MonoBehaviour
     //if they press enter
     if(Input.GetKeyDown("return")){
       //get the input answer
-      answerInput = int.Parse(playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
+      if(playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text.Any(char.IsDigit)){
+        answerInput = int.Parse(playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
+      }
       //clear the answer
       playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text = "";
       //check wrong or right
