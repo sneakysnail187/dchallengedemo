@@ -21,6 +21,7 @@ public class WanderingAI : MonoBehaviour {
 	public float meshRes = 1f;
 	public int edgeIter = 4;
 	public float edgeDist = 0.5f;
+	public bool left;
 	Vector3 playLastPos = Vector3.zero;
 	Vector3 playerPos;
 	float waitTime;
@@ -121,7 +122,8 @@ public class WanderingAI : MonoBehaviour {
 	}
 
 	public void nextP(){
-		curPoint = (curPoint +1) %points.Length;
+		if(left) curPoint = (curPoint +1) %points.Length;
+		else curPoint = (curPoint -1) %points.Length;
 		navMeshAgent.SetDestination(points[curPoint].position);
 	}
 

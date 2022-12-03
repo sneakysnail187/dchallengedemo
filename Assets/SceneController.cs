@@ -6,9 +6,11 @@ public class SceneController : MonoBehaviour {
 	[SerializeField] private GameObject enemyPrefab = null;
 	private List<GameObject> _enemies = new List<GameObject>(); 
 	public int enemiesToAdd = 0;
+	public bool isMaze;
 	GameObject[] doors;
 
 	void Awake() {
+		if(isMaze){
 		doors = GameObject.FindGameObjectsWithTag("Door");
 		for(int i = 0; i<doors.Length;i++){
 			if(doors[i].GetComponent<ReactiveTarget>().tier == 1){
@@ -51,6 +53,7 @@ public class SceneController : MonoBehaviour {
 				}
 			}
 		}
+		}
 	}
 	public GameObject SpawnEnemy(){
 		GameObject _enemy = Instantiate(enemyPrefab) as GameObject;
@@ -67,6 +70,8 @@ public class SceneController : MonoBehaviour {
 				_enemies[i] = SpawnEnemy();
 				for(int x = 0; x < enemiesToAdd; x++){
 					_enemies.Add(SpawnEnemy());
+					if(x%2 == 0) _enemies[x].GetComponent<WanderingAI>().left = false;
+					else _enemies[x].GetComponent<WanderingAI>().left = true;
 				}
 			}
 		}
