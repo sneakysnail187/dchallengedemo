@@ -10,50 +10,50 @@ public class SceneController : MonoBehaviour {
 	GameObject[] doors;
 
 	void Awake() {
-		if(isMaze){
+		if(isMaze){/*
 		doors = GameObject.FindGameObjectsWithTag("Door");
 		for(int i = 0; i<doors.Length;i++){
 			if(doors[i].GetComponent<ReactiveTarget>().tier == 1){
 				doors[i].GetComponent<Generator>().Difficulty = 1;
 			}
 			else if(doors[i].GetComponent<ReactiveTarget>().operation.text.Equals("-")){
-				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.sub){
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.getSub()){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
 					Debug.Log("dchanges");
 				}
 				else{
-					doors[i].GetComponent<Generator>().Difficulty = DiffManager.sub;
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.getSub();
 				}
 			}
 			else if(doors[i].GetComponent<ReactiveTarget>().operation.text.Equals("+")){
-				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.add){
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.getAdd()){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
 					Debug.Log("dchangea");
 				}
 				else{
-					doors[i].GetComponent<Generator>().Difficulty = DiffManager.add;
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.getAdd();
 				}
 			}
 			else if(doors[i].GetComponent<ReactiveTarget>().operation.text.Equals("x")){
-				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.mult){
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.getMult()){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
 					Debug.Log("dchangem");
 				}
 				else{
-					doors[i].GetComponent<Generator>().Difficulty = DiffManager.mult;
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.getMult();
 				}
 			}
 			else{
-				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.div){
+				if(doors[i].GetComponent<ReactiveTarget>().tier < DiffManager.getDiv()){
 					doors[i].GetComponent<Generator>().Difficulty = 2;
 					Debug.Log("dchanged");
 				}
 				else{
-					doors[i].GetComponent<Generator>().Difficulty = DiffManager.div;
+					doors[i].GetComponent<Generator>().Difficulty = DiffManager.getDiv();
 				}
 			}
 		}
-		}
+		*/}
 	}
 	public GameObject SpawnEnemy(){
 		GameObject _enemy = Instantiate(enemyPrefab) as GameObject;

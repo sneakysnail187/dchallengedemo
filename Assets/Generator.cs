@@ -7,8 +7,12 @@ public class Generator : MonoBehaviour
 {
     //reference to this door's box collider
     public GameObject theCollider;
-    public int Difficulty;
-    //stores the two integers to be used in the operation and the corresponding TMP texts
+    //stores the corresponding difficulties for the operations
+    public int addition_Difficulty;
+    public int minus_Difficulty;
+    public int multiply_Difficulty;
+    public int divide_Difficulty;
+    //stores the two integers to be used in the operation and the corresponding UI TMP texts
     public int firstNumber;
     public int secondNumber;
     public TMP_Text operandOne;
@@ -17,27 +21,28 @@ public class Generator : MonoBehaviour
     public TMP_Text operation;
     public string operatorSign;
     //stores the ranges for the different number generators and changes based on difficulty
-    public int addRangeMin;
-    public int addRangeMax;
-    public int minusRangeMin;
-    public int minusRangeMax;
-    public int timesRangeMin;
-    public int timesRangeMax;
-    public int divideRangeMin;
-    public int divideRangeMax;
+    //public int addRangeMin;
+    //public int addRangeMax;
+    //public int minusRangeMin;
+    //public int minusRangeMax;
+    //public int timesRangeMin;
+    //public int timesRangeMax;
+    //public int divideRangeMin;
+    //public int divideRangeMax;
 
     void Start()
     {
 
         //get the operator
         operatorSign = operation.text;
-        if(operatorSign == "÷") Difficulty = DiffManager.div;
-        if(operatorSign == "-") Difficulty = DiffManager.sub;
-        if(operatorSign == "+") Difficulty = DiffManager.add;
-        if(operatorSign == "x") Difficulty = DiffManager.mult;
+        //get the respective difficulties
+        addition_Difficulty = DiffManager.getAdd();
+        minus_Difficulty = DiffManager.getSub();
+        multiply_Difficulty = DiffManager.getMult();
+        divide_Difficulty = DiffManager.getDiv();
         //run the range Setter for this object
 
-        rangeSetter(Difficulty);
+        //rangeSetter(Difficulty);
         /*
         Debug.Log(Difficulty);
 
@@ -55,73 +60,83 @@ public class Generator : MonoBehaviour
         }
         */
 
+        //DIVISION
         //Case 1: Generating Numbers for Division
         //variables r1, r2 and k(for even integer division)
         if(operatorSign == "÷"){
             //k ensures that there is an integer answer
-            int r1 = Random.Range(divideRangeMin,divideRangeMax);
-            int k = Random.Range(divideRangeMin,divideRangeMax/2);
+            int r1 = Random.Range(1,10);
+            int k = Random.Range(1,5);
             int r2 = r1 * k;
             firstNumber = r2;
             secondNumber = r1;
         }
 
+        //SUBTRACTION
         //Case 2: Generating Numbers for Minus
         //variables r1, r2 and k(for non-negative answers)
         if(operatorSign == "-"){
             //k ensures that there is a positive answer
             int s1 =0;
             int s2 =0;
-            if(Difficulty == 1){
+            if(minus_Difficulty == 1){
                 int n = Random.Range(2,4);
                 for(int i = 0; i<n;i++){
-                    int r1 = Random.Range(minusRangeMin,minusRangeMax);
-                    int r2 = Random.Range(minusRangeMin,r1);
+                    int r1 = Random.Range(0,10);
+                    int r2 = Random.Range(0,r1);
                     r1 *= 10^i;
                     r2 *= 10^i;
                     s1+=r1;
                     s2+=r2;
                 }
             }
-            if(Difficulty == 2){
-                s1 = Random.Range(0, 100000);
-                int k = Random.Range(0, 100000);
+            if(minus_Difficulty == 2){
+                s1 = Random.Range(0, 10000);
+                int k = Random.Range(0, 10000);
                 s2 = k+s1;
             }
-            if(Difficulty == 3){
-                s1 = Random.Range(0,10000000);
-                int k = Random.Range(0,10000000);
+            if(minus_Difficulty == 3){
+                s1 = Random.Range(100000,1000000);
+                int k = Random.Range(100000,1000000);
                 s2 = s1 + k;
             }
             firstNumber = s1;
             secondNumber = s2;
         }
 
+        //ADDITION
         //Case 3: Generating Numbers for Add
         //variables r1, r2 
         if(operatorSign == "+"){
             int s1 =0;
             int s2 =0;
-            if(Difficulty == 1){
+            if(addition_Difficulty == 1){
                 int n = Random.Range(2,4);
                 for(int i = 0; i<n;i++){
-                    int r1 = Random.Range(addRangeMin,addRangeMax);
+                    int r1 = Random.Range(0,10);
                     int k = 9-r1;
-                    int r2 = Random.Range(addRangeMin,k);
-                    r1 *= 10^i;
-                    r2 *= 10^i;
-                    s1+=r1;
-                    s2+=r2;
+                    int r2;
+                    if (k == 0){
+                        r2 = 0;
+                    }
+                    else{
+                        r2 = Random.Range(0,(k+1));
+                    }
+                    r1 = r1 * 10^i;
+                    r2 = r2 * 10^i;
+                    s1=s1+r1;
+                    s2=s2+r2;
                 }
             }
-            if(Difficulty == 2){
+            if(addition_Difficulty == 2){
                 s1 = Random.Range(1000, 100000);
                 s2 = Random.Range(1000, 100000);
             }
-            if(Difficulty == 3){
+            if(addition_Difficulty == 3){
                 s1 = Random.Range(100000,10000000);
                 s2 = Random.Range(100000,10000000);
             }
+
             firstNumber = s1;
             secondNumber = s2;
         }
@@ -129,8 +144,8 @@ public class Generator : MonoBehaviour
         //Case 4: Generating Numbers for times
         //variables r1, r2 
         if(operatorSign == "x"){
-            int r1 = Random.Range(timesRangeMin,timesRangeMax);
-            int r2 = Random.Range(timesRangeMin,timesRangeMax);
+            int r1 = Random.Range(0,13);
+            int r2 = Random.Range(0,13);
             firstNumber = r1;
             secondNumber = r2;
         }
@@ -146,6 +161,7 @@ public class Generator : MonoBehaviour
 
     }
 
+    /*
     public void rangeSetter(int difficulty) {
         //Difficulty 1
         if(difficulty == 1){
@@ -181,4 +197,5 @@ public class Generator : MonoBehaviour
             timesRangeMax = 50;
         }
     }
+    */
 }

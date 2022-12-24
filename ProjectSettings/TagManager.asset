@@ -16,8 +16,8 @@ TagManager:
   - UI
   - Obstacle
   - Player
-  - 
-  - 
+  - HideFromMap
+  - Minimap
   - 
   - 
   - 

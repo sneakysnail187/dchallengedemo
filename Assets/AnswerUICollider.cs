@@ -32,6 +32,11 @@ public class AnswerUICollider : MonoBehaviour
   public GameObject operand2Door;
   public GameObject operatorDoor;
   public GameObject warning;
+  public GameObject padlockRed;
+  public GameObject padlockGreen;
+  public GameObject MapPadlockRed;
+  public GameObject MapPadlockGreen;
+
 
   public bool hasBeenOverlapped = false;
   public bool doorOpen = false;
@@ -39,11 +44,21 @@ public class AnswerUICollider : MonoBehaviour
   void OnTriggerEnter (Collider other){
     //get the canvas to obtain the answer
     playerAnswer = GameObject.Find("Canvas");
+    //get refrence to the UI elements
+
+    //
+    padlockRed = playerAnswer.transform.Find("Answer UI").GetChild(2).gameObject;
+    padlockGreen= playerAnswer.transform.Find("Answer UI").GetChild(1).gameObject;
+
     //get the Animator to the door of this collider in order to open the door later
     openDoorAnim = doorReference.GetComponent<Animator>();
 
     if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped && !doorOpen){
         Debug.Log ("AHHHH!!!");
+        //reset the padlock UI
+        padlockRed.SetActive(true);
+        padlockGreen.SetActive(false);
+        //UIController is a class that controls the UI of the game
         //Set AnswerTriggerFire of the UI controller class to true
         UIController.AnswerTriggerFire = true;
         hasBeenOverlapped = true;
@@ -80,7 +95,8 @@ public class AnswerUICollider : MonoBehaviour
 
     if(other.GetComponent<Collider>().tag == "Player" && hasBeenOverlapped){
         Debug.Log ("BYE!!!");
-        //Resume(): UIController: remove the Answer UI
+        //UIController is a class that controls the UI of the game
+        //Resume(): UIController: remove the Answer UI 
         UIController.resumeCalled = true;
         //if the door is still closed: there was no work done
         if(!doorOpen){
@@ -139,7 +155,9 @@ public class AnswerUICollider : MonoBehaviour
 
   //called for a correct answer
   public void correctAnswer(){
-
+    //change the Minimap indicators
+    MapPadlockGreen.SetActive(true);
+    MapPadlockRed.SetActive(false);
     //destroy the Door UI Elements by setting active to false
     operand1Door.SetActive(false);
     operand2Door.SetActive(false);
@@ -154,21 +172,36 @@ public class AnswerUICollider : MonoBehaviour
     indicator1.GetComponent<ColorChange>().changeLight("green");
     indicator2.GetComponent<ColorChange>().changeLight("green");
 
-    //remove UI
-    //Resume(): UIController: remove the Answer UI
-    UIController.resumeCalled = true;
-    //open the Door actions
-    openDoorAnim.SetBool("openDoor",true);
-    //set door open to true
-    doorOpen = true;
+    //delay a second for the padlock animation
+    StartCoroutine(padlockOpen());
     }
 
     //called for a wrong answer
     public void wrongAnswer(){
       //play the Wrong Answer sound
       manager.play("WrongAnswer");
-      //turn the indicator lights green - Using GameObject.Indicator.ColorChange.changeLight();
+      //turn the indicator lights red - Using GameObject.Indicator.ColorChange.changeLight();
       indicator1.GetComponent<ColorChange>().changeLight("red");
       indicator2.GetComponent<ColorChange>().changeLight("red");
     } 
+
+    //Padlock Opening Animation
+    IEnumerator padlockOpen(){
+      //set the padlock green and wait half a second
+      //playerAnswer is the reference to the canvas, canvas contains the green and red padlock as Children 1 and 2 and AnswerUI
+      //playerAnswer.transform.Find("Answer UI").GetChild(2).SetActive(false); //red
+      padlockRed.SetActive(false);
+      //playerAnswer.transform.Find("Answer UI").GetChild(1).SetActive(true); //green
+      padlockGreen.SetActive(true);
+      yield return new WaitForSeconds(0.125f);
+      //after a half second - we can remove the UI - remember to reset the padlocks
+
+      //remove UI
+      //Resume(): UIController: remove the Answer UI
+      UIController.resumeCalled = true;
+      //open the Door actions
+      openDoorAnim.SetBool("openDoor",true);
+      //set door open to true
+      doorOpen = true;
+    }
 }

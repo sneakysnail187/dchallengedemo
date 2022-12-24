@@ -66,7 +66,10 @@ public class SceneSwap : MonoBehaviour
             //Animation code begins and everyhting else runs in the background
             //Play animation
             transitioner.SetTrigger("Start");
-            StartCoroutine(LoadLevel(other.transform));
+            //if the teleporters are one of the four, load level
+            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4){
+                StartCoroutine(LoadLevel(other.transform));
+            }
         }
     }
 
