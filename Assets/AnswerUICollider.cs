@@ -36,19 +36,31 @@ public class AnswerUICollider : MonoBehaviour
   public GameObject padlockGreen;
   public GameObject MapPadlockRed;
   public GameObject MapPadlockGreen;
+  //stores reference to the UI question holder and the corresponding elements on the canvas
+  public GameObject questionHolder;
+
 
 
   public bool hasBeenOverlapped = false;
   public bool doorOpen = false;
 
   void OnTriggerEnter (Collider other){
-    //get the canvas to obtain the answer
+    //we want the question to be updated
+
+    //get the canvas to obtain the answer and update the question
     playerAnswer = GameObject.Find("Canvas");
-    //get refrence to the UI elements
+    //get reference to the UI elements
 
     //
-    padlockRed = playerAnswer.transform.Find("Answer UI").GetChild(2).gameObject;
-    padlockGreen= playerAnswer.transform.Find("Answer UI").GetChild(1).gameObject;
+    padlockRed = playerAnswer.transform.Find("Answer UI").GetChild(3).gameObject;
+    padlockGreen= playerAnswer.transform.Find("Answer UI").GetChild(2).gameObject;
+
+    //get the element that represent the question holder.
+    questionHolder = playerAnswer.transform.Find("Answer UI").GetChild(0).gameObject;
+    //update the respective elements
+    questionHolder.transform.Find("Q_Operand1").gameObject.GetComponent<TMP_Text>().text = firstNumberCheck.ToString();
+    questionHolder.transform.Find("Q_Operand2").gameObject.GetComponent<TMP_Text>().text = secondNumberCheck.ToString();
+    questionHolder.transform.Find("Q_Operation").gameObject.GetComponent<TMP_Text>().text = operatorCheck;
 
     //get the Animator to the door of this collider in order to open the door later
     openDoorAnim = doorReference.GetComponent<Animator>();
@@ -73,11 +85,11 @@ public class AnswerUICollider : MonoBehaviour
     //if they press enter
     if(Input.GetKeyDown("return")){
       //get the input answer
-      if(playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text.Any(char.IsDigit)){
-        answerInput = int.Parse(playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text);
+      if(playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text.Any(char.IsDigit)){
+        answerInput = int.Parse(playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text);
       }
       //clear the answer
-      playerAnswer.transform.Find("Answer UI").GetChild(0).GetComponent<TMP_InputField>().text = "";
+      playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text = "";
       //check wrong or right
       //if answers are same
       if (answerCheck(answerInput)){

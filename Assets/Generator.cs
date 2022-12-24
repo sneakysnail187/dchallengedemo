@@ -20,15 +20,7 @@ public class Generator : MonoBehaviour
     //stores a string representation of the operand: either +, -, ÷, x
     public TMP_Text operation;
     public string operatorSign;
-    //stores the ranges for the different number generators and changes based on difficulty
-    //public int addRangeMin;
-    //public int addRangeMax;
-    //public int minusRangeMin;
-    //public int minusRangeMax;
-    //public int timesRangeMin;
-    //public int timesRangeMax;
-    //public int divideRangeMin;
-    //public int divideRangeMax;
+
 
     void Start()
     {
@@ -40,25 +32,7 @@ public class Generator : MonoBehaviour
         minus_Difficulty = DiffManager.getSub();
         multiply_Difficulty = DiffManager.getMult();
         divide_Difficulty = DiffManager.getDiv();
-        //run the range Setter for this object
-
-        //rangeSetter(Difficulty);
-        /*
-        Debug.Log(Difficulty);
-
-        if(Difficulty == 1){
-            gameObject.GetComponent<ReactiveTarget>().operandOne.text = (Random.Range(1,10)).ToString();
-            gameObject.GetComponent<ReactiveTarget>().operandTwo.text = (Random.Range(1,10)).ToString();
-        }
-        if(Difficulty == 2){
-            gameObject.GetComponent<ReactiveTarget>().operandOne.text = (Random.Range(10,100)).ToString();
-            gameObject.GetComponent<ReactiveTarget>().operandTwo.text = (Random.Range(10,100)).ToString();
-        }
-        if(Difficulty == 3){
-            gameObject.GetComponent<ReactiveTarget>().operandOne.text = (Random.Range(100,1000)).ToString();
-            gameObject.GetComponent<ReactiveTarget>().operandTwo.text = (Random.Range(100,1000)).ToString();
-        }
-        */
+        
 
         //DIVISION
         //Case 1: Generating Numbers for Division
@@ -84,8 +58,9 @@ public class Generator : MonoBehaviour
                 for(int i = 0; i<n;i++){
                     int r1 = Random.Range(0,10);
                     int r2 = Random.Range(0,r1);
-                    r1 *= 10^i;
-                    r2 *= 10^i;
+                    //using ^ is an XOR operation not an exponent operation - must use Mathf.Pow()
+                    r1 = r1 * (int)Mathf.Pow(10, i);
+                    r2 = r2 * (int)Mathf.Pow(10, i);
                     s1+=r1;
                     s2+=r2;
                 }
@@ -122,8 +97,9 @@ public class Generator : MonoBehaviour
                     else{
                         r2 = Random.Range(0,(k+1));
                     }
-                    r1 = r1 * 10^i;
-                    r2 = r2 * 10^i;
+                    //using ^ is an XOR operation not an exponent operation - must use Mathf.Pow()
+                    r1 = r1 * (int)Mathf.Pow(10, i);
+                    r2 = r2 * (int)Mathf.Pow(10, i);
                     s1=s1+r1;
                     s2=s2+r2;
                 }
@@ -160,42 +136,4 @@ public class Generator : MonoBehaviour
         theCollider.GetComponent<AnswerUICollider>().operatorCheck = operatorSign;
 
     }
-
-    /*
-    public void rangeSetter(int difficulty) {
-        //Difficulty 1
-        if(difficulty == 1){
-            divideRangeMin = 1;
-            divideRangeMax = 10;
-            minusRangeMin = 1;
-            minusRangeMax = 10;
-            addRangeMin = 1;
-            addRangeMax = 10;
-            timesRangeMin = 0;
-            timesRangeMax = 10;
-        }
-        //Difficulty 2
-        if(difficulty == 2){
-            divideRangeMin = 1;
-            divideRangeMax = 12;
-            minusRangeMin = 1;
-            minusRangeMax = 100;
-            addRangeMin = 1;
-            addRangeMax = 100;
-            timesRangeMin = 7;
-            timesRangeMax = 12;
-        }
-        //Difficulty 3
-        if(difficulty == 3){
-            divideRangeMin = 1;
-            divideRangeMax = 20;
-            minusRangeMin = 1;
-            minusRangeMax = 1000;
-            addRangeMin = 1;
-            addRangeMax = 1000;
-            timesRangeMin = 0;
-            timesRangeMax = 50;
-        }
-    }
-    */
 }
