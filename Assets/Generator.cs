@@ -120,8 +120,20 @@ public class Generator : MonoBehaviour
         //Case 4: Generating Numbers for times
         //variables r1, r2 
         if(operatorSign == "x"){
-            int r1 = Random.Range(0,13);
-            int r2 = Random.Range(0,13);
+            int r1 = 0;
+            int r2 = 0;
+            if(multiply_Difficulty == 1){
+                r1 = Random.Range(0,100);
+                r2 = Random.Range(0,10);
+            }
+            else if(multiply_Difficulty == 2){
+                r1 = Random.Range(100,10000);
+                r2 = Random.Range(0,10);
+            }
+            else if(multiply_Difficulty == 3){
+                r1 = Random.Range(100,10000);
+                r2 = Random.Range(10,100);
+            }
             firstNumber = r1;
             secondNumber = r2;
         }
