@@ -17375,9 +17375,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 886013252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d1bca5298cda64fbf0f5bb5bb3f2ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitioner: {fileID: 0}
+  transitionTime: 1
+  hasBeenOverlapped: 0
+  manager: {fileID: 2085385282}
+  musicManager: {fileID: 0}
+  canvas: {fileID: 0}
+  target: ResearchScene
+  wingNum: 0
 --- !u!65 &886013254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17874,7 +17882,7 @@ MonoBehaviour:
   manager: {fileID: 2085385282}
   musicManager: {fileID: 0}
   canvas: {fileID: 0}
-  target: 
+  target: ResearchScene
   wingNum: 0
 --- !u!65 &929146929
 BoxCollider:
@@ -38993,6 +39001,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a70de0042255a74c8191793a4ba6e59, type: 3}
+--- !u!1 &1833752355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3352856429286887779, guid: 6a70de0042255a74c8191793a4ba6e59, type: 3}
+  m_PrefabInstance: {fileID: 1833752354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1833752356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833752355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitioner: {fileID: 0}
+  transitionTime: 1
+  hasBeenOverlapped: 0
+  manager: {fileID: 2085385282}
+  musicManager: {fileID: 0}
+  canvas: {fileID: 0}
+  target: ResearchScene
+  wingNum: 0
 --- !u!1001 &1839476976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39398,7 +39431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a32579b8da76648b52ea3478773a0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -39.00624
+      value: -38.88
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a32579b8da76648b52ea3478773a0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39452,9 +39485,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846253220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d1bca5298cda64fbf0f5bb5bb3f2ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitioner: {fileID: 0}
+  transitionTime: 1
+  hasBeenOverlapped: 0
+  manager: {fileID: 2085385282}
+  musicManager: {fileID: 0}
+  canvas: {fileID: 0}
+  target: ResearchScene
+  wingNum: 0
 --- !u!65 &1846253222
 BoxCollider:
   m_ObjectHideFlags: 0
