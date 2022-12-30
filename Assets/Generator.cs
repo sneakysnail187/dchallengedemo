@@ -131,7 +131,7 @@ public class Generator : MonoBehaviour
                     int n = Random.Range(1,4);
                     for(int i = 0; i < n; i++){
                         int k = Random.Range(0, 9/r2 + 1);
-                        r1 += k * (int)Math.pow(10,i);
+                        r1 += k * (int)Mathf.Pow(10,i);
                     }
                 }
             }
