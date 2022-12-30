@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -49,6 +50,7 @@ public class UIController : MonoBehaviour
         if(!isQuit){
             //AnswerUI
             canvas.transform.Find("Answer UI").gameObject.SetActive(true);
+            canvas.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
             //slow down the mouse movement while answering
             player.GetComponent<MouseLook>().sensitivityHor = 0.5f;
             mainCam.GetComponent<MouseLook>().sensitivityVert = 0.5f;
