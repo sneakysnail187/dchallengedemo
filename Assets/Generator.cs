@@ -123,8 +123,17 @@ public class Generator : MonoBehaviour
             int r1 = 0;
             int r2 = 0;
             if(multiply_Difficulty == 1){
-                r1 = Random.Range(0,100);
                 r2 = Random.Range(0,10);
+                if(r2 == 0){
+                    r1 = Random.Range(0, 100);
+                }
+                else {
+                    int n = Random.Range(1,4);
+                    for(int i = 0; i < n; i++){
+                        int k = Random.Range(0, 9/r2 + 1);
+                        r1 += k * (int)Math.pow(10,i);
+                    }
+                }
             }
             else if(multiply_Difficulty == 2){
                 r1 = Random.Range(100,10000);
