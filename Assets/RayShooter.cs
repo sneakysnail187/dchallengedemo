@@ -6,17 +6,24 @@ using UnityEngine.UI; /* Required for controlling Canvas UI system */
 public class RayShooter : MonoBehaviour {
 	private Camera _camera;
 	private bool hasSword;
+	private bool hasRay;
+	private bool hasHack;
+	private bool hasFreeze;
 	private Animator anim;
 	private GameObject reticle;
+	private float shrinkRate = 0.5f;
+	public GameObject laser;
 
 	void Start() {
 		reticle = GameObject.Find("Reticle");
 		_camera = GetComponent<Camera>();
 		anim = GetComponentInChildren<Animator>();
 		hasSword = false;
+		hasRay = true;
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
+		laser.SetActive(false);
 
 		reticle = GameObject.Find("Reticle");
 		reticle.GetComponent<Text>().text = "+";
@@ -29,26 +36,36 @@ public class RayShooter : MonoBehaviour {
     
 
 	void Update() {
-		if (Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButton(0)) {
 			if(hasSword){
-				anim.SetBool("Attack", true);
+				//anim.SetBool("Attack", true);
 			}
 			else{
-			Vector3 point = new Vector3(_camera.pixelWidth/2, _camera.pixelHeight/2, 0);
-			Ray ray = _camera.ScreenPointToRay(point);
-			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit)) {
-				GameObject hitObject = hit.transform.gameObject;
-				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
-				if (target != null) {
-					target.ReactToHit();
+				if(hasRay){
+					laser.SetActive(true);
 				}
-			}
+				Vector3 point = new Vector3(_camera.pixelWidth/2, _camera.pixelHeight/2, 0);
+				Ray ray = _camera.ScreenPointToRay(point);
+				RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					GameObject hitObject = hit.transform.gameObject;
+					ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+					WanderingAI enemy = hitObject.GetComponent<WanderingAI>();
+					if (target != null) {
+						target.ReactToHit();
+					}
+					else if(enemy != null){
+						if(hasRay){
+							enemy.Shrink();
+						}
+					}
+				}
 			}
 			
 		}
 		else{
-			anim.SetBool("Attack", false);
+			//anim.SetBool("Attack", false);
+			laser.SetActive(false);
 		}
 	}
 
