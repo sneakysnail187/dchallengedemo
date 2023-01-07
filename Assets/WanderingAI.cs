@@ -184,13 +184,7 @@ public class WanderingAI : MonoBehaviour {
 			this.gameObject.transform.localScale *= 0.99f;
 		}
 		else{
-			Debug.Log("kill");
 			Destroy(this.gameObject);
 		}
-	}
-
-	private IEnumerator Die() {
-		yield return new WaitForSeconds(0.5f);
-		Destroy(this.gameObject);
 	}
 }

@@ -3322,6 +3322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e0825a038a1d44a909463406815ea3, type: 3}
+--- !u!1 &248544386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2970992253585686043, guid: 6e5623133c2722f4b9ede56667ad5acf, type: 3}
+  m_PrefabInstance: {fileID: 380883205}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &249541514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6246,7 +6251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2970992253585686043, guid: 6e5623133c2722f4b9ede56667ad5acf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e5623133c2722f4b9ede56667ad5acf, type: 3}
@@ -24352,6 +24357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1361435637}
+  - component: {fileID: 1361435638}
   m_Layer: 7
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -24376,6 +24382,24 @@ Transform:
   m_Father: {fileID: 1820916844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1361435638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361435636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b404b96121eb44dbd6f3f833b7d6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword: {fileID: 2087180129}
+  shrinkRay: {fileID: 2046643221}
+  controller: {fileID: 248544386}
+  canAttack: 1
+  currentWeapon: 0
+  manager: {fileID: 2124166042}
 --- !u!1001 &1362287358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37503,6 +37527,11 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &2046643221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 101050, guid: 2c3055a11cb8f8540a181490a4c34b7c, type: 3}
+  m_PrefabInstance: {fileID: 1178207601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2054688244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37955,7 +37984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953977592163608830, guid: fec4e7e32c83e644bbebed4c322ee643, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6479298600411886148, guid: fec4e7e32c83e644bbebed4c322ee643, type: 3}
       propertyPath: m_RootOrder
@@ -38073,6 +38102,7 @@ MonoBehaviour:
   shrinkRay: {fileID: 0}
   controller: {fileID: 0}
   canAttack: 1
+  currentWeapon: 0
   manager: {fileID: 2124166042}
 --- !u!1001 &2087900472
 PrefabInstance:
