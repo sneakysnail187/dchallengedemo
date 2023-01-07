@@ -30,6 +30,8 @@ public class MainPlayerMovementAnimations : MonoBehaviour
             animator.SetBool("isIdle",false);
         }
         //if Attacking
+        
+        /*
         if(leftMousePressed)
         {
              //set isAttacking to true
@@ -37,6 +39,8 @@ public class MainPlayerMovementAnimations : MonoBehaviour
             animator.SetBool("isRunning",false);
             animator.SetBool("isIdle",false);
         }
+        */
+
         //if doing nothing
         if((!wPressed) && (!leftMousePressed) && isAlive)
         {
