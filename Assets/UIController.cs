@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+enum UIState { NonPaused, Paused, Answering }
+
 public class UIController : MonoBehaviour
 {
     public GameObject canvas;
     public static GameObject mainCam;
     public static GameObject player;
-    public static bool isPaused = false;
+    private static UIState isPaused = UIState.NonPaused;
     public static bool AnswerTriggerFire;
     public static bool resumeCalled;
+
+    [SerializeField] private LayerMask whatIsAnsTrigger;
     
     void Start(){
         player = GameObject.Find("Player");
@@ -20,30 +24,41 @@ public class UIController : MonoBehaviour
         mainCam = GameObject.Find("Main Camera");
     }
     void Update(){
-        //entering the collider
-        if(AnswerTriggerFire){
-            if(!isPaused){
-                Pause(false);
-                AnswerTriggerFire = false;
-            }
-        }
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1f, whatIsAnsTrigger);
         //exiting the collider
-        if(resumeCalled){
-            Resume();
-        }
-        if(Input.GetKeyDown("escape")){
-            if(isPaused){
+        //if(resumeCalled){
+        if(colliders.Length < 1)
+        {
+            if (isPaused == UIState.Answering)
+            {
                 Resume();
             }
-            else{
+        }
+        //entering the collider
+        //if(AnswerTriggerFire){
+        else if (colliders[0].GetComponent<AnswerUICollider>().NeedToSetupAnsUI())
+        {
+            colliders[0].GetComponent<AnswerUICollider>().InAnsAreaCheck();
+            if (isPaused != UIState.Paused)
+            {
+                Pause(false);
+                //AnswerTriggerFire = false;
+            }
+        }
+        if (Input.GetKeyDown("escape")){
+            if(isPaused == UIState.NonPaused)
+            {
                 Pause(true);
+            }
+            else
+            {
+                Resume();
             }
         }
     }
 
     public void Pause(bool isQuit)
     {
-        isPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -56,6 +71,8 @@ public class UIController : MonoBehaviour
             //slow down the mouse movement while answering
             player.GetComponent<MouseLook>().sensitivityHor = 0.5f;
             mainCam.GetComponent<MouseLook>().sensitivityVert = 0.5f;
+
+            isPaused = UIState.Answering;
         }
 
         else{
@@ -67,6 +84,8 @@ public class UIController : MonoBehaviour
             mainCam.GetComponent<RayShooter>().enabled = false;
             gameObject.GetComponent<FPSInput>().enabled = false;
             gameObject.GetComponent<MouseLook>().enabled = false;
+
+            isPaused = UIState.Paused;
         }
 
     }
@@ -77,7 +96,7 @@ public class UIController : MonoBehaviour
         canvas.transform.Find("Answer UI").gameObject.SetActive(false);
         canvas.transform.Find("Quit UI").gameObject.SetActive(false);
         Time.timeScale = 1f;
-        isPaused = false;
+        isPaused = UIState.NonPaused;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         mainCam.GetComponent<MouseLook>().enabled = true;

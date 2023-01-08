@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 3561834823019374530}
   - component: {fileID: 1468400641172383227}
   - component: {fileID: 3262915797177735037}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: AnswerTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506401187829565979}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -759,6 +759,7 @@ MonoBehaviour:
   padlockGreen: {fileID: 0}
   MapPadlockRed: {fileID: 5486914093875878326}
   MapPadlockGreen: {fileID: 1783885427333849140}
+  questionHolder: {fileID: 0}
   hasBeenOverlapped: 0
   doorOpen: 0
 --- !u!1 &1783885427333849140

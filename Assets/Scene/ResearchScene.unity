@@ -14456,6 +14456,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  whatIsAnsTrigger:
+    serializedVersion: 2
+    m_Bits: 1048576
 --- !u!114 &928966112
 MonoBehaviour:
   m_ObjectHideFlags: 0
