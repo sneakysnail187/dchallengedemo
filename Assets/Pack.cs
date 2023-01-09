@@ -11,4 +11,15 @@ public class Pack : MonoBehaviour
     public void AddItem(GameObject itemtoAdd){
         items.Add(itemtoAdd);
     }
+
+    public bool checkIfCollected(int target){
+        foreach(GameObject t in items){
+            if(target == 1 && t.tag == "sword") return true;
+
+            if(target == 2 && t.tag == "gun") return true;
+
+            if(target == 3 && t.tag == "controller") return true;
+        }
+        return false;
+    }
 }

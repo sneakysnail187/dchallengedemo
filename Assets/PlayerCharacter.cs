@@ -15,7 +15,7 @@ public class PlayerCharacter : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter(Collider collision){
-		if(collision.CompareTag("Item")){
+		if(collision.CompareTag("gun") || collision.CompareTag("sword") || collision.CompareTag("controller")){
 			backpack.AddItem(collision.gameObject);
 			Destroy(collision.gameObject);
 		}

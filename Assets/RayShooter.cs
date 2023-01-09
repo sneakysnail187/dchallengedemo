@@ -12,12 +12,14 @@ public class RayShooter : MonoBehaviour {
 	private Animator anim;
 	private GameObject reticle;
 	private float shrinkRate = 0.5f;
+	private Pack stuff;
 	public GameObject laser;
 
 	void Start() {
 		reticle = GameObject.Find("Reticle");
 		_camera = GetComponent<Camera>();
 		anim = GetComponentInChildren<Animator>();
+		stuff = GetComponentInChildren<Pack>();
 		hasSword = false;
 		hasRay = true;
 

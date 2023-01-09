@@ -13,14 +13,16 @@ public class WeaponController : MonoBehaviour
     private Animator anim;
     public int currentWeapon = 0;
     public SoundEffectsManager manager;
+    private Pack stuff;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        stuff = GetComponent<Pack>();
         anim = sword.GetComponent<Animator>();
-        selectWeapon(0);
+        selectWeapon(-1);
     }
 
     // Update is called once per frame
@@ -29,11 +31,11 @@ public class WeaponController : MonoBehaviour
         if(currentWeapon == 0) canAttack = true;
         else canAttack = false;
 
-        if(Input.GetKeyDown("1"))   selectWeapon(0);
+        if(Input.GetKeyDown("1") && stuff.checkIfCollected(1))   selectWeapon(0);
 
-        if(Input.GetKeyDown("2"))   selectWeapon(1);
+        if(Input.GetKeyDown("2") && stuff.checkIfCollected(2))   selectWeapon(1);
 
-        if(Input.GetKeyDown("3"))   selectWeapon(2);
+        if(Input.GetKeyDown("3") && stuff.checkIfCollected(3))   selectWeapon(2);
 
         if(Input.GetMouseButtonUp(0)){
             if(canAttack)   swordAttack();
@@ -54,6 +56,8 @@ public class WeaponController : MonoBehaviour
         {
             weapon.gameObject.SetActive(false);
         }
+
+        if(swap == -1)  return;
         transform.GetChild(swap).gameObject.SetActive(true);
     }
 }
