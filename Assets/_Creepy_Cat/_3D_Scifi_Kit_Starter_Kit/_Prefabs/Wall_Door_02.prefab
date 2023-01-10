@@ -487,7 +487,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 4a11098854afa3e4eb97a82f35aa8e5d, type: 3}
-  m_Color: {r: 0.2735849, g: 0.16327277, b: 0, a: 1}
+  m_Color: {r: 0.9150943, g: 0.54905653, b: 0, a: 0.7882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -759,6 +759,7 @@ MonoBehaviour:
   padlockGreen: {fileID: 0}
   MapPadlockRed: {fileID: 5486914093875878326}
   MapPadlockGreen: {fileID: 1783885427333849140}
+  questionHolder: {fileID: 0}
   hasBeenOverlapped: 0
   doorOpen: 0
 --- !u!1 &1783885427333849140
@@ -1255,7 +1256,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 4a11098854afa3e4eb97a82f35aa8e5d, type: 3}
-  m_Color: {r: 0.26415092, g: 0.14406626, b: 0.006091531, a: 1}
+  m_Color: {r: 0.26415092, g: 0.14406626, b: 0.006091531, a: 0.6509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
