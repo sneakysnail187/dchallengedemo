@@ -25,6 +25,9 @@ public class UIPopup : MonoBehaviour
     //stores a reference to the SoundEffects manager
     public SoundEffectsManager manager;
     //stores a reference to the Audio Manager
+    public GameObject gunUI;
+	  public GameObject swordUI;
+	  public GameObject controllerUI;
     public Audiomanager2 musicManager;
     //stores whether the player is currently searching for the teleporters
     public bool isSearching = false;
@@ -43,6 +46,7 @@ public class UIPopup : MonoBehaviour
             //firstTimeEntry false
             firstTimeEntry = false;
             //pause functionality
+            
             mainCam.GetComponent<MouseLook>().enabled = false;
             player.GetComponent<MouseLook>().enabled = false;
             Cursor.visible = true;
@@ -91,6 +95,9 @@ public class UIPopup : MonoBehaviour
     //set the UI to inactive
     UIComponentTeleporters.SetActive(false);
     welcomeUI.SetActive(false);
+    gunUI.SetActive(false);
+    swordUI.SetActive(false);
+    controllerUI.SetActive(false);
     //resume functionality
     //set the Player speed to normal
     playerSpeed.GetComponent<FPSInput>().speed = 6f;
