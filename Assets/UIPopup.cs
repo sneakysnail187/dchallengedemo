@@ -24,11 +24,12 @@ public class UIPopup : MonoBehaviour
     public GameObject door4;
     //stores a reference to the SoundEffects manager
     public SoundEffectsManager manager;
-    //stores a reference to the Audio Manager
+    //stores a reference to the Audio Manager  
+    public Audiomanager2 musicManager;
     public GameObject gunUI;
 	  public GameObject swordUI;
 	  public GameObject controllerUI;
-    public Audiomanager2 musicManager;
+  
     //stores whether the player is currently searching for the teleporters
     public bool isSearching = false;
 

@@ -38,6 +38,8 @@ public class AnswerUICollider : MonoBehaviour
   public GameObject MapPadlockGreen;
   //stores reference to the UI question holder and the corresponding elements on the canvas
   public GameObject questionHolder;
+  //stores reference to the points counter
+  public GameObject points;
 
 
 
@@ -54,6 +56,9 @@ public class AnswerUICollider : MonoBehaviour
     //
     padlockRed = playerAnswer.transform.Find("Answer UI").GetChild(3).gameObject;
     padlockGreen= playerAnswer.transform.Find("Answer UI").GetChild(2).gameObject;
+
+    //get the element that represents the points counter
+    points = playerAnswer.transform.Find("CounterBorder").GetChild(0).GetChild(0).gameObject;
 
     //get the element that represent the question holder.
     questionHolder = playerAnswer.transform.Find("Answer UI").GetChild(0).gameObject;
@@ -183,6 +188,10 @@ public class AnswerUICollider : MonoBehaviour
     //turn the indicator lights green - Using GameObject.Indicator.ColorChange.changeLight();
     indicator1.GetComponent<ColorChange>().changeLight("green");
     indicator2.GetComponent<ColorChange>().changeLight("green");
+    //add 3 points to the indicator
+    int pointsAdd = int.Parse(points.GetComponent<TMP_Text>().text);
+    pointsAdd = pointsAdd + 3; 
+    points.GetComponent<TMP_Text>().text = pointsAdd.ToString();
 
     //delay a second for the padlock animation
     StartCoroutine(padlockOpen());
@@ -197,6 +206,10 @@ public class AnswerUICollider : MonoBehaviour
       indicator2.GetComponent<ColorChange>().changeLight("red");
       //we also want to reset the activation of the input Text field
       playerAnswer.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
+      //deduct 3 points from the indicator
+      int pointsAdd = int.Parse(points.GetComponent<TMP_Text>().text);
+      pointsAdd = pointsAdd - 3; 
+      points.GetComponent<TMP_Text>().text = pointsAdd.ToString();
     } 
 
     //Padlock Opening Animation
