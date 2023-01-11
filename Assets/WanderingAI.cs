@@ -22,6 +22,7 @@ public class WanderingAI : MonoBehaviour {
 	public int edgeIter = 4;
 	public float edgeDist = 0.5f;
 	public bool left = true;
+	private Vector3 minSize = new Vector3(0.5f,0.5f,0.5f);
 	Vector3 playLastPos = Vector3.zero;
 	Vector3 playerPos;
 	float waitTime;
@@ -176,5 +177,14 @@ public class WanderingAI : MonoBehaviour {
 
 	public void SetAlive(bool alive) {
 		_alive = alive;
+	}
+
+	public void Shrink(){
+		if(this.gameObject.transform.localScale.x > minSize.x){
+			this.gameObject.transform.localScale *= 0.99f;
+		}
+		else{
+			Destroy(this.gameObject);
+		}
 	}
 }

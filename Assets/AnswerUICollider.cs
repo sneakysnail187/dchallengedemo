@@ -195,6 +195,8 @@ public class AnswerUICollider : MonoBehaviour
       //turn the indicator lights red - Using GameObject.Indicator.ColorChange.changeLight();
       indicator1.GetComponent<ColorChange>().changeLight("red");
       indicator2.GetComponent<ColorChange>().changeLight("red");
+      //we also want to reset the activation of the input Text field
+      playerAnswer.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
     } 
 
     //Padlock Opening Animation

@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Item
   - Door
+  - sword
+  - gun
+  - controller
   layers:
   - Default
   - TransparentFX

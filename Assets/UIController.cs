@@ -50,7 +50,9 @@ public class UIController : MonoBehaviour
         if(!isQuit){
             //AnswerUI
             canvas.transform.Find("Answer UI").gameObject.SetActive(true);
-            canvas.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
+            //Activate the input field
+            // we also do this when a wrong answer has been put in -so that the field is activated again ( AnswerUICollider.wrongAnswer() )
+            canvas.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField(); 
             //slow down the mouse movement while answering
             player.GetComponent<MouseLook>().sensitivityHor = 0.5f;
             mainCam.GetComponent<MouseLook>().sensitivityVert = 0.5f;
