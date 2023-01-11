@@ -53,6 +53,7 @@ public class SceneSwap : MonoBehaviour
             ypos = 0;
             zpos = -3;
         }
+        //target position for this teleporter
         tp = new Vector3(xPos,ypos,zpos);
 
     }
@@ -80,7 +81,9 @@ public class SceneSwap : MonoBehaviour
         //by this point, the animation of transition has ended (UIPopup) and now alpha is max.
             //we can stop the music
         musicManager.stop("CommonsUpbeat");
-        //----------------------------------------------------
+
+        //level loading code - BEGIN
+        //------------------------------------------------------------------------------------------------------
         AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
         scene.allowSceneActivation = false;
         sceneAsync = scene;
@@ -98,6 +101,9 @@ public class SceneSwap : MonoBehaviour
         }
         OnFinishedLoading();
         Time.timeScale = 1f;
+        //--------------------------------------------------------------------------------------------------------
+        //level loading code - END
+        
         playerTrans.position = tp;
     }
 
