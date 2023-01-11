@@ -19,6 +19,8 @@ public class SceneSwap : MonoBehaviour
     public Audiomanager2 researchMusicManager;
     //stores a reference to the AudioManager3 which contains the script AudioManagerMain
     public AudioManagerMain gameMusicManager;
+
+    public SceneController sc;
     
     private float xPos = 0;
     private float ypos = -38.91979f;
@@ -64,7 +66,8 @@ public class SceneSwap : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.CompareTag("Player") && !hasBeenOverlapped){
+        if(other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze || other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count == 0){
+            sc.isMaze = false;
             hasBeenOverlapped = true;
             //---------------------------------------------------
             //Play the terelportation sound

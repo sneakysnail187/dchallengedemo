@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class WanderingAI : MonoBehaviour {
 	public float speed = 3.0f;
 	public float obstacleRange = 4.0f;
-	public Transform[] points;
+	public List<Transform> points;
 	int curPoint;
 	private Animator anim;
 	private bool _alive;
@@ -39,6 +39,15 @@ public class WanderingAI : MonoBehaviour {
 		patrolling = true;
 		seen = false;
 		inRange = false;
+
+		points.Add(GameObject.Find("ppoint1").transform);
+		points.Add(GameObject.Find("ppoint1 (1)").transform);
+		points.Add(GameObject.Find("ppoint1 (2)").transform);
+		points.Add(GameObject.Find("ppoint1 (3)").transform);
+		points.Add(GameObject.Find("ppoint1 (4)").transform);
+		points.Add(GameObject.Find("ppoint1 (5)").transform);
+		points.Add(GameObject.Find("ppoint1 (6)").transform);
+		points.Add(GameObject.Find("ppoint1 (7)").transform);
 
 		anim = GetComponent<Animator>();
 		navMeshAgent = GetComponent<NavMeshAgent>();
@@ -123,8 +132,7 @@ public class WanderingAI : MonoBehaviour {
 	}
 
 	public void nextP(){
-		if(left) curPoint = (curPoint +1) %points.Length;
-		else curPoint = (curPoint -1) %points.Length;
+		curPoint = Random.Range(0, points.Count -1);
 		navMeshAgent.SetDestination(points[curPoint].position);
 	}
 
@@ -177,6 +185,10 @@ public class WanderingAI : MonoBehaviour {
 
 	public void SetAlive(bool alive) {
 		_alive = alive;
+	}
+
+	public void onTriggerEnter(Collider other){
+		if(other.CompareTag("sword"))	Destroy(this.gameObject);
 	}
 
 	public void Shrink(){
