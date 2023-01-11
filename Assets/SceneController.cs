@@ -4,13 +4,15 @@ using System.Collections.Generic;
 
 public class SceneController : MonoBehaviour {
 	[SerializeField] private GameObject enemyPrefab = null;
-	private List<GameObject> _enemies = new List<GameObject>(); 
-	public int enemiesToAdd = 0;
+	public List<GameObject> _enemies;
+	public int enemiesToAdd = 4;
 	public bool isMaze;
 	GameObject[] doors;
 
 	void Awake() {
-		if(isMaze){/*
+		_enemies = new List<GameObject>();
+		isMaze = true;
+		/*
 		doors = GameObject.FindGameObjectsWithTag("Door");
 		for(int i = 0; i<doors.Length;i++){
 			if(doors[i].GetComponent<ReactiveTarget>().tier == 1){
@@ -53,27 +55,20 @@ public class SceneController : MonoBehaviour {
 				}
 			}
 		}
-		*/}
+		*/
 	}
+
+	
 	public GameObject SpawnEnemy(){
-		GameObject _enemy = Instantiate(enemyPrefab) as GameObject;
-		_enemy.transform.position = new Vector3(0, 1, 0);
+		GameObject _enemy = Instantiate(enemyPrefab, transform) as GameObject;
 		float angle = Random.Range(0, 360);
 		_enemy.transform.Rotate(0, angle, 0);
 		return _enemy;
 	}
-	void Update() {
-		List<GameObject> current = _enemies;
-		for(int i = 0; i < current.Count;i++ ){
-			GameObject _enemy = current[i];
-			if (_enemy == null) {
-				_enemies[i] = SpawnEnemy();
-				for(int x = 0; x < enemiesToAdd; x++){
-					_enemies.Add(SpawnEnemy());
-					if(x%2 == 0) _enemies[x].GetComponent<WanderingAI>().left = false;
-					else _enemies[x].GetComponent<WanderingAI>().left = true;
-				}
+	void Start() {
+
+			for(int i = 0; i < enemiesToAdd;i++ ){
+				_enemies.Add(SpawnEnemy());			
 			}
-		}
 	}
 }

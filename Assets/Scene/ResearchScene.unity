@@ -2502,7 +2502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3798f5abfcd4ca2bb7e721a9f38083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1346310159}
+  enemyPrefab: {fileID: 1765116360898588, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+  _enemies: []
   enemiesToAdd: 4
   isMaze: 0
 --- !u!4 &187635131
@@ -2513,7 +2514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187635129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -41.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5103,6 +5104,7 @@ MonoBehaviour:
   manager: {fileID: 2124166042}
   researchMusicManager: {fileID: 551889288}
   gameMusicManager: {fileID: 0}
+  sc: {fileID: 187635130}
   canvas: {fileID: 0}
   target: Game
   sceneToDelete: ResearchScene
@@ -5361,6 +5363,7 @@ MonoBehaviour:
   manager: {fileID: 2124166042}
   researchMusicManager: {fileID: 551889288}
   gameMusicManager: {fileID: 0}
+  sc: {fileID: 187635130}
   canvas: {fileID: 0}
   target: Game
   sceneToDelete: ResearchScene
@@ -10820,6 +10823,7 @@ MonoBehaviour:
   manager: {fileID: 2124166042}
   researchMusicManager: {fileID: 551889288}
   gameMusicManager: {fileID: 0}
+  sc: {fileID: 187635130}
   canvas: {fileID: 0}
   target: Game
   sceneToDelete: ResearchScene
@@ -19084,6 +19088,7 @@ MonoBehaviour:
   manager: {fileID: 2124166042}
   researchMusicManager: {fileID: 551889288}
   gameMusicManager: {fileID: 0}
+  sc: {fileID: 187635130}
   canvas: {fileID: 0}
   target: Game
   sceneToDelete: ResearchScene
@@ -25432,88 +25437,53 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.074023895
       objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: navMeshAgent
+      value: 
+      objectReference: {fileID: 1346310161}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: points.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
---- !u!1 &1346310159 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1765116360898588, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+--- !u!195 &1346310161 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7060306848827396641, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
   m_PrefabInstance: {fileID: 1346310158}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1346310160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346310159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c64a746be7b4ed1bac40e084e1ea6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  obstacleRange: 4
-  points:
-  - {fileID: 1410904953}
-  - {fileID: 1218016751}
-  - {fileID: 137466281}
-  - {fileID: 957769564}
-  - {fileID: 955225627}
-  - {fileID: 1844788791}
-  - {fileID: 223393773}
-  - {fileID: 1485603064}
-  broken: 0
-  navMeshAgent: {fileID: 1346310161}
-  initWaitTime: 4
-  initRotate: 2
-  viewAng: 90
-  viewRad: 15
-  player:
-    serializedVersion: 2
-    m_Bits: 128
-  obstacles:
-    serializedVersion: 2
-    m_Bits: 64
-  meshRes: 1
-  edgeIter: 4
-  edgeDist: 0.5
-  left: 1
---- !u!195 &1346310161
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346310159}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 1
-  m_ObstacleAvoidanceType: 4
---- !u!136 &1346310162
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346310159}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.0880823
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.8300349, z: 0}
 --- !u!1 &1349239158
 GameObject:
   m_ObjectHideFlags: 0

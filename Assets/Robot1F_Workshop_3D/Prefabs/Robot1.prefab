@@ -1423,6 +1423,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4287198627233576}
   - component: {fileID: 95259621755087314}
+  - component: {fileID: 5994339446110358947}
+  - component: {fileID: 7060306848827396641}
+  - component: {fileID: 4626668743509875248}
   m_Layer: 0
   m_Name: Robot1
   m_TagString: Untagged
@@ -1465,6 +1468,73 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5994339446110358947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765116360898588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c64a746be7b4ed1bac40e084e1ea6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  obstacleRange: 4
+  points: []
+  broken: 0
+  navMeshAgent: {fileID: 0}
+  initWaitTime: 4
+  initRotate: 2
+  viewAng: 90
+  viewRad: 15
+  player:
+    serializedVersion: 2
+    m_Bits: 128
+  obstacles:
+    serializedVersion: 2
+    m_Bits: 64
+  meshRes: 1
+  edgeIter: 4
+  edgeDist: 0.5
+  left: 1
+--- !u!195 &7060306848827396641
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765116360898588}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &4626668743509875248
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765116360898588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.0880823
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8300349, z: 0}
 --- !u!1 &1769269502818274
 GameObject:
   m_ObjectHideFlags: 0
