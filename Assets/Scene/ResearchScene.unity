@@ -4530,6 +4530,10 @@ MonoBehaviour:
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
   musicManager: {fileID: 551889288}
+  sceneLoaded: 1
+  proj1: {fileID: 310921137}
+  proj2: {fileID: 612406661}
+  proj3: {fileID: 1073539058}
   canvas: {fileID: 0}
   target: Game
   wingNum: 1
@@ -4786,6 +4790,10 @@ MonoBehaviour:
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
   musicManager: {fileID: 551889288}
+  sceneLoaded: 1
+  proj1: {fileID: 612406661}
+  proj2: {fileID: 1073539058}
+  proj3: {fileID: 309306552}
   canvas: {fileID: 0}
   target: Game
   wingNum: 3
@@ -9917,6 +9925,10 @@ MonoBehaviour:
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
   musicManager: {fileID: 551889288}
+  sceneLoaded: 1
+  proj1: {fileID: 310921137}
+  proj2: {fileID: 1073539058}
+  proj3: {fileID: 309306552}
   canvas: {fileID: 0}
   target: Game
   wingNum: 4
@@ -17510,6 +17522,10 @@ MonoBehaviour:
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
   musicManager: {fileID: 551889288}
+  sceneLoaded: 1
+  proj1: {fileID: 310921137}
+  proj2: {fileID: 612406661}
+  proj3: {fileID: 309306552}
   canvas: {fileID: 0}
   target: Game
   wingNum: 2

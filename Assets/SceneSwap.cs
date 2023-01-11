@@ -17,7 +17,12 @@ public class SceneSwap : MonoBehaviour
     public SoundEffectsManager manager;
     //stores a reference to the AudioManger2
     public Audiomanager2 musicManager;
+    //boolean to avoid scene reset 
+    public bool sceneNotLoaded = true;
 
+    public GameObject proj1;
+    public GameObject proj2;
+    public GameObject proj3;
     private float xPos = 0;
     private float ypos = -38.91979f;
     private float zpos = 0;
@@ -84,23 +89,30 @@ public class SceneSwap : MonoBehaviour
 
         //level loading code - BEGIN
         //------------------------------------------------------------------------------------------------------
-        AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
-        scene.allowSceneActivation = false;
-        sceneAsync = scene;
-        //animation begin
-        tpBox.enabled = false;
-        //time pause - so animation must begin before time pause
-        Time.timeScale = 0f;
-        while(scene.progress < 0.9f){
-            Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
-            yield return null;
+        if(sceneNotLoaded){
+            AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
+            scene.allowSceneActivation = false;
+            sceneAsync = scene;
+            //animation begin
+            tpBox.enabled = false;
+            //time pause - so animation must begin before time pause
+            Time.timeScale = 0f;
+            while(scene.progress < 0.9f){
+                Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
+                yield return null;
+            }
+            sceneAsync.allowSceneActivation = true;
+            while(!scene.isDone){
+                yield return null;
+            }
+            OnFinishedLoading();
+            Time.timeScale = 1f;
+            
+            sceneNotLoaded = false;
+            proj1.GetComponent<SceneSwap>().sceneNotLoaded = false;
+            proj2.GetComponent<SceneSwap>().sceneNotLoaded = false;
+            proj3.GetComponent<SceneSwap>().sceneNotLoaded = false;
         }
-        sceneAsync.allowSceneActivation = true;
-        while(!scene.isDone){
-            yield return null;
-        }
-        OnFinishedLoading();
-        Time.timeScale = 1f;
         //--------------------------------------------------------------------------------------------------------
         //level loading code - END
         
