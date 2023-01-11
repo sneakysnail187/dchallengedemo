@@ -4529,13 +4529,11 @@ MonoBehaviour:
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
-  musicManager: {fileID: 551889288}
-  sceneLoaded: 1
-  proj1: {fileID: 310921137}
-  proj2: {fileID: 612406661}
-  proj3: {fileID: 1073539058}
+  researchMusicManager: {fileID: 551889288}
+  gameMusicManager: {fileID: 0}
   canvas: {fileID: 0}
   target: Game
+  sceneToDelete: ResearchScene
   wingNum: 1
 --- !u!135 &309306554
 SphereCollider:
@@ -4789,13 +4787,11 @@ MonoBehaviour:
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
-  musicManager: {fileID: 551889288}
-  sceneLoaded: 1
-  proj1: {fileID: 612406661}
-  proj2: {fileID: 1073539058}
-  proj3: {fileID: 309306552}
+  researchMusicManager: {fileID: 551889288}
+  gameMusicManager: {fileID: 0}
   canvas: {fileID: 0}
   target: Game
+  sceneToDelete: ResearchScene
   wingNum: 3
 --- !u!1001 &314045462
 PrefabInstance:
@@ -9924,13 +9920,11 @@ MonoBehaviour:
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
-  musicManager: {fileID: 551889288}
-  sceneLoaded: 1
-  proj1: {fileID: 310921137}
-  proj2: {fileID: 1073539058}
-  proj3: {fileID: 309306552}
+  researchMusicManager: {fileID: 551889288}
+  gameMusicManager: {fileID: 0}
   canvas: {fileID: 0}
   target: Game
+  sceneToDelete: ResearchScene
   wingNum: 4
 --- !u!135 &612406663
 SphereCollider:
@@ -17521,13 +17515,11 @@ MonoBehaviour:
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2124166042}
-  musicManager: {fileID: 551889288}
-  sceneLoaded: 1
-  proj1: {fileID: 310921137}
-  proj2: {fileID: 612406661}
-  proj3: {fileID: 309306552}
+  researchMusicManager: {fileID: 551889288}
+  gameMusicManager: {fileID: 0}
   canvas: {fileID: 0}
   target: Game
+  sceneToDelete: ResearchScene
   wingNum: 2
 --- !u!135 &1073539060
 SphereCollider:
@@ -39903,7 +39895,7 @@ PrefabInstance:
     - target: {fileID: 381939328192938298, guid: ba2f6a091705a2846aa43d4703bf517b, type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 154858b52bffd2f408cf09b20c5420be, type: 3}
+      objectReference: {fileID: 8300000, guid: 189ab76f2b476d94fa0fbd520cd7a931, type: 3}
     - target: {fileID: 381939328192938298, guid: ba2f6a091705a2846aa43d4703bf517b, type: 3}
       propertyPath: sounds.Array.data[4].name
       value: CorrectAnswer

@@ -68,3 +68,21 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: CorrectAnswer
+    clip: {fileID: 8300000, guid: 189ab76f2b476d94fa0fbd520cd7a931, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WrongAnswer
+    clip: {fileID: 8300000, guid: 8be4870096fea1a4b93e9790ed32a17c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SwordAttack
+    clip: {fileID: 8300000, guid: bbf1cfbf72f9b8a459f06eb9b0074860, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

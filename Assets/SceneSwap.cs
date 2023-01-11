@@ -15,14 +15,11 @@ public class SceneSwap : MonoBehaviour
     public bool hasBeenOverlapped = false;
     //stores a reference to the SoundEffectsManager
     public SoundEffectsManager manager;
-    //stores a reference to the AudioManger2
-    public Audiomanager2 musicManager;
-    //boolean to avoid scene reset 
-    public bool sceneNotLoaded = true;
-
-    public GameObject proj1;
-    public GameObject proj2;
-    public GameObject proj3;
+    //stores a reference to the AudioManger2 - the researchMusic
+    public Audiomanager2 researchMusicManager;
+    //stores a reference to the AudioManager3 which contains the script AudioManagerMain
+    public AudioManagerMain gameMusicManager;
+    
     private float xPos = 0;
     private float ypos = -38.91979f;
     private float zpos = 0;
@@ -30,7 +27,10 @@ public class SceneSwap : MonoBehaviour
     public GameObject canvas;
     private AsyncOperation sceneAsync;
     private SphereCollider tpBox;
+    //stores the scene that we are going to
     public string target;
+    //stores the scene we are leaving from
+    public string sceneToDelete;
 
     public int wingNum;
     void Start()
@@ -73,7 +73,7 @@ public class SceneSwap : MonoBehaviour
             //Play animation
             transitioner.SetTrigger("Start");
             //if the teleporters are one of the four, load level
-            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4){
+            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4 || wingNum == 0){
                 StartCoroutine(LoadLevel(other.transform));
             }
         }
@@ -84,12 +84,22 @@ public class SceneSwap : MonoBehaviour
         //wait
         yield return new WaitForSeconds(transitionTime);
         //by this point, the animation of transition has ended (UIPopup) and now alpha is max.
-            //we can stop the music
-        musicManager.stop("CommonsUpbeat");
+        //we can stop the research music if this object is not null - that means we are in the research hub
+        if(researchMusicManager != null){
+            researchMusicManager.stop("CommonsUpbeat");
+        }
+        //else if it is null - that means we are in the game scene and therefore should stop the gameMusicManager
+        else{
+            //loop to stop all 
+            for(int i = 0; i < 3; i++){
+                gameMusicManager.stop(gameMusicManager.sounds[i].name);
+            }
+        }
 
         //level loading code - BEGIN
         //------------------------------------------------------------------------------------------------------
-        if(sceneNotLoaded){
+        //we do not want to laod the ResearchScene
+        if(target == "Game"){
             AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
             scene.allowSceneActivation = false;
             sceneAsync = scene;
@@ -105,18 +115,17 @@ public class SceneSwap : MonoBehaviour
             while(!scene.isDone){
                 yield return null;
             }
-            OnFinishedLoading();
-            Time.timeScale = 1f;
-            
-            sceneNotLoaded = false;
-            proj1.GetComponent<SceneSwap>().sceneNotLoaded = false;
-            proj2.GetComponent<SceneSwap>().sceneNotLoaded = false;
-            proj3.GetComponent<SceneSwap>().sceneNotLoaded = false;
+
         }
         //--------------------------------------------------------------------------------------------------------
         //level loading code - END
-        
+        OnFinishedLoading();
+        Time.timeScale = 1f;        
         playerTrans.position = tp;
+        //unload the Previous scene if it is Game
+        if(sceneToDelete == "Game"){
+            SceneManager.UnloadSceneAsync(sceneToDelete);
+        }
     }
 
     void enableScene(string scene){

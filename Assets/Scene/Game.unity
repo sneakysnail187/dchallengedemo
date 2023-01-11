@@ -17004,7 +17004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a32579b8da76648b52ea3478773a0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -39.00624
+      value: -38.971
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3a32579b8da76648b52ea3478773a0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17058,9 +17058,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 845496776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d1bca5298cda64fbf0f5bb5bb3f2ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitioner: {fileID: 901067873}
+  transitionTime: 1
+  hasBeenOverlapped: 0
+  manager: {fileID: 2085385282}
+  researchMusicManager: {fileID: 0}
+  gameMusicManager: {fileID: 1579329896}
+  canvas: {fileID: 0}
+  target: ResearchScene
+  sceneToDelete: Game
+  wingNum: 0
 --- !u!65 &845496778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17438,13 +17448,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitioner: {fileID: 0}
+  transitioner: {fileID: 901067873}
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2085385282}
-  musicManager: {fileID: 0}
+  researchMusicManager: {fileID: 0}
+  gameMusicManager: {fileID: 1579329896}
   canvas: {fileID: 0}
   target: ResearchScene
+  sceneToDelete: Game
   wingNum: 0
 --- !u!65 &886013254
 BoxCollider:
@@ -17630,6 +17642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
+--- !u!95 &901067873 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 574823587643878129, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
+  m_PrefabInstance: {fileID: 901067872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &913677162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17936,13 +17953,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitioner: {fileID: 0}
+  transitioner: {fileID: 901067873}
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2085385282}
-  musicManager: {fileID: 0}
+  researchMusicManager: {fileID: 0}
+  gameMusicManager: {fileID: 1579329896}
   canvas: {fileID: 0}
   target: ResearchScene
+  sceneToDelete: Game
   wingNum: 0
 --- !u!65 &929146929
 BoxCollider:
@@ -38780,9 +38799,11 @@ MonoBehaviour:
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2085385282}
-  musicManager: {fileID: 0}
+  researchMusicManager: {fileID: 0}
+  gameMusicManager: {fileID: 0}
   canvas: {fileID: 0}
   target: ResearchScene
+  sceneToDelete: 
   wingNum: 0
 --- !u!1001 &1839476976
 PrefabInstance:
@@ -39246,13 +39267,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74080f2747f36d94b8e45a8291694539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitioner: {fileID: 0}
+  transitioner: {fileID: 901067873}
   transitionTime: 1
   hasBeenOverlapped: 0
   manager: {fileID: 2085385282}
-  musicManager: {fileID: 0}
+  researchMusicManager: {fileID: 0}
+  gameMusicManager: {fileID: 1579329896}
   canvas: {fileID: 0}
   target: ResearchScene
+  sceneToDelete: Game
   wingNum: 0
 --- !u!65 &1846253222
 BoxCollider:
