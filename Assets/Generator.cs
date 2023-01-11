@@ -39,8 +39,21 @@ public class Generator : MonoBehaviour
         //variables r1, r2 and k(for even integer division)
         if(operatorSign == "÷"){
             //k ensures that there is an integer answer
-            int r1 = Random.Range(1,10);
-            int k = Random.Range(1,5);
+            //r2 numerator, r1 denominator
+            int r1 = 1;
+            int k = 1;
+            if(divide_Difficulty == 1){
+                r1 = Random.Range(1, 9);
+                k = Random.Range(1, 11);
+            }
+            else if(divide_Difficulty == 2){
+                r1 = Random.Range(10, 99);
+                k = Random.Range(1, 101);
+            }
+            else if(divide_Difficulty == 3){
+                r1 = Random.Range(100, 999);
+                k = Random.Range(1, 1001);
+            }
             int r2 = r1 * k;
             firstNumber = r2;
             secondNumber = r1;
