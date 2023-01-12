@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
     public static GameObject mainCam;
     public static GameObject player;
     public static bool isPaused = false;
+    //Static variable that is set on Update by the AnswerUICollider
     public static bool AnswerTriggerFire;
     public static bool resumeCalled;
     
@@ -20,6 +21,7 @@ public class UIController : MonoBehaviour
         mainCam = GameObject.Find("Main Camera");
     }
     void Update(){
+        //CODE THAT GOVERNS THE ANSWER UI
         //entering the collider
         if(AnswerTriggerFire){
             if(!isPaused){
@@ -31,21 +33,18 @@ public class UIController : MonoBehaviour
         if(resumeCalled){
             Resume();
         }
+
+        //CODE THAT GOVERNS THE PAUSE MENU
         if(Input.GetKeyDown("escape")){
-            if(isPaused){
-                Resume();
-            }
-            else{
-                Pause(true);
-            }
+            //run the Quit UI
+            Pause(true);
         }
     }
 
     public void Pause(bool isQuit)
     {
         isPaused = true;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        
 
         if(!isQuit){
             //AnswerUI
@@ -60,6 +59,8 @@ public class UIController : MonoBehaviour
 
         else{
             //QuitUI
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             canvas.transform.Find("Quit UI").gameObject.SetActive(true);
             //pause functionality
             Time.timeScale = 0f;
@@ -74,7 +75,11 @@ public class UIController : MonoBehaviour
 
     public void Resume()
     {
-        canvas.transform.Find("Answer UI").gameObject.SetActive(false);
+        //only remove the Answer UI if the Options menu is not active - that would mean the resume button doesn't remove the AnswerUI
+        if(!canvas.transform.Find("Quit UI").gameObject.active){
+            //if not active - remove the answerUi because we are not pressing the Options Resume button
+            canvas.transform.Find("Answer UI").gameObject.SetActive(false);
+        }
         canvas.transform.Find("Quit UI").gameObject.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -88,5 +93,7 @@ public class UIController : MonoBehaviour
         //restore the mouse movement
         player.GetComponent<MouseLook>().sensitivityHor = 5.0f;
         mainCam.GetComponent<MouseLook>().sensitivityVert = 2.0f;
+        //Re-activate the input field
+        canvas.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
     }
 }

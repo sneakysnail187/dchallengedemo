@@ -70,7 +70,7 @@ public class SceneSwap : MonoBehaviour
             sc.isMaze = false;
             hasBeenOverlapped = true;
             //---------------------------------------------------
-            //Play the terelportation sound
+            //Play the teleportation sound
             manager.play("TeleportAmbience");
             //Animation code begins and everyhting else runs in the background
             //Play animation
@@ -103,6 +103,9 @@ public class SceneSwap : MonoBehaviour
         //------------------------------------------------------------------------------------------------------
         //we do not want to laod the ResearchScene
         if(target == "Game"){
+            //set the game prompt to active
+            canvas.transform.Find("TaskBorder").gameObject.SetActive(true);
+            //
             AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
             scene.allowSceneActivation = false;
             sceneAsync = scene;
@@ -127,6 +130,9 @@ public class SceneSwap : MonoBehaviour
         playerTrans.position = tp;
         //unload the Previous scene if it is Game
         if(sceneToDelete == "Game"){
+            //set the prompt to inactive
+            canvas.transform.Find("TaskBorder").gameObject.SetActive(false);
+            //
             SceneManager.UnloadSceneAsync(sceneToDelete);
         }
     }
