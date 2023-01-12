@@ -87,11 +87,12 @@ public class UIPopup : MonoBehaviour
       door2.GetComponent<doorHandler>().closeDoor();
       door3.GetComponent<doorHandler>().closeDoor();
       door4.GetComponent<doorHandler>().closeDoor();
-      //dramtic music
+      //dramatic music
       musicManager.play("CommonsUpbeat");
       //turn off all other sounds
       musicManager.stop("CommonsEerie1");
       musicManager.stop("CommonsEerie2");
+      isSearching = false;
     }
     //set the UI to inactive
     UIComponentTeleporters.SetActive(false);

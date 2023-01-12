@@ -28,6 +28,11 @@ public class Victory_DefeatUI : MonoBehaviour
         defeatAnim = canvas.transform.Find("Death").gameObject.GetComponent<Animator>();
     }
 
+    void Update(){
+        //continuously get the points
+        points = int.Parse(canvas.transform.Find("CounterBorder").GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text);
+    }
+
     // when this trigger is overlapped
     void OnTriggerEnter(Collider other){
         if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped){
@@ -36,15 +41,17 @@ public class Victory_DefeatUI : MonoBehaviour
             //start the animation sequence depending on the number of points
             if(points >= 90){
                 //set the Object to active
-                //canvas.transform.Find("Victory").gameObject.SetActive(true);
+                canvas.transform.Find("Victory").gameObject.SetActive(true);
                 //start the victory animator
                 victoryAnim.SetBool("startVictory", true);
+                //victoryAnim.SetBool("endVictory", false);
             }
             else{
+                //set the Object to active
+                canvas.transform.Find("Death").gameObject.SetActive(true);
                 //points are less than 90
                 defeatAnim.SetBool("startDeath", true);
-                //set the Object to active
-                //canvas.transform.Find("Death").gameObject.SetActive(true);
+                
             }
         }
     }
