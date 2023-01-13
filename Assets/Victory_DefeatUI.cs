@@ -15,6 +15,12 @@ public class Victory_DefeatUI : MonoBehaviour
     public Animator victoryAnim;
     //stores the defeat animator
     public Animator defeatAnim;
+    //stores reference to the weapons as a trophy
+    public GameObject sword;
+    public GameObject controller;
+    public GameObject laser;
+    //stores the Sound effects manager reference
+    public SoundEffectsManager s_manager;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +50,26 @@ public class Victory_DefeatUI : MonoBehaviour
                 canvas.transform.Find("Victory").gameObject.SetActive(true);
                 //start the victory animator
                 victoryAnim.SetBool("startVictory", true);
-                //victoryAnim.SetBool("endVictory", false);
+                //give the player the key
+                other.gameObject.GetComponent<PlayerCharacter>().hasDoorKey = true;
+                //play the victory sound
+                s_manager.play("VictorySound");
+                //set the hasFailed to false - level was a success!!
+                other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = false;
             }
             else{
                 //set the Object to active
                 canvas.transform.Find("Death").gameObject.SetActive(true);
                 //points are less than 90
                 defeatAnim.SetBool("startDeath", true);
-                
+                //remove access to the weapons
+                laser.SetActive(false);
+                controller.SetActive(false);
+                sword.SetActive(false);
+                //play the defeat sound
+                s_manager.play("DefeatSound");
+                //set the hasFailed to true
+                other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = true;
             }
         }
     }

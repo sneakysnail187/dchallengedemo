@@ -29,12 +29,14 @@ public class SceneSwap : MonoBehaviour
     public GameObject canvas;
     private AsyncOperation sceneAsync;
     private SphereCollider tpBox;
+
     //stores the scene that we are going to
     public string target;
     //stores the scene we are leaving from
     public string sceneToDelete;
 
     public int wingNum;
+
     void Start()
     {
         tpBox = GetComponent<SphereCollider>();
@@ -66,7 +68,7 @@ public class SceneSwap : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze || other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count == 0){
+        if((other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze) || (other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count == 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel)){
             sc.isMaze = false;
             hasBeenOverlapped = true;
             //---------------------------------------------------

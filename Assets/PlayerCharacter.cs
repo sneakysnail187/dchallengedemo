@@ -9,12 +9,20 @@ public class PlayerCharacter : MonoBehaviour {
 	public GameObject gunUI;
 	public GameObject swordUI;
 	public GameObject controllerUI;
+	//stores the Wing Number where the player is
+	public int currentWingNumber; //we can use this to know where the player is and if they fail, keep them in this wing
+	//stores whether the player has obtained a key to advance in the game - the player loses the key while teleporting initially and has to get it back by solving the challenges
+	public bool hasDoorKey; //we can use this to open doors 
+	//stores whether the player has failed a level
+	public bool hasFailedLevel;
 
 	void Awake(){
 		DontDestroyOnLoad(this.gameObject);
 	}
 	void Start() {
 		_health = 2;
+		//has not Yet failed level
+		hasFailedLevel = false;
 	}
 
 	private void OnTriggerEnter(Collider collision){

@@ -86,3 +86,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: VictorySound
+    clip: {fileID: 8300000, guid: 08793ea715f26194a93c6e8265045c3a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DefeatSound
+    clip: {fileID: 8300000, guid: badca159e2e5e3f468d5b4d4e5ddae3d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

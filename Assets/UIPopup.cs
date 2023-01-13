@@ -31,7 +31,7 @@ public class UIPopup : MonoBehaviour
 	  public GameObject controllerUI;
   
     //stores whether the player is currently searching for the teleporters
-    public bool isSearching = false;
+    public static bool isSearching = false;
 
     void Start(){
         mainCam = GameObject.Find("Main Camera");
@@ -100,7 +100,7 @@ public class UIPopup : MonoBehaviour
     gunUI.SetActive(false);
     swordUI.SetActive(false);
     controllerUI.SetActive(false);
-    //resume functionality
+    //resume functionality only if the Pause Menu is not active
     //set the Player speed to normal
     playerSpeed.GetComponent<FPSInput>().speed = 6f;
     Time.timeScale = 1f;

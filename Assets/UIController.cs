@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour
             Time.timeScale = 0f;
             mainCam.GetComponent<MouseLook>().enabled = false;
             mainCam.GetComponent<RayShooter>().enabled = false;
-            gameObject.GetComponent<FPSInput>().enabled = false;
+            //gameObject.GetComponent<FPSInput>().enabled = false;
             gameObject.GetComponent<MouseLook>().enabled = false;
         }
 
@@ -75,25 +75,64 @@ public class UIController : MonoBehaviour
 
     public void Resume()
     {
+        //stores whether any other interative UI elements are active to be used later
+        bool interactiveElements = checkPauseAndInteractive();
+
         //only remove the Answer UI if the Options menu is not active - that would mean the resume button doesn't remove the AnswerUI
         if(!canvas.transform.Find("Quit UI").gameObject.active){
             //if not active - remove the answerUi because we are not pressing the Options Resume button
             canvas.transform.Find("Answer UI").gameObject.SetActive(false);
         }
+
+        //remove the Quit UI
         canvas.transform.Find("Quit UI").gameObject.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        mainCam.GetComponent<MouseLook>().enabled = true;
-        mainCam.GetComponent<RayShooter>().enabled = true;
-        gameObject.GetComponent<FPSInput>().enabled = true;
-        gameObject.GetComponent<MouseLook>().enabled = true;
         resumeCalled = false;
-        //restore the mouse movement
-        player.GetComponent<MouseLook>().sensitivityHor = 5.0f;
-        mainCam.GetComponent<MouseLook>().sensitivityVert = 2.0f;
+        isPaused = false;
+        //cursor removing code and Resuming code
+        //we only want to remove the cursor if the non-interactive UI is active 
+        //If the game is paused with interactive UI in the background, we shall lose ability to interact with the UI if cursor is disabled
+        //so we should NOT set cursor visibility off if the PauseMenu and any Interactive UI are both active
+        if(!interactiveElements){
+            Time.timeScale = 1f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            mainCam.GetComponent<MouseLook>().enabled = true;
+            mainCam.GetComponent<RayShooter>().enabled = true;
+            gameObject.GetComponent<FPSInput>().enabled = true;
+            gameObject.GetComponent<MouseLook>().enabled = true;
+            
+            //restore the mouse movement
+            player.GetComponent<MouseLook>().sensitivityHor = 5.0f;
+            mainCam.GetComponent<MouseLook>().sensitivityVert = 2.0f;  
+        }
+        
+        
         //Re-activate the input field
         canvas.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
+    }
+
+    //method to check if background UI is interactive while game is paused
+    public bool checkPauseAndInteractive(){
+        //LIST OF INTERACTIVE UI ELEMENTS
+        //stores whether option menu is active
+        bool quitActive = canvas.transform.Find("Quit UI").gameObject.active;
+        //stores whether Find teleporter UI is active
+        bool teleActive = canvas.transform.Find("FindTheTeleporter").gameObject.active;
+        //stores whether Welcome UI is active
+        bool welcomeActive = canvas.transform.Find("WelcomeUI").gameObject.active;
+        //stores whether gunUI is active
+        bool gunActive = canvas.transform.Find("gunUI").gameObject.active;
+        //stores whether swordUI is active
+        bool swordActive = canvas.transform.Find("swordUI").gameObject.active;
+        //stores whether controllerUI is active
+        bool controlActive = canvas.transform.Find("controllerUI").gameObject.active;
+
+        //if any of these are true and the quitUI is active - that means there is a background pause state which must be maintained therefore return true
+        if ((quitActive && teleActive) || (quitActive && welcomeActive) || (quitActive && gunActive) || (quitActive && swordActive) || (quitActive && controlActive) ){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

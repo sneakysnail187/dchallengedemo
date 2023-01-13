@@ -29,6 +29,8 @@ public class doorHandler : MonoBehaviour
     public void openDoor(){
         //open the door
         doorAnim.SetBool("openDoor", true);
+        //opening door sound
+        manager.play("DoorClosing");
     }
 
     //close Door script
