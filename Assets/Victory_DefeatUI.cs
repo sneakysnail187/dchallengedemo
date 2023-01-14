@@ -54,6 +54,8 @@ public class Victory_DefeatUI : MonoBehaviour
                 other.gameObject.GetComponent<PlayerCharacter>().hasDoorKey = true;
                 //play the victory sound
                 s_manager.play("VictorySound");
+                //prompt the player to battle and return to base using PromptController
+                GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TimeForBattle");
                 //set the hasFailed to false - level was a success!!
                 other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = false;
             }
@@ -68,6 +70,8 @@ public class Victory_DefeatUI : MonoBehaviour
                 sword.SetActive(false);
                 //play the defeat sound
                 s_manager.play("DefeatSound");
+                //prompt the player to try again using PromptController
+                GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TryAgain");
                 //set the hasFailed to true
                 other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = true;
             }

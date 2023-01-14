@@ -12,6 +12,8 @@ public class ResearchDoorHandler : MonoBehaviour
         if(other.GetComponent<Collider>().tag == "Player" && other.gameObject.GetComponent<PlayerCharacter>().hasDoorKey){
             //open the door
             doorReference.GetComponent<doorHandler>().openDoor();
+            //prompt the Enemy Count
+            GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("EnemyCountPrompt");
         }
     }
 

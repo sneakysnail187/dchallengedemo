@@ -9333,6 +9333,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6950531439572339623, guid: 55567c256a6884a158741388f339b8d0, type: 3}
+      propertyPath: m_text
+      value: +
+      objectReference: {fileID: 0}
     - target: {fileID: 6967133808790840487, guid: 55567c256a6884a158741388f339b8d0, type: 3}
       propertyPath: m_text
       value: +

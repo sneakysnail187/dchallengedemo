@@ -63,6 +63,8 @@ public class UIPopup : MonoBehaviour
     if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped){
         //set the UI to active
         UIComponentTeleporters.SetActive(true);
+        //prompt the player to find the Teleporters using PromptController
+        GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("FindTheTeleporters");
         //playUI POPUP SOUND
         manager.play("PopUp");
         //set hasBeenOverlapped to true

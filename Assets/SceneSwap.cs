@@ -106,8 +106,9 @@ public class SceneSwap : MonoBehaviour
         //we do not want to laod the ResearchScene
         if(target == "Game"){
             //set the game prompt to active
-            canvas.transform.Find("TaskBorder").gameObject.SetActive(true);
-            //
+            //canvas.transform.Find("TaskBorder").gameObject.SetActive(true);
+            //prompt the player to get 90 points using PromptController
+            GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("Get90Points");
             AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
             scene.allowSceneActivation = false;
             sceneAsync = scene;
@@ -132,8 +133,15 @@ public class SceneSwap : MonoBehaviour
         playerTrans.position = tp;
         //unload the Previous scene if it is Game
         if(sceneToDelete == "Game"){
-            //set the prompt to inactive
-            canvas.transform.Find("TaskBorder").gameObject.SetActive(false);
+            //we are returning to base: IF = they failed
+            if(GameObject.Find("Player").GetComponent<PlayerCharacter>().hasFailedLevel){
+                //they must quit and try again
+                GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TryAgain");
+            }
+            else{
+                //they can unlock doors
+                GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("UnlockedDoors");
+            }
             //
             SceneManager.UnloadSceneAsync(sceneToDelete);
         }
