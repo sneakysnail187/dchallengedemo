@@ -47,11 +47,11 @@ public class Generator : MonoBehaviour
                 k = Random.Range(1, 11);
             }
             else if(divide_Difficulty == 2){
-                r1 = Random.Range(10, 99);
-                k = Random.Range(10, 101);
+                r1 = Random.Range(1, 9);
+                k = Random.Range(100, 1111);
             }
             else if(divide_Difficulty == 3){
-                r1 = Random.Range(100, 999);
+                r1 = Random.Range(10, 99);
                 k = Random.Range(100, 1001);
             }
             int r2 = r1 * k;
