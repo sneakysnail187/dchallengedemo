@@ -6,53 +6,93 @@ using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Script/FPS Input")]
-public class FPSInput : MonoBehaviour {
-	public float speed = 6.0f;
-	public float gravity = -9.8f;
-	public float groundDist = 0.4f;
-	public LayerMask groundMask;
+public class FPSInput : MonoBehaviour
+{
+    public float speed = 6.0f;
+    public float gravity = 9.8f;
+    //public float groundDist = 0.4f;
+    public LayerMask groundMask;
 
-	private CharacterController _charController;
-	private UIController myUI;
-	public float forceconst = 5f;
-	private bool canJump;
-	public Transform groundCheck;
+    private CharacterController _charController;
+    //private UIController myUI;
+    [SerializeField] private float jumpInterval;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float fallingBonus;
+    private bool grounded;
+    public Transform groundCheck;
 
-	Vector3 velocity;
-	
-	void Start() {
-		_charController = GetComponent<CharacterController>();
-		myUI = GetComponent<UIController>();
-	}
-	
-	void Update() {
-		//transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
-		
-		canJump = Physics.CheckSphere(groundCheck.position, groundDist, groundMask);
-		
-		if(canJump && velocity.y < 0){
-			velocity.y = -2f;
-		}
+    private float lastJumpTime = 0f;
 
+    Vector3 velocity;
 
-		float deltaX = Input.GetAxis("Horizontal");
-		float deltaZ = Input.GetAxis("Vertical");
+    void Start()
+    {
+        Application.targetFrameRate = 60;
 
-		Vector3 movement = transform.right * deltaX + transform.forward * deltaZ;
-		
-		_charController.Move(movement * speed * Time.deltaTime);
+        _charController = GetComponent<CharacterController>();
+        //myUI = GetComponent<UIController>();
 
-		if(canJump && Input.GetKeyDown(KeyCode.Space)){
-			velocity.y = Mathf.Sqrt(forceconst * -2f * gravity);
-     	}
+        grounded = false;
+    }
 
-		velocity.y += gravity * Time.deltaTime;
-		if ((_charController.collisionFlags & CollisionFlags.Above) != 0) {
-         if (velocity.y > 0) {
-             velocity.y = -velocity.y;
-         }
-     }
+    void Update()
+    {
+        //transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
 
-		_charController.Move(velocity * Time.deltaTime);
-	}
+        // Ensure on ground
+        if (grounded/* && velocity.y < 0*/)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastJumpTime + jumpInterval)
+            {
+                Debug.Log(Time.time);
+                velocity.y = jumpForce;
+                lastJumpTime = Time.time;
+                grounded = false;
+            }
+            else if (_charController.velocity.y <= 0)
+            {
+                velocity.y = -1f;
+            }
+        }
+        else
+        {
+            velocity.y -= gravity;
+            if (_charController.velocity.y < 0)
+            {
+                velocity.y -= fallingBonus;
+            }
+        }
+        velocity.x = Input.GetAxis("Horizontal");
+        velocity.z = Input.GetAxis("Vertical");
+
+        //float deltaX = Input.GetAxis("Horizontal");
+        //float deltaZ = Input.GetAxis("Vertical");
+
+        //Vector3 movement = transform.right * deltaX + transform.forward * deltaZ;
+
+        //_charController.Move(movement * speed * Time.deltaTime);
+
+        //// Jump
+        //if (grounded && Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    velocity.y = jumpForce;
+        //}
+
+        //velocity.y += gravity * Time.deltaTime;
+        //if ((_charController.collisionFlags & CollisionFlags.Above) != 0)
+        //{
+        //    if (velocity.y > 0)
+        //    {
+        //        velocity.y = -velocity.y;
+        //    }
+        //}
+    }
+    private void FixedUpdate()
+    {
+        Vector3 movement = (transform.right * velocity.x + transform.forward * velocity.z) * speed;
+        movement.y = velocity.y;
+        _charController.Move(movement * Time.fixedDeltaTime);
+
+        grounded = Physics.CheckSphere(groundCheck.position, 0.45f, groundMask);
+    }
 }
