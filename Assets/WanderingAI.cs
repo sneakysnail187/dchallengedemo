@@ -187,16 +187,32 @@ public class WanderingAI : MonoBehaviour {
 		_alive = alive;
 	}
 
+	//death by sword
 	public void onTriggerEnter(Collider other){
-		if(other.CompareTag("sword"))	Destroy(this.gameObject);
+		//call the death function
+		if(other.CompareTag("sword")){
+			//calling the death function on this actor
+			death(this.gameObject);
+			}
 	}
 
+	//shrink to death
 	public void Shrink(){
 		if(this.gameObject.transform.localScale.x > minSize.x){
 			this.gameObject.transform.localScale *= 0.99f;
 		}
 		else{
-			Destroy(this.gameObject);
+			//call the death function
+			death(this.gameObject);
 		}
+	}
+
+	//The AI Death Function
+	//This function will be called to handle the death of this AI actor
+	public void death(GameObject objectToDelete){
+		//Destroy the gameObject that called this function
+		Destroy(objectToDelete);
+		//Add to the AI death count on the canvas - This is handled by the "PointsAndScoreController" class
+		PointsAndScoreController.incrementEnemyPoints();
 	}
 }
