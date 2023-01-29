@@ -29895,6 +29895,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4626668743509875248, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -48891,6 +48895,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5773012935521969949, guid: fec4e7e32c83e644bbebed4c322ee643, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5773012935521969949, guid: fec4e7e32c83e644bbebed4c322ee643, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5953977592163608830, guid: fec4e7e32c83e644bbebed4c322ee643, type: 3}

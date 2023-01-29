@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class sword : MonoBehaviour
 {
-    public void onTriggerEnter(Collider other){
+    public void OnTriggerEnter(Collider other){
 		Debug.Log("Lol");
 		//call the death function
 		if(other.CompareTag("enemy")){

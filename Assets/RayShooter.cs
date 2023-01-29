@@ -21,7 +21,7 @@ public class RayShooter : MonoBehaviour {
 		anim = GetComponentInChildren<Animator>();
 		stuff = GetComponentInChildren<Pack>();
 		hasSword = false;
-		hasRay = true;
+		hasRay = false;
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
