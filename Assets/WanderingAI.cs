@@ -189,6 +189,7 @@ public class WanderingAI : MonoBehaviour {
 
 	//death by sword
 	public void onTriggerEnter(Collider other){
+		Debug.Log("Lol");
 		//call the death function
 		if(other.CompareTag("sword")){
 			//calling the death function on this actor

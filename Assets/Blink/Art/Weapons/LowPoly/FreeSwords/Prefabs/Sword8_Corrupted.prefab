@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7945700126724685281}
   - component: {fileID: 5305305658019776811}
   - component: {fileID: 5773012935521969949}
+  - component: {fileID: 6078660919978885416}
+  - component: {fileID: 8796401702751088692}
   m_Layer: 0
   m_Name: Sword8_Corrupted
   m_TagString: sword
@@ -93,5 +95,33 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.52314156, y: 2.4286368, z: 0.120256916}
-  m_Center: {x: -0.000000029802322, y: 0.90860474, z: 0}
+  m_Size: {x: 0.52314156, y: 1.6519052, z: 0.120256916}
+  m_Center: {x: 0.0000012604233, y: 1.2969705, z: -0.00000077010253}
+--- !u!54 &6078660919978885416
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953977592163608830}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &8796401702751088692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953977592163608830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1adcb4bc2ac0d44fac94243f4b00acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

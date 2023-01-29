@@ -5,10 +5,10 @@ using UnityEngine.UI; /* Required for controlling Canvas UI system */
 
 public class RayShooter : MonoBehaviour {
 	private Camera _camera;
-	private bool hasSword;
-	private bool hasRay;
-	private bool hasHack;
-	private bool hasFreeze;
+	public bool hasSword;
+	public bool hasRay;
+	public bool hasHack;
+	public bool hasFreeze;
 	private Animator anim;
 	private GameObject reticle;
 	private float shrinkRate = 0.5f;
@@ -45,19 +45,17 @@ public class RayShooter : MonoBehaviour {
 			else{
 				if(hasRay){
 					laser.SetActive(true);
-				}
-				Vector3 point = new Vector3(_camera.pixelWidth/2, _camera.pixelHeight/2, 0);
-				Ray ray = _camera.ScreenPointToRay(point);
-				RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)) {
-					GameObject hitObject = hit.transform.gameObject;
-					ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
-					WanderingAI enemy = hitObject.GetComponent<WanderingAI>();
-					if (target != null) {
-						target.ReactToHit();
-					}
-					else if(enemy != null){
-						if(hasRay){
+					Vector3 point = new Vector3(_camera.pixelWidth/2, _camera.pixelHeight/2, 0);
+					Ray ray = _camera.ScreenPointToRay(point);
+					RaycastHit hit;
+					if (Physics.Raycast(ray, out hit)) {
+						GameObject hitObject = hit.transform.gameObject;
+						ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+						WanderingAI enemy = hitObject.GetComponent<WanderingAI>();
+						if (target != null) {
+							target.ReactToHit();
+						}
+						else if(enemy != null){
 							enemy.Shrink();
 						}
 					}

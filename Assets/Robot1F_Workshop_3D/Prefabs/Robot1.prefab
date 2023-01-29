@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 137276531836346760}
   m_Layer: 0
   m_Name: Robot1
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 4626668743509875248}
   m_Layer: 0
   m_Name: Robot1
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

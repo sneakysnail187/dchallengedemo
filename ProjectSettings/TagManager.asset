@@ -10,6 +10,7 @@ TagManager:
   - sword
   - gun
   - controller
+  - enemy
   layers:
   - Default
   - TransparentFX
