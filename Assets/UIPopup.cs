@@ -83,7 +83,7 @@ public class UIPopup : MonoBehaviour
   //this method is called by a button push only
   public void removeUI(){
     //close doors dramatically if player is searching for teleporters
-    if(isSearching){
+    if(isSearching && !gunUI.active && !swordUI.active && !controllerUI.active){
       //door.doorHandler.closeDoor()
       door1.GetComponent<doorHandler>().closeDoor();
       door2.GetComponent<doorHandler>().closeDoor();
