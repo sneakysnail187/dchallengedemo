@@ -5,6 +5,8 @@ using UnityEngine;
 public class Pack : MonoBehaviour
 {
     public bool[] items = new bool[3];
+    //reference to sound effects manager
+    public SoundEffectsManager manager;
 
     //public List<GameObject> getItems { get => items; }
 
@@ -13,16 +15,22 @@ public class Pack : MonoBehaviour
         if(itemtoAdd.tag == "sword"){
             //set the corresponding boolean in the array to true
             items[0] = true;
+            //play the achievement
+            manager.play("Achievement");
         }
         //if the item is a gun
         if(itemtoAdd.tag == "gun"){
             //set the corresponding boolean in the array to true
             items[1] = true;
+            //play the achievement
+            manager.play("Achievement");
         }
         //if the item is a controller
         if(itemtoAdd.tag == "controller"){
             //set the corresponding boolean in the array to true
             items[2] = true;
+            //play the achievement
+            manager.play("Achievement");
         }
     }
 
