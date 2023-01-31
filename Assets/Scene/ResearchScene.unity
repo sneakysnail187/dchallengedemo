@@ -19727,7 +19727,7 @@ MonoBehaviour:
   swordUI: {fileID: 1349239158}
   controllerUI: {fileID: 1361289750}
   currentWingNumber: 0
-  hasDoorKey: 1
+  hasDoorKey: 0
   hasFailedLevel: 0
 --- !u!114 &928966111
 MonoBehaviour:
@@ -33240,7 +33240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cb8a6a08fd4c6458b4ed6febfb098e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: 010000
+  items: 000000
   manager: {fileID: 2124166042}
 --- !u!4 &1362088808 stripped
 Transform:
