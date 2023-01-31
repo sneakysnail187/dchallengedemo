@@ -190,7 +190,7 @@ public class AnswerUICollider : MonoBehaviour
     indicator2.GetComponent<ColorChange>().changeLight("green");
     //add 3 points to the indicator
     int pointsAdd = int.Parse(points.GetComponent<TMP_Text>().text);
-    pointsAdd = pointsAdd + 3; 
+    pointsAdd = pointsAdd + 7; 
     points.GetComponent<TMP_Text>().text = pointsAdd.ToString();
 
     //delay a second for the padlock animation
@@ -208,7 +208,7 @@ public class AnswerUICollider : MonoBehaviour
       playerAnswer.transform.Find("Answer UI").Find("MyInputField").GetComponent<TMP_InputField>().ActivateInputField();
       //deduct 3 points from the indicator
       int pointsAdd = int.Parse(points.GetComponent<TMP_Text>().text);
-      pointsAdd = pointsAdd - 3; 
+      pointsAdd = pointsAdd - 9; 
       points.GetComponent<TMP_Text>().text = pointsAdd.ToString();
     } 
 

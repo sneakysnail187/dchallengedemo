@@ -68,7 +68,7 @@ public class SceneSwap : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if((other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze) || (other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count == 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel)){
+        if((other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze) || (other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count <= 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel)){
             sc.isMaze = false;
             hasBeenOverlapped = true;
             //---------------------------------------------------

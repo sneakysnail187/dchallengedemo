@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class WanderingAI : MonoBehaviour {
+	public SceneController sc;
 	public float speed = 3.0f;
 	public float obstacleRange = 4.0f;
 	public List<Transform> points;
