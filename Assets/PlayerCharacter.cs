@@ -38,7 +38,7 @@ public class PlayerCharacter : MonoBehaviour {
 
 			if(collision.CompareTag("controller")) controllerUI.SetActive(true);
 
-
+			//adding item to the backpack
 			backpack.AddItem(collision.gameObject);
 			collision.gameObject.SetActive(false);
 		}
