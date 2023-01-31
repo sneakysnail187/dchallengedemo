@@ -66,9 +66,20 @@ public class WeaponController : MonoBehaviour
     }
 
     public void swordAttack(){
-        anim.SetBool("Attack", true);
-        //play sword sound
-        manager.play("SwordAttack");
+        //if sword is active
+        if(transform.GetChild(0).gameObject.active){
+            //play animation
+            anim.SetBool("Attack", true);
+            //play sword sound
+            manager.play("SwordAttack");   
+        }
+
+        //if gun is active
+        if(transform.GetChild(1).gameObject.active){
+            //play sword sound
+            manager.play("LaserAttack");   
+        }
+
     }
 
     private void selectWeapon(int swap){
