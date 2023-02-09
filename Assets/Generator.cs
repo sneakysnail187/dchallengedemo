@@ -20,18 +20,21 @@ public class Generator : MonoBehaviour
     //stores a string representation of the operand: either +, -, ÷, x
     public TMP_Text operation;
     public string operatorSign;
+    //stores the diffManager
+    public GameObject diffManager;
 
 
     void Start()
     {
-
+        //get the diffManager
+        diffManager = GameObject.Find("DifficultyManager");
         //get the operator
         operatorSign = operation.text;
         //get the respective difficulties
-        addition_Difficulty = DiffManager.getAdd();
-        minus_Difficulty = DiffManager.getSub();
-        multiply_Difficulty = DiffManager.getMult();
-        divide_Difficulty = DiffManager.getDiv();
+        addition_Difficulty = diffManager.GetComponent<DiffManager>().getAdd();
+        minus_Difficulty = diffManager.GetComponent<DiffManager>().getSub();
+        multiply_Difficulty = diffManager.GetComponent<DiffManager>().getMult();
+        divide_Difficulty = diffManager.GetComponent<DiffManager>().getDiv();
         
 
         //DIVISION

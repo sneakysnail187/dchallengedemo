@@ -6,12 +6,14 @@ public class DiffManager : MonoBehaviour
 {
     // this script is attached to the DifficultyPage UI element
     //stores the four difficulties
-    private static int addDiff;
-    private static int minusDiff;
-    private static int timesDiff;
-    private static int divideDiff;
+    public int addDiff;
+    public int minusDiff;
+    public int timesDiff;
+    public int divideDiff;
 
     void Start(){
+        //do not destroy this gameObject
+        DontDestroyOnLoad(this.gameObject);
         //have default set to easy
         addDiff = 1;
         minusDiff = 1;
@@ -20,22 +22,22 @@ public class DiffManager : MonoBehaviour
     }
     
     //returns an integer that represents the difficulty of the multiply operation
-    public static int getMult() {
+    public int getMult() {
         //returns the difficulty
         return timesDiff;
     }
     //returns an integer that represents the difficulty of the division operation
-    public static int getDiv() {
+    public int getDiv() {
         //returns the divide difficulty
         return divideDiff;
     }
     //returns an integer that represents the difficulty of the addition operation
-    public static int getAdd() {
+    public int getAdd() {
         //returns the add difficulty
         return addDiff;
     }
     //returns an integer that represents the difficulty of the subtraction operation
-    public static int getSub() {
+    public int getSub() {
         //returns the minus difficulty
         return minusDiff; 
     }    

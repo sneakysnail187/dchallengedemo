@@ -560,6 +560,49 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &125303404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 125303406}
+  - component: {fileID: 125303405}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &125303405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125303404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3615693c3483e4e8612627a8efb0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &125303406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125303404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138187347
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +681,6 @@ GameObject:
   - component: {fileID: 140094919}
   - component: {fileID: 140094918}
   - component: {fileID: 140094920}
-  - component: {fileID: 140094921}
   m_Layer: 5
   m_Name: DifficultyPage
   m_TagString: Untagged
@@ -732,18 +774,6 @@ MonoBehaviour:
   - {fileID: 1059967952}
   - {fileID: 912026205}
   - {fileID: 1673426854}
---- !u!114 &140094921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140094916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3615693c3483e4e8612627a8efb0ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &151479197
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +867,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setAdd
         m_Mode: 3
@@ -1327,7 +1357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setAdd
         m_Mode: 3
@@ -1745,7 +1775,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setMult
         m_Mode: 3
@@ -2132,7 +2162,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setSub
         m_Mode: 3
@@ -2277,7 +2307,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setSub
         m_Mode: 3
@@ -3898,7 +3928,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setDiv
         m_Mode: 3
@@ -4323,7 +4353,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setDiv
         m_Mode: 3
@@ -4468,7 +4498,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setMult
         m_Mode: 3
@@ -4798,7 +4828,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setMult
         m_Mode: 3
@@ -5691,7 +5721,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setAdd
         m_Mode: 3
@@ -5836,7 +5866,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setDiv
         m_Mode: 3
@@ -6807,7 +6837,6 @@ GameObject:
   - component: {fileID: 2018533027}
   - component: {fileID: 2018533026}
   - component: {fileID: 2018533029}
-  - component: {fileID: 2018533030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6913,18 +6942,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &2018533030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2018533025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a3615693c3483e4e8612627a8efb0ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2040272833
 GameObject:
   m_ObjectHideFlags: 0
@@ -7008,7 +7025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140094921}
+      - m_Target: {fileID: 125303405}
         m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
         m_MethodName: setSub
         m_Mode: 3
