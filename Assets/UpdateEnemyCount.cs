@@ -15,6 +15,6 @@ public class UpdateEnemyCount : MonoBehaviour
     void Update()
     {
         //update the UI element to the current score
-        this.gameObject.GetComponent<TMP_Text>().text = PointsAndScoreController.enemyPoints.ToString();
+        this.gameObject.GetComponent<TMP_Text>().text = PointsAndScoreController.Instance.enemyPoints.ToString();
     }
 }

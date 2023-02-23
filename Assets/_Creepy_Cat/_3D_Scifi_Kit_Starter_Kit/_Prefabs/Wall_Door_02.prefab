@@ -104,6 +104,7 @@ MonoBehaviour:
   operandTwo: {fileID: 4857632352892346001}
   operation: {fileID: 5491646670138278396}
   operatorSign: 
+  diffManager: {fileID: 0}
 --- !u!65 &1171837493519389542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2138,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 381939328192938298, guid: ba2f6a091705a2846aa43d4703bf517b, type: 3}
       propertyPath: sounds.Array.data[5].volume
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba2f6a091705a2846aa43d4703bf517b, type: 3}

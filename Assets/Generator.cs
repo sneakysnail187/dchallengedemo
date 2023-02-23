@@ -31,10 +31,14 @@ public class Generator : MonoBehaviour
         //get the operator
         operatorSign = operation.text;
         //get the respective difficulties
-        addition_Difficulty = diffManager.GetComponent<DiffManager>().getAdd();
-        minus_Difficulty = diffManager.GetComponent<DiffManager>().getSub();
-        multiply_Difficulty = diffManager.GetComponent<DiffManager>().getMult();
-        divide_Difficulty = diffManager.GetComponent<DiffManager>().getDiv();
+        //addition_Difficulty = diffManager.GetComponent<DiffManager>().getAdd();
+        addition_Difficulty = 1;
+        //minus_Difficulty = diffManager.GetComponent<DiffManager>().getSub();
+        minus_Difficulty = 1;
+        //multiply_Difficulty = diffManager.GetComponent<DiffManager>().getMult();
+        multiply_Difficulty = 1;
+        //divide_Difficulty = diffManager.GetComponent<DiffManager>().getDiv();
+        divide_Difficulty = 1;
         
 
         //DIVISION

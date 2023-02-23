@@ -147,6 +147,11 @@ public class SceneSwap : MonoBehaviour
             //
             SceneManager.UnloadSceneAsync(sceneToDelete);
         }
+
+        if (wingNum == 0)
+        {
+            PointsAndScoreController.Instance.ResetPoints();
+        }
     }
 
     void enableScene(string scene){

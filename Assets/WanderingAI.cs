@@ -214,6 +214,6 @@ public class WanderingAI : MonoBehaviour {
 		//Destroy the gameObject that called this function
 		Destroy(objectToDelete);
 		//Add to the AI death count on the canvas - This is handled by the "PointsAndScoreController" class
-		PointsAndScoreController.incrementEnemyPoints();
+		PointsAndScoreController.Instance.incrementEnemyPoints();
 	}
 }
