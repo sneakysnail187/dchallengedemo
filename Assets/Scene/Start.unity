@@ -778,6 +778,7 @@ MonoBehaviour:
   - {fileID: 1059967952}
   - {fileID: 912026205}
   - {fileID: 1673426854}
+  diffManager: {fileID: 0}
 --- !u!1 &151479197
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,18 +872,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setAdd
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -1361,18 +1350,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setAdd
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -1779,18 +1756,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setMult
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -2166,18 +2131,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setSub
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -2311,18 +2264,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setSub
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -3932,18 +3873,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setDiv
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -4357,18 +4286,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setDiv
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -4502,18 +4419,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setMult
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -4832,18 +4737,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setMult
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -5725,18 +5618,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setAdd
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -5870,18 +5751,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setDiv
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
@@ -7029,18 +6898,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 125303405}
-        m_TargetAssemblyTypeName: DiffManager, Assembly-CSharp
-        m_MethodName: setSub
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 140094920}
         m_TargetAssemblyTypeName: DiffUIController, Assembly-CSharp
         m_MethodName: buttonIndicate
