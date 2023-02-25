@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     //Static variable that is set on Update by the AnswerUICollider
     public static bool AnswerTriggerFire;
     public static bool resumeCalled;
+    public GameObject uiToDisable;
     
     void Start(){
         player = GameObject.Find("Player");
@@ -38,6 +39,7 @@ public class UIController : MonoBehaviour
         if(Input.GetKeyDown("escape")){
             //run the Quit UI
             Pause(true);
+            uiToDisable.SetActive(PointsAndScoreController.Instance.inGameScene);
         }
     }
 

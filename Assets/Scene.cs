@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class Scene : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class Scene : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
     public void Quit(){
-        Application.Quit();
+        Time.timeScale = 1;
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
     }
 }

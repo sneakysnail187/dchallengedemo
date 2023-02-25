@@ -21,7 +21,7 @@ public class SceneSwap : MonoBehaviour
     public AudioManagerMain gameMusicManager;
 
     public SceneController sc;
-    
+
     private float xPos = 0;
     private float ypos = -38.91979f;
     private float zpos = 0;
@@ -41,34 +41,41 @@ public class SceneSwap : MonoBehaviour
     {
         tpBox = GetComponent<SphereCollider>();
         canvas = GameObject.Find("Canvas");
-        if(wingNum == 1){
+        if (wingNum == 1)
+        {
             xPos = -2.890938f;
             zpos = 146.1741f;
         }
-        else if(wingNum == 2){
+        else if (wingNum == 2)
+        {
             xPos = 290.0224f;
             zpos = -21.88322f;
         }
-        else if(wingNum == 3){
+        else if (wingNum == 3)
+        {
             xPos = -175.56f;
             zpos = -5.7f;
         }
-        else if(wingNum == 4){
+        else if (wingNum == 4)
+        {
             xPos = 14.15857f;
             zpos = -132.387f;
         }
-        else{
-            xPos = 2.77f;
+        else
+        {
+            xPos = 0;
             ypos = 0;
-            zpos = -3;
+            zpos = 0;
         }
         //target position for this teleporter
-        tp = new Vector3(xPos,ypos,zpos);
+        tp = new Vector3(xPos, ypos, zpos);
 
     }
 
-    void OnTriggerEnter(Collider other){
-        if((other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze) || (other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count <= 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel)){
+    void OnTriggerEnter(Collider other)
+    {
+        if ((other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze) || (other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count <= 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel))
+        {
             sc.isMaze = false;
             hasBeenOverlapped = true;
             //---------------------------------------------------
@@ -78,25 +85,30 @@ public class SceneSwap : MonoBehaviour
             //Play animation
             transitioner.SetTrigger("Start");
             //if the teleporters are one of the four, load level
-            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4 || wingNum == 0){
-                StartCoroutine(LoadLevel(other.transform));
+            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4 || wingNum == 0)
+            {
+                StartCoroutine(LoadLevel(other.transform, false));
             }
         }
     }
 
-    IEnumerator LoadLevel (Transform playerTrans){
+    IEnumerator LoadLevel(Transform playerTrans, bool toReload)
+    {
         //Time.timeScale = 0.5f;
         //wait
         yield return new WaitForSeconds(transitionTime);
         //by this point, the animation of transition has ended (UIPopup) and now alpha is max.
         //we can stop the research music if this object is not null - that means we are in the research hub
-        if(researchMusicManager != null){
+        if (researchMusicManager != null)
+        {
             researchMusicManager.stop("CommonsUpbeat");
         }
         //else if it is null - that means we are in the game scene and therefore should stop the gameMusicManager
-        else{
+        else
+        {
             //loop to stop all 
-            for(int i = 0; i < 3; i++){
+            for (int i = 0; i < 3; i++)
+            {
                 gameMusicManager.stop(gameMusicManager.sounds[i].name);
             }
         }
@@ -104,24 +116,28 @@ public class SceneSwap : MonoBehaviour
         //level loading code - BEGIN
         //------------------------------------------------------------------------------------------------------
         //we do not want to laod the ResearchScene
-        if(target == "Game"){
+        if (target == "Game")
+        {
             //set the game prompt to active
             //canvas.transform.Find("TaskBorder").gameObject.SetActive(true);
             //prompt the player to get 90 points using PromptController
             GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("Get90Points");
+            if (SceneManager.GetSceneByName(target).isLoaded) SceneManager.UnloadSceneAsync(target, UnloadSceneOptions.None);
             AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
             scene.allowSceneActivation = false;
             sceneAsync = scene;
             //animation begin
-            tpBox.enabled = false;
+            if (tpBox) tpBox.enabled = false;
             //time pause - so animation must begin before time pause
             Time.timeScale = 0f;
-            while(scene.progress < 0.9f){
+            while (scene.progress < 0.9f)
+            {
                 Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
                 yield return null;
             }
             sceneAsync.allowSceneActivation = true;
-            while(!scene.isDone){
+            while (!scene.isDone)
+            {
                 yield return null;
             }
 
@@ -129,42 +145,126 @@ public class SceneSwap : MonoBehaviour
         //--------------------------------------------------------------------------------------------------------
         //level loading code - END
         OnFinishedLoading();
-        Time.timeScale = 1f;        
+        Time.timeScale = 1f;
         playerTrans.position = tp;
         //unload the Previous scene if it is Game
-        if(sceneToDelete == "Game"){
+        if (sceneToDelete == "Game")
+        {
             //set the isMaze attribute to true because we are returning to the maze
             sc.isMaze = true;
             //we are returning to base: IF = they failed
-            if(GameObject.Find("Player").GetComponent<PlayerCharacter>().hasFailedLevel){
+            if (GameObject.Find("Player").GetComponent<PlayerCharacter>().hasFailedLevel)
+            {
                 //they must quit and try again
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TryAgain");
             }
-            else{
+            else if (toReload)
+            {
+                GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("FindTheTeleporters");
+            }
+            else
+            {
                 //they can unlock doors
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("UnlockedDoors");
             }
             //
-            SceneManager.UnloadSceneAsync(sceneToDelete);
+            if (SceneManager.GetSceneByName(sceneToDelete).isLoaded) SceneManager.UnloadSceneAsync(sceneToDelete);
         }
-
-        if (wingNum == 0)
-        {
-            PointsAndScoreController.Instance.ResetPoints();
-        }
+        PointsAndScoreController.Instance.ResetPoints();
     }
 
-    void enableScene(string scene){
+    void enableScene(string scene)
+    {
         UnityEngine.SceneManagement.Scene sceneToLoad = SceneManager.GetSceneByName(scene);
-        if(sceneToLoad.IsValid()){
+        if (sceneToLoad.IsValid())
+        {
             SceneManager.MoveGameObjectToScene(canvas, sceneToLoad);
             SceneManager.SetActiveScene(sceneToLoad);
         }
     }
 
-    void OnFinishedLoading(){
+    void OnFinishedLoading()
+    {
         enableScene(target);
         //done loading so end the transition by triggering End
         transitioner.SetTrigger("End");
+        PointsAndScoreController.Instance.inGameScene = target == "Game";
+        PointsAndScoreController.Instance.currentWingNum = wingNum;
+    }
+
+    public void ReloadGameScene(bool returnToResearch)
+    {
+        if (returnToResearch)
+        {
+            target = "ResearchScene";
+            sceneToDelete = "Game";
+            wingNum = 0;
+            switch (PointsAndScoreController.Instance.currentWingNum)
+            {
+                case 1:
+                    GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
+                    GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
+                    break;
+                case 2:
+                    GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
+                    GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
+                    break;
+                case 3:
+                    GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
+                    GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
+                    break;
+                case 4:
+                    GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
+                    GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
+                    break;
+            }
+            PointsAndScoreController.Instance.currentWingNum = 0;
+        }
+        else
+        {
+            sceneToDelete = "ResearchScene";
+            target = "Game";
+            wingNum = PointsAndScoreController.Instance.currentWingNum;
+        }
+
+        if (wingNum == 1)
+        {
+            xPos = -2.890938f;
+            ypos = -38.91979f;
+            zpos = 146.1741f;
+        }
+        else if (wingNum == 2)
+        {
+            xPos = 290.0224f;
+            ypos = -38.91979f;
+            zpos = -21.88322f;
+        }
+        else if (wingNum == 3)
+        {
+            xPos = -175.56f;
+            ypos = -38.91979f;
+            zpos = -5.7f;
+        }
+        else if (wingNum == 4)
+        {
+            xPos = 14.15857f;
+            ypos = -38.91979f;
+            zpos = -132.387f;
+        }
+        else
+        {
+            xPos = 0;
+            ypos = 0;
+            zpos = 0;
+        }
+        //target position for this teleporter
+        tp = new Vector3(xPos, ypos, zpos);
+        //Play animation
+        transitioner.SetTrigger("Start");
+        StartCoroutine(LoadLevel(GameObject.Find("Player").transform, true));
     }
 }

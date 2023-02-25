@@ -12,7 +12,10 @@ public class PointsAndScoreController : MonoBehaviour
 
     //a list of variables that store different points related to different points in the game
     public int enemyPoints;
-    private int doorPoints;
+    public int doorPoints;
+
+    public bool inGameScene = false;
+    public int currentWingNum = 0;
 
     // Start is called before the first frame update
     void Start()

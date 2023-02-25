@@ -28,7 +28,7 @@ public class Victory_DefeatUI : MonoBehaviour
         //get the canvas
         canvas = GameObject.Find("Canvas");  
         //get the points
-        points = int.Parse(canvas.transform.Find("CounterBorder").GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text);  
+        points = PointsAndScoreController.Instance.doorPoints;  
         //get the animators
         victoryAnim = canvas.transform.Find("Victory").gameObject.GetComponent<Animator>();   
         defeatAnim = canvas.transform.Find("Death").gameObject.GetComponent<Animator>();
@@ -36,7 +36,7 @@ public class Victory_DefeatUI : MonoBehaviour
 
     void Update(){
         //continuously get the points
-        points = int.Parse(canvas.transform.Find("CounterBorder").GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text);
+        points = PointsAndScoreController.Instance.doorPoints;
     }
 
     // when this trigger is overlapped
