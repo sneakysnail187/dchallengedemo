@@ -60221,6 +60221,26 @@ PrefabInstance:
       propertyPath: enemiesToAdd
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 8337896234881205217, guid: 0fe604295c09c1b43ae3bf619ea7ce1e, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337896234881205217, guid: 0fe604295c09c1b43ae3bf619ea7ce1e, type: 3}
+      propertyPath: spawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 123101000}
+    - target: {fileID: 8337896234881205217, guid: 0fe604295c09c1b43ae3bf619ea7ce1e, type: 3}
+      propertyPath: spawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1124050724}
+    - target: {fileID: 8337896234881205217, guid: 0fe604295c09c1b43ae3bf619ea7ce1e, type: 3}
+      propertyPath: spawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1203584138}
+    - target: {fileID: 8337896234881205217, guid: 0fe604295c09c1b43ae3bf619ea7ce1e, type: 3}
+      propertyPath: spawnPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1791276430}
     - target: {fileID: 8337896234881205218, guid: 0fe604295c09c1b43ae3bf619ea7ce1e, type: 3}
       propertyPath: m_Name
       value: Controller
