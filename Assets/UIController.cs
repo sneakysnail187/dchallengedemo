@@ -83,7 +83,7 @@ public class UIController : MonoBehaviour
         bool interactiveElements = checkPauseAndInteractive();
 
         //only remove the Answer UI if the Options menu is not active - that would mean the resume button doesn't remove the AnswerUI
-        if(!canvas.transform.Find("Quit UI").gameObject.active){
+        if(!canvas.transform.Find("Quit UI").gameObject.activeSelf){
             //if not active - remove the answerUi because we are not pressing the Options Resume button
             canvas.transform.Find("Answer UI").gameObject.SetActive(false);
         }
@@ -119,17 +119,17 @@ public class UIController : MonoBehaviour
     public bool checkPauseAndInteractive(){
         //LIST OF INTERACTIVE UI ELEMENTS
         //stores whether option menu is active
-        bool quitActive = canvas.transform.Find("Quit UI").gameObject.active;
+        bool quitActive = canvas.transform.Find("Quit UI").gameObject.activeSelf;
         //stores whether Find teleporter UI is active
-        bool teleActive = canvas.transform.Find("FindTheTeleporter").gameObject.active;
+        bool teleActive = canvas.transform.Find("FindTheTeleporter").gameObject.activeSelf;
         //stores whether Welcome UI is active
-        bool welcomeActive = canvas.transform.Find("WelcomeUI").gameObject.active;
+        bool welcomeActive = canvas.transform.Find("WelcomeUI").gameObject.activeSelf;
         //stores whether gunUI is active
-        bool gunActive = canvas.transform.Find("gunUI").gameObject.active;
+        bool gunActive = canvas.transform.Find("gunUI").gameObject.activeSelf;
         //stores whether swordUI is active
-        bool swordActive = canvas.transform.Find("swordUI").gameObject.active;
+        bool swordActive = canvas.transform.Find("swordUI").gameObject.activeSelf;
         //stores whether controllerUI is active
-        bool controlActive = canvas.transform.Find("controllerUI").gameObject.active;
+        bool controlActive = canvas.transform.Find("controllerUI").gameObject.activeSelf;
 
         //if any of these are true and the quitUI is active - that means there is a background pause state which must be maintained therefore return true
         if ((quitActive && teleActive) || (quitActive && welcomeActive) || (quitActive && gunActive) || (quitActive && swordActive) || (quitActive && controlActive) ){

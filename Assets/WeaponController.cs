@@ -67,7 +67,7 @@ public class WeaponController : MonoBehaviour
 
     public void swordAttack(){
         //if sword is active
-        if(transform.GetChild(0).gameObject.active){
+        if(transform.GetChild(0).gameObject.activeSelf){
             //play animation
             anim.SetBool("Attack", true);
             //play sword sound
@@ -75,7 +75,7 @@ public class WeaponController : MonoBehaviour
         }
 
         //if gun is active
-        if(transform.GetChild(1).gameObject.active){
+        if(transform.GetChild(1).gameObject.activeSelf){
             //play sword sound
             manager.play("LaserAttack");   
         }
