@@ -41,6 +41,7 @@ public class WanderingAI : MonoBehaviour {
 		seen = false;
 		inRange = false;
 
+		//patrol points to be removed in favor of random wandering
 		points.Add(GameObject.Find("ppoint1").transform);
 		points.Add(GameObject.Find("ppoint1 (1)").transform);
 		points.Add(GameObject.Find("ppoint1 (2)").transform);
@@ -62,7 +63,7 @@ public class WanderingAI : MonoBehaviour {
 	
 	void Update() {
 		if(_alive){
-			View();
+			View(); // continuously check if player is in line of sight
 			if(!patrolling){
 				chase();
 			}
@@ -75,7 +76,7 @@ public class WanderingAI : MonoBehaviour {
 	private void chase(){
 		near = false;
 		playLastPos = Vector3.zero;
-		if(!seen){
+		if(!seen){ // when seen start sprint anim and adjust speed, set target to player
 			anim.SetBool("Spotted", true);
 			Move(5.0f);
 			navMeshAgent.SetDestination(playerPos);
@@ -84,7 +85,7 @@ public class WanderingAI : MonoBehaviour {
 			if(waitTime <= 0 && !seen && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) >= 6f){
 				patrolling = true;
 				near = false;
-				Move(speed);
+				Move(speed); //when out of range return to patrol behavior
 				rotateTime = initRotate;
 				waitTime = initWaitTime;
 				navMeshAgent.SetDestination(points[curPoint].position);
@@ -99,9 +100,9 @@ public class WanderingAI : MonoBehaviour {
 	}
 
 	private void patrol(){
-		if(inRange){
+		if(inRange){ // if player in line of sight range
 			if(rotateTime <= 0){
-				Move(5.0f);
+				Move(5.0f); // increase run speed and search based on last known pos of player
 				LookingForP(playLastPos);
 			}
 			else{
@@ -109,17 +110,17 @@ public class WanderingAI : MonoBehaviour {
 				rotateTime -= Time.deltaTime;
 			}
 		}
-		else{
+		else{ // if player outside of line of sight
 			near = false;
 			playLastPos = Vector3.zero;
-			navMeshAgent.SetDestination(points[curPoint].position);
-			if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){
-				if(waitTime <= 0){
+			navMeshAgent.SetDestination(points[curPoint].position); // return to patrol
+			if(navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance){ // when bot in range of target dest
+				if(waitTime <= 0){ // when done waiting move to next patrol point (to be removed)
 					nextP();
 					Move(speed);
 					waitTime = initWaitTime;
 				}
-				else{
+				else{ // stop while waiting
 					Stop();
 					waitTime -= Time.deltaTime;
 				}
@@ -127,12 +128,12 @@ public class WanderingAI : MonoBehaviour {
 		}
 	}
 
-	void Stop(){
+	void Stop(){ // stop mving
 		navMeshAgent.isStopped = true;
 		navMeshAgent.speed = 0;
 	}
 
-	public void nextP(){
+	public void nextP(){ //move to next patrol point (to be removed)
 		curPoint = Random.Range(0, points.Count -1);
 		navMeshAgent.SetDestination(points[curPoint].position);
 	}
@@ -154,32 +155,32 @@ public class WanderingAI : MonoBehaviour {
 		}
 	}
 
-	void View(){
+	void View(){ // check if player is in line of sight
 		Collider[] pInRange = Physics.OverlapSphere(transform.position, viewRad, player);
 		for(int i = 0; i < pInRange.Length;i++){
 			Transform pPos = pInRange[i].transform;
 			Vector3 toPLayer = (pPos.position - transform.position).normalized;
-			if(Vector3.Angle(transform.forward, toPLayer) < viewAng/2){
+			if(Vector3.Angle(transform.forward, toPLayer) < viewAng/2){ // if player is within range of bots forward view vectors
 				float dTP = Vector3.Distance(transform.position, pPos.position);
-				if(!Physics.Raycast(transform.position, toPLayer, dTP, obstacles)){
+				if(!Physics.Raycast(transform.position, toPLayer, dTP, obstacles)){ // if there are no obstacles between bot and player set varaibles accordingly
 					inRange = true;
 					patrolling = false;
 				}
-				else{
+				else{ // else not in range
 					inRange = false;
 				}
 			}
-			if(Vector3.Distance(transform.position, pPos.position)> viewRad){
-				inRange = false;
+			if(Vector3.Distance(transform.position, pPos.position)> viewRad){ // if player outside of max view angle
+				inRange = false; // not in range
 			}
 		
-			if(inRange){
+			if(inRange){ // if player spotted set new player position to player current position
 				playerPos = pPos.transform.position;
 			}
 		}
 	}
 
-	void Move(float speed){
+	void Move(float speed){//speed adjuster
 		navMeshAgent.isStopped = false;
 		navMeshAgent.speed = speed;
 	}
