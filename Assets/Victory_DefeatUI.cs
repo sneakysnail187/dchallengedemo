@@ -42,6 +42,13 @@ public class Victory_DefeatUI : MonoBehaviour
     // when this trigger is overlapped
     void OnTriggerEnter(Collider other){
         if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped){
+            //we must save the points and restart the pointer
+            int saveScore = PointsAndScoreController.Instance.doorPoints;
+            //reset
+            PointsAndScoreController.Instance.ResetPoints();
+            //Send the points to the PlayerDataManager
+            PlayerDataManager.UpdateScore(saveScore);
+
             //set the boolean
             hasBeenOverlapped = true;
             //start the animation sequence depending on the number of points

@@ -39,7 +39,7 @@ public class PointsAndScoreController : MonoBehaviour
     public void updateDoorPoints(int points)
     {
         doorPoints = Mathf.Max(doorPoints + points, 0);
-        scoreBoard.text = doorPoints.ToString("00");
+        scoreBoard.text = doorPoints.ToString();
     }
 
     public void ResetPoints()
