@@ -23,6 +23,7 @@ public class HighScores : MonoBehaviour
         instance.StartCoroutine(instance.DatabaseUpload(username,score)); //Calls Instance
     }
 
+
     IEnumerator DatabaseUpload(string userame, int score) //Called when sending new score to Website
     {
         WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(userame) + "/" + score);

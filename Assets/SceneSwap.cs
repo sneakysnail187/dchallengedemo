@@ -150,6 +150,7 @@ public class SceneSwap : MonoBehaviour
         //unload the Previous scene if it is Game
         if (sceneToDelete == "Game")
         {
+
             //set the isMaze attribute to true because we are returning to the maze
             sc.isMaze = true;
             //we are returning to base: IF = they failed

@@ -31,4 +31,8 @@ public static class PlayerDataManager : object
         //return the score
         return score;
     }
+
+    public static void uploadToDatabase(){
+        HighScores.UploadScore(name, score);
+    }
 }
