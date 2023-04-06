@@ -11,8 +11,13 @@ public class Scene : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
     public void Quit(){
-        Time.timeScale = 1;
-        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
-        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+        if(!(SceneManager.GetActiveScene().name == "Start")){
+            Time.timeScale = 1;
+            SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+            SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+        }
+        else{
+            Application.Quit();
+        }
     }
 }
