@@ -4107,6 +4107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6105582560020169777, guid: 2df887f0489e2a54fa5b12c4562ef2c0, type: 3}
   _enemies: []
+  spawnPoints: []
   enemiesToAdd: 0
   isMaze: 1
 --- !u!4 &187635131
@@ -18012,6 +18013,18 @@ PrefabInstance:
     - target: {fileID: 574823587024962823, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 574823587643878095, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 574823587643878095, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 3840
+      objectReference: {fileID: 0}
+    - target: {fileID: 574823587643878095, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 2160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae07df13a68c15145a5971b88b277d58, type: 3}
