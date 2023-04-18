@@ -22238,7 +22238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928966107}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -14.575}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 98035913}
@@ -35411,10 +35411,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
-      propertyPath: navMeshAgent
-      value: 
-      objectReference: {fileID: 1346310161}
-    - target: {fileID: 5994339446110358947, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
       propertyPath: points.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -35452,11 +35448,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
---- !u!195 &1346310161 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 7060306848827396641, guid: bdd91695cfcf4b643963af1fce587ef5, type: 3}
-  m_PrefabInstance: {fileID: 1346310158}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1349239158
 GameObject:
   m_ObjectHideFlags: 0
@@ -47899,7 +47890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef0265e93e7778c49bb6ae6c538caa98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ef0265e93e7778c49bb6ae6c538caa98, type: 3}
       propertyPath: m_LocalPosition.z

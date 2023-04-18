@@ -1484,9 +1484,8 @@ MonoBehaviour:
   sc: {fileID: 0}
   speed: 3
   obstacleRange: 4
-  points: []
   broken: 0
-  navMeshAgent: {fileID: 0}
+  navMeshAgent: {fileID: 7060306848827396641}
   initWaitTime: 4
   initRotate: 2
   viewAng: 90
@@ -1501,6 +1500,7 @@ MonoBehaviour:
   edgeIter: 4
   edgeDist: 0.5
   left: 1
+  rotSpeed: 100
 --- !u!195 &7060306848827396641
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1534,9 +1534,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.0880823
+  m_Height: 1.8771456
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8300349, z: 0}
+  m_Center: {x: 0, y: 0.9355034, z: 0}
 --- !u!54 &1601465450183101537
 Rigidbody:
   m_ObjectHideFlags: 0
