@@ -193,6 +193,10 @@ public class Generator : MonoBehaviour
         //set the Operands accordingly
         operandOne.text = firstNumber.ToString();
         operandTwo.text = secondNumber.ToString();
+        //set them inactive - changes made with the time Update
+        operandOne.gameObject.SetActive(false);
+        operandTwo.gameObject.SetActive(false);
+        operation.gameObject.SetActive(false);
         //send them to the collider
         theCollider.GetComponent<AnswerUICollider>().firstNumberCheck = firstNumber;
         theCollider.GetComponent<AnswerUICollider>().secondNumberCheck = secondNumber;

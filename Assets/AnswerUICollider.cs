@@ -36,6 +36,7 @@ public class AnswerUICollider : MonoBehaviour
     public GameObject padlockGreen;
     public GameObject MapPadlockRed;
     public GameObject MapPadlockGreen;
+    public GameObject questionMark; //time Update
     //stores reference to the UI question holder and the corresponding elements on the canvas
     public GameObject questionHolder;
 
@@ -44,6 +45,13 @@ public class AnswerUICollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //make the question appear and remove the QuestionMarkUI
+        operand1Door.SetActive(true);
+        operand2Door.SetActive(true);
+        operatorDoor.SetActive(true);
+        questionMark.SetActive(false);
+        //start the timer
+
         //we want the question to be updated
 
         //get the canvas to obtain the answer and update the question
