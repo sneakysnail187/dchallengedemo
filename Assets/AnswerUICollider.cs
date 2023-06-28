@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class AnswerUICollider : MonoBehaviour
 {
+    public GameObject mainCanvas; 
     //stores the canvas - The canvas is obtained during gameplay
     public GameObject playerAnswer;
     //stores the integers to be tested
@@ -43,6 +44,10 @@ public class AnswerUICollider : MonoBehaviour
     public bool hasBeenOverlapped = false;
     public bool doorOpen = false;
 
+    void Start(){
+        openDoorAnim = doorReference.GetComponent<Animator>();
+    }
+
     void OnTriggerEnter(Collider other)
     {
         //make the question appear and remove the QuestionMarkUI
@@ -69,9 +74,6 @@ public class AnswerUICollider : MonoBehaviour
         questionHolder.transform.Find("Q_Operand2").gameObject.GetComponent<TMP_Text>().text = secondNumberCheck.ToString();
         questionHolder.transform.Find("Q_Operation").gameObject.GetComponent<TMP_Text>().text = operatorCheck;
 
-        //get the Animator to the door of this collider in order to open the door later
-        openDoorAnim = doorReference.GetComponent<Animator>();
-
         if (other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped && !doorOpen)
         {
             Debug.Log("AHHHH!!!");
@@ -85,6 +87,20 @@ public class AnswerUICollider : MonoBehaviour
             //fire the answer UI sound
             manager.play("AnswerPopup");
         }
+    }
+
+    public void doorReset(){
+        openDoorAnim.SetBool("openDoor", false);
+        openDoorAnim.SetTrigger("closeDoor");
+        MapPadlockGreen.SetActive(false);
+        MapPadlockRed.SetActive(true);
+        warning.SetActive(true);
+        hasBeenOverlapped = false;
+        indicator1.GetComponent<ColorChange>().changeLight("red");
+        indicator2.GetComponent<ColorChange>().changeLight("red");
+        questionMark.SetActive(true);
+        doorOpen = false;
+        //UIController.AnswerTriggerFire = false;
     }
 
     void OnTriggerStay(Collider other)
@@ -129,11 +145,13 @@ public class AnswerUICollider : MonoBehaviour
             if (!doorOpen)
             {
                 //hasBeenOverlapped back to false
+                //doorReset();
                 hasBeenOverlapped = false;
             }
             else
             {
                 //door is Open so we have completed a successful overlap. Work was done! Future overlaps won't trigger the answer UI.
+                //doorReset(); 
                 hasBeenOverlapped = true;
             }
         }
@@ -251,6 +269,7 @@ public class AnswerUICollider : MonoBehaviour
         //Resume(): UIController: remove the Answer UI
         UIController.resumeCalled = true;
         //open the Door actions
+        openDoorAnim.ResetTrigger("closeDoor");
         openDoorAnim.SetBool("openDoor", true);
         //set door open to true
         doorOpen = true;

@@ -13,17 +13,6 @@ public class PromptController : MonoBehaviour
     public GameObject enemyCountPrompt;
     public GameObject victory;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //method Prompt that sets the appropriate prompt name active on the TaskBorder at the top of the page
     public void promptUI(string task){

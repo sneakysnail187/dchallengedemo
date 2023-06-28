@@ -41,22 +41,22 @@ public class SceneSwap : MonoBehaviour
     {
         tpBox = GetComponent<SphereCollider>();
         canvas = GameObject.Find("Canvas");
-        if (wingNum == 1)
+        if (wingNum == 1) //addition
         {
             xPos = -2.890938f;
             zpos = 146.1741f;
         }
-        else if (wingNum == 2)
+        else if (wingNum == 2) //subtraction
         {
             xPos = 290.0224f;
             zpos = -21.88322f;
         }
-        else if (wingNum == 3)
+        else if (wingNum == 3) //multiplication
         {
             xPos = -175.56f;
             zpos = -5.7f;
         }
-        else if (wingNum == 4)
+        else if (wingNum == 4) //division
         {
             xPos = 14.15857f;
             zpos = -132.387f;

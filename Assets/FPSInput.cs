@@ -44,7 +44,6 @@ public class FPSInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastJumpTime + jumpInterval)
             {
-                Debug.Log(Time.time);
                 velocity.y = jumpForce;
                 lastJumpTime = Time.time;
                 grounded = false;

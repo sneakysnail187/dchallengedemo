@@ -26,6 +26,10 @@ public class Generator : MonoBehaviour
 
     void Start()
     {
+        generate();
+    }
+
+    public void generate(){
         //get the diffManager
         diffManager = GameObject.Find("DifficultyManager");
         //get the operator

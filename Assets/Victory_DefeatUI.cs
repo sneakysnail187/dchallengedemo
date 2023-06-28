@@ -22,6 +22,8 @@ public class Victory_DefeatUI : MonoBehaviour
     //stores the Sound effects manager reference
     public SoundEffectsManager s_manager;
 
+    private ReactiveTarget[] doors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class Victory_DefeatUI : MonoBehaviour
         //get the animators
         victoryAnim = canvas.transform.Find("Victory").gameObject.GetComponent<Animator>();   
         defeatAnim = canvas.transform.Find("Death").gameObject.GetComponent<Animator>();
+        doors = (ReactiveTarget[])GameObject.FindObjectsOfType(typeof(ReactiveTarget));
     }
 
     void Update(){
@@ -45,9 +48,9 @@ public class Victory_DefeatUI : MonoBehaviour
             //we must save the points and restart the pointer
             int saveScore = PointsAndScoreController.Instance.doorPoints;
             //reset
-            PointsAndScoreController.Instance.ResetPoints();
+            //PointsAndScoreController.Instance.ResetPoints();
             //Send the points to the PlayerDataManager
-            PlayerDataManager.UpdateScore(saveScore);
+            //PlayerDataManager.UpdateScore(saveScore);
 
             //set the boolean
             hasBeenOverlapped = true;
@@ -67,6 +70,23 @@ public class Victory_DefeatUI : MonoBehaviour
                 other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = false;
             }
             else{
+
+                foreach(ReactiveTarget d in doors){
+                    AnswerUICollider doorUI = d.gameObject.GetComponentInChildren<AnswerUICollider>();
+                    /*Animator doorClose = d.gameObject.GetComponentInChildren<Animator>();
+                    doorClose.SetBool("openDoor", false);
+                    doorClose.SetTrigger("closeDoor");*/
+                    //openDoorAnim = doorReference.GetComponent<Animator>(); 
+                    doorUI.doorReset();
+                    Generator g = d.gameObject.GetComponent<Generator>();
+                    g.generate();
+                    if(d.gameObject.transform.parent == null){
+                        d.gameObject.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+                    }
+                    else{
+                        d.gameObject.transform.parent.transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+                    }
+                }
                 //set the Object to active
                 canvas.transform.Find("Death").gameObject.SetActive(true);
                 //points are less than 90

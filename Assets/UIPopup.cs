@@ -57,7 +57,7 @@ public class UIPopup : MonoBehaviour
 
     //this method is automatically called once movement starts and player leaves trigger
     void OnTriggerExit (Collider other){
-      //player is currently searching foe the teleporters. 
+      //player is currently searching for the teleporters. 
       isSearching = true;
       //you can only run this if the trigger has not been overlapped yet.
     if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped){

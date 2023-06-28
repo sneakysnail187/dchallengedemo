@@ -5,7 +5,6 @@ using UnityEngine;
 public class sword : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other){
-		Debug.Log("Lol");
 		//call the death function
 		if(other.CompareTag("enemy")){
 			//calling the death function on this actor

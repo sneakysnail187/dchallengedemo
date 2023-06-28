@@ -744,6 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d8190d3083d914780b244d7ab45519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 0}
   playerAnswer: {fileID: 0}
   firstNumberCheck: 0
   secondNumberCheck: 0
