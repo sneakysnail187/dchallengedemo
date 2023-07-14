@@ -85,7 +85,7 @@ public class SceneSwap : MonoBehaviour
             //Play animation
             transitioner.SetTrigger("Start");
             //if the teleporters are one of the four, load level
-            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4 || wingNum == 0)
+            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4)
             {
                 StartCoroutine(LoadLevel(other.transform, false));
             }
@@ -167,6 +167,7 @@ public class SceneSwap : MonoBehaviour
             {
                 //they can unlock doors
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("UnlockedDoors");
+                sc.SpawnEnemyGroups();
             }
             //
             if (SceneManager.GetSceneByName(sceneToDelete).isLoaded) SceneManager.UnloadSceneAsync(sceneToDelete);
@@ -223,6 +224,7 @@ public class SceneSwap : MonoBehaviour
                     GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
                     break;
             }
+            sc.SpawnEnemyGroups();
             PointsAndScoreController.Instance.currentWingNum = 0;
         }
         else

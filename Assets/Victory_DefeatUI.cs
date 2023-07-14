@@ -55,7 +55,7 @@ public class Victory_DefeatUI : MonoBehaviour
             //set the boolean
             hasBeenOverlapped = true;
             //start the animation sequence depending on the number of points
-            if(points >= 90){
+            if(points >= 100){
                 //set the Object to active
                 canvas.transform.Find("Victory").gameObject.SetActive(true);
                 //start the victory animator

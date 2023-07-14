@@ -108,7 +108,7 @@ public class AnswerUICollider : MonoBehaviour
 
         //wait for the player to press the enter key
         //if they press enter
-        if (Input.GetKeyDown("return") && warning.activeSelf)
+        if ( (Input.GetKeyDown("return") || Input.GetKeyDown("enter")) && warning.activeSelf)
         {
             //get the input answer
             if (playerAnswer.transform.Find("Answer UI").GetChild(1).GetComponent<TMP_InputField>().text.Any(char.IsDigit))

@@ -7,7 +7,9 @@ public class PlayerCharacter : MonoBehaviour {
 	[SerializeField]private GameObject death;
 	[SerializeField] Pack backpack = null;
 	public GameObject gunUI;
+	public GameObject gunHUD;
 	public GameObject swordUI;
+	public GameObject swordHUD;
 	public GameObject controllerUI;
 	//stores the Wing Number where the player is
 	public int currentWingNumber; //we can use this to know where the player is and if they fail, keep them in this wing
@@ -32,9 +34,15 @@ public class PlayerCharacter : MonoBehaviour {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-			if(collision.CompareTag("gun")) gunUI.SetActive(true);
+			if(collision.CompareTag("gun")){
+				gunUI.SetActive(true);
+				gunHUD.SetActive(true);
+			}
 
-			if(collision.CompareTag("sword")) swordUI.SetActive(true);
+			if(collision.CompareTag("sword")){
+				swordUI.SetActive(true);
+				swordHUD.SetActive(true);
+			}
 
 			if(collision.CompareTag("controller")) controllerUI.SetActive(true);
 

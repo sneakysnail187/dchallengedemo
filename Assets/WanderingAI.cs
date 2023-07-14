@@ -22,7 +22,7 @@ public class WanderingAI : MonoBehaviour {
 	public float edgeDist = 0.5f;
 	public bool left = true;
 	public float rotSpeed = 70f;
-	private Vector3 minSize = new Vector3(0.65f,0.65f,0.65f);
+	private Vector3 minSize = new Vector3(0.7f,0.7f,0.7f);
 	Vector3 playLastPos = Vector3.zero;
 	Vector3 playerPos;
 	float waitTime;
@@ -223,6 +223,7 @@ public class WanderingAI : MonoBehaviour {
 		}
 		else{
 			//call the death function
+			Debug.Log("bleh");
 			death(this.gameObject);
 		}
 	}
