@@ -53,9 +53,10 @@ public class Victory_DefeatUI : MonoBehaviour
             //PlayerDataManager.UpdateScore(saveScore);
 
             //set the boolean
-            hasBeenOverlapped = true;
+            //hasBeenOverlapped = true;
             //start the animation sequence depending on the number of points
             if(points >= 100){
+                hasBeenOverlapped = true;
                 //set the Object to active
                 canvas.transform.Find("Victory").gameObject.SetActive(true);
                 //start the victory animator
@@ -66,8 +67,8 @@ public class Victory_DefeatUI : MonoBehaviour
                 s_manager.play("VictorySound");
                 //prompt the player to battle and return to base using PromptController
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TimeForBattle");
-                //set the hasFailed to false - level was a success!!
-                other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = false;
+                //set the hasFinished to true - level was a success!!
+                other.gameObject.GetComponent<PlayerCharacter>().hasFinishedLevel = true;
             }
             else{
 
@@ -91,16 +92,10 @@ public class Victory_DefeatUI : MonoBehaviour
                 canvas.transform.Find("Death").gameObject.SetActive(true);
                 //points are less than 90
                 defeatAnim.SetBool("startDeath", true);
-                //remove access to the weapons
-                laser.SetActive(false);
-                controller.SetActive(false);
-                sword.SetActive(false);
                 //play the defeat sound
                 s_manager.play("DefeatSound");
                 //prompt the player to try again using PromptController
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TryAgain");
-                //set the hasFailed to true
-                other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel = true;
             }
         }
     }

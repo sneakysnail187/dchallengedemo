@@ -13,14 +13,16 @@ public class WeaponController : MonoBehaviour
     private Animator anim;
     public int currentWeapon = 0;
     public SoundEffectsManager manager;
+    public bool inResearch;
     public RayShooter inp;
-    private Pack stuff;
+    public Pack stuff;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        inResearch = true;
         inp = gameObject.GetComponentInParent(typeof(RayShooter)) as RayShooter;
         stuff = GetComponent<Pack>();
         anim = sword.GetComponent<Animator>();
@@ -33,7 +35,7 @@ public class WeaponController : MonoBehaviour
         if(currentWeapon == 0) canAttack = true;
         else canAttack = false;
 
-        if(Input.GetKeyDown("1") && stuff.checkIfCollected(1)){
+        if(Input.GetKeyDown("1") && stuff.checkIfCollected(1) && inResearch){
             selectWeapon(0);
             inp.hasRay = false;
             inp.hasSword = true;
@@ -41,7 +43,7 @@ public class WeaponController : MonoBehaviour
             inp.hasHack = false;
         }  
 
-        if(Input.GetKeyDown("2") && stuff.checkIfCollected(2)){
+        if(Input.GetKeyDown("2") && stuff.checkIfCollected(2) && inResearch){
                selectWeapon(1);
             inp.hasRay = true;
             inp.hasSword = false;
@@ -49,7 +51,7 @@ public class WeaponController : MonoBehaviour
             inp.hasHack = false;
         }
 
-        if(Input.GetKeyDown("3") && stuff.checkIfCollected(3)){
+        if(Input.GetKeyDown("3") && stuff.checkIfCollected(3) && inResearch){
             selectWeapon(2);
             inp.hasRay = false;
             inp.hasSword = false;
@@ -82,7 +84,7 @@ public class WeaponController : MonoBehaviour
 
     }
 
-    private void selectWeapon(int swap){
+    public void selectWeapon(int swap){
         foreach (Transform weapon in transform)
         {
             weapon.gameObject.SetActive(false);

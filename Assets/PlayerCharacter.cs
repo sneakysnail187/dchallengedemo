@@ -15,16 +15,16 @@ public class PlayerCharacter : MonoBehaviour {
 	public int currentWingNumber; //we can use this to know where the player is and if they fail, keep them in this wing
 	//stores whether the player has obtained a key to advance in the game - the player loses the key while teleporting initially and has to get it back by solving the challenges
 	public bool hasDoorKey; //we can use this to open doors 
-	//stores whether the player has failed a level
-	public bool hasFailedLevel;
+	//stores whether the player has finished the current level
+	public bool hasFinishedLevel; //use this for flagging tp from mazes
 
 	void Awake(){
 		DontDestroyOnLoad(this.gameObject);
 	}
 	void Start() {
 		_health = 2;
-		//has not Yet failed level
-		hasFailedLevel = false;
+		//has not Yet finshed level
+		hasFinishedLevel = false;
 	}
 
 	private void OnTriggerEnter(Collider collision){

@@ -11,17 +11,13 @@ public class SceneSwap : MonoBehaviour
     public Animator transitioner;
     //variable to control transition duration
     public float transitionTime = 1f;
-    //stores if the object has been overlapped to avoid multiple loading
-    public bool hasBeenOverlapped = false;
     //stores a reference to the SoundEffectsManager
     public SoundEffectsManager manager;
     //stores a reference to the AudioManger2 - the researchMusic
     public Audiomanager2 researchMusicManager;
     //stores a reference to the AudioManager3 which contains the script AudioManagerMain
     public AudioManagerMain gameMusicManager;
-
-    public SceneController sc;
-
+    public SceneController sc;//set this and dont change
     private float xPos = 0;
     private float ypos = -38.91979f;
     private float zpos = 0;
@@ -29,6 +25,8 @@ public class SceneSwap : MonoBehaviour
     public GameObject canvas;
     private AsyncOperation sceneAsync;
     private SphereCollider tpBox;
+    private GameObject swordUI;
+    private GameObject gunUI;
 
     //stores the scene that we are going to
     public string target;
@@ -41,6 +39,9 @@ public class SceneSwap : MonoBehaviour
     {
         tpBox = GetComponent<SphereCollider>();
         canvas = GameObject.Find("Canvas");
+        swordUI = canvas.transform.Find("Sword").gameObject;
+        gunUI = canvas.transform.Find("Ray").gameObject;
+        sc = GameObject.Find("Controller").GetComponent<SceneController>();
         if (wingNum == 1) //addition
         {
             xPos = -2.890938f;
@@ -74,10 +75,22 @@ public class SceneSwap : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.CompareTag("Player") && !hasBeenOverlapped && sc.isMaze) || (other.CompareTag("Player") && !hasBeenOverlapped && sc._enemies.Count <= 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFailedLevel))
+        if((other.CompareTag("Player") && sc.isMaze) || (other.CompareTag("Player") && sc._enemies.Count <= 0) || (other.gameObject.GetComponent<PlayerCharacter>().hasFinishedLevel))
         {
             sc.isMaze = false;
-            hasBeenOverlapped = true;
+            other.gameObject.GetComponent<PlayerCharacter>().hasFinishedLevel = false;
+            WeaponController w = other.gameObject.GetComponentInChildren<WeaponController>();
+            if(wingNum == 0){
+                if(w.stuff.checkIfCollected(1)){swordUI.SetActive(true);}
+                if(w.stuff.checkIfCollected(2)){gunUI.SetActive(true);}
+                w.inResearch = true;
+            }
+            else{
+                swordUI.SetActive(false);
+                gunUI.SetActive(false);
+                w.inResearch = false;
+                w.selectWeapon(-1);
+            }
             //---------------------------------------------------
             //Play the teleportation sound
             manager.play("TeleportAmbience");
@@ -85,10 +98,9 @@ public class SceneSwap : MonoBehaviour
             //Play animation
             transitioner.SetTrigger("Start");
             //if the teleporters are one of the four, load level
-            if (wingNum == 1 || wingNum == 2 || wingNum == 3 || wingNum == 4)
-            {
-                StartCoroutine(LoadLevel(other.transform, false));
-            }
+            Time.timeScale = 0f;
+            StartCoroutine(LoadLevel(other.transform, false));
+            Time.timeScale = 1f;
         }
     }
 
@@ -154,7 +166,7 @@ public class SceneSwap : MonoBehaviour
             //set the isMaze attribute to true because we are returning to the maze
             sc.isMaze = true;
             //we are returning to base: IF = they failed
-            if (GameObject.Find("Player").GetComponent<PlayerCharacter>().hasFailedLevel)
+            if (GameObject.Find("Player").GetComponent<PlayerCharacter>().hasFinishedLevel)
             {
                 //they must quit and try again
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("TryAgain");
@@ -167,12 +179,12 @@ public class SceneSwap : MonoBehaviour
             {
                 //they can unlock doors
                 GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("UnlockedDoors");
-                sc.SpawnEnemyGroups();
             }
             //
             if (SceneManager.GetSceneByName(sceneToDelete).isLoaded) SceneManager.UnloadSceneAsync(sceneToDelete);
         }
         PointsAndScoreController.Instance.ResetPoints();
+        Destroy(this.transform.parent.gameObject);
     }
 
     void enableScene(string scene)
@@ -204,22 +216,22 @@ public class SceneSwap : MonoBehaviour
             switch (PointsAndScoreController.Instance.currentWingNum)
             {
                 case 1:
-                    GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    //GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
                     GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
                     GameObject.Find("Teleport Addition").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
                     break;
                 case 2:
-                    GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    //GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
                     GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
                     GameObject.Find("Teleport Subtraction").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
                     break;
                 case 3:
-                    GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    //GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
                     GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
                     GameObject.Find("Teleport Multiplication").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
                     break;
                 case 4:
-                    GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
+                    //GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().hasBeenOverlapped = false;
                     GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().sc.isMaze = true;
                     GameObject.Find("Teleport Division").GetComponentInChildren<SceneSwap>().tpBox.enabled = true;
                     break;

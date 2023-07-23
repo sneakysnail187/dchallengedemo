@@ -38,14 +38,5 @@ public class UnlockDoor : MonoBehaviour
     }
 
     //called for a wrong answer
-    public void wrongAnswer(){
-        
-    }
-/*
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-*/
+    public void wrongAnswer(){}
 }
