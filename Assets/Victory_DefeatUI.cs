@@ -52,6 +52,8 @@ public class Victory_DefeatUI : MonoBehaviour
             //Send the points to the PlayerDataManager
             //PlayerDataManager.UpdateScore(saveScore);
 
+            //point upload is here
+
             //set the boolean
             //hasBeenOverlapped = true;
             //start the animation sequence depending on the number of points

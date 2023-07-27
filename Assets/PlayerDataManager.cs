@@ -7,26 +7,32 @@ public static class PlayerDataManager : object
     //stores the different player fields, name, score
     private static string name = "PLAYER";
     private static int score;
+    private static float time = 0.0f;
 
     //methods for updating and returning the fields
+    public static void UpdateTime(float timeSegment){
+        //increment total time
+        time += timeSegment;
+    }
     public static void UpdateName(string nameInput){
         //update the name
         name = nameInput;
     }
 
-    //methods for updating and returning the fields
     public static void UpdateScore(int scoreInput){
         //update the name
         score = scoreInput;
     }
 
-    //methods for updating and returning the fields
+    public static float getTime(){
+        return time;
+    }
+
     public static string getName(){
         //return the name
         return name;
     }
 
-    //methods for updating and returning the fields
     public static int getScore(){
         //return the score
         return score;
