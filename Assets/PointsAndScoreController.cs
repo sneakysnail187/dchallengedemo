@@ -40,6 +40,8 @@ public class PointsAndScoreController : MonoBehaviour
     {
         doorPoints = Mathf.Max(doorPoints + points, 0);
         scoreBoard.text = doorPoints.ToString();
+        PlayerDataManager.UpdateScore(points + PlayerDataManager.getScore());
+        PlayerDataManager.UpdateWingScore(points + PlayerDataManager.getWingScore());
     }
 
     public void ResetPoints()

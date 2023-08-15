@@ -7,6 +7,7 @@ public class DisplayHighscores : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI[] rNames;
     public TMPro.TextMeshProUGUI[] rScores;
+    public TMPro.TextMeshProUGUI[] rTimes;
     HighScores myScores;
 
     void Start() //Fetches the Data at the beginning
@@ -20,13 +21,12 @@ public class DisplayHighscores : MonoBehaviour
     }
     public void SetScoresToMenu(PlayerScore[] highscoreList) //Assigns proper name and score for each text value
     {
-        for (int i = 0; i < rNames.Length;i ++)
-        {
+        for (int i = 0; i < rNames.Length;i ++) {
             rNames[i].text = i + 1 + ". ";
-            if (highscoreList.Length > i)
-            {
+            if (highscoreList.Length > i) {
                 rScores[i].text = highscoreList[i].score.ToString();
                 rNames[i].text = highscoreList[i].username;
+                rTimes[i].text = highscoreList[i].time.ToString();
             }
         }
     }
@@ -34,7 +34,7 @@ public class DisplayHighscores : MonoBehaviour
     {
         while(true)
         {
-            myScores.DownloadScores();
+            myScores.DownloadScores(myScores.activeWing);
             yield return new WaitForSeconds(30);
         }
     }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FreshScores : MonoBehaviour
 {
+    public int wingNum;
 
     //send scores
     public void send(){
-        PlayerDataManager.uploadToDatabase();
+        transform.parent.GetComponent<HighScores>().DownloadScores(wingNum);
     }
 }

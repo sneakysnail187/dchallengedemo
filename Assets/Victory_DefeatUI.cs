@@ -19,6 +19,7 @@ public class Victory_DefeatUI : MonoBehaviour
     public GameObject sword;
     public GameObject controller;
     public GameObject laser;
+    public int wing;
     //stores the Sound effects manager reference
     public SoundEffectsManager s_manager;
 
@@ -46,18 +47,29 @@ public class Victory_DefeatUI : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped){
             //we must save the points and restart the pointer
-            int saveScore = PointsAndScoreController.Instance.doorPoints;
+            //int saveScore = PointsAndScoreController.Instance.doorPoints;
             //reset
             //PointsAndScoreController.Instance.ResetPoints();
             //Send the points to the PlayerDataManager
+
+            //float avgTime = PlayerDataManager.getTime();
             //PlayerDataManager.UpdateScore(saveScore);
 
-            //point upload is here
+            //PlayerDataManager.uploadToDatabase(wing);
+            //upload goes here
 
             //set the boolean
             //hasBeenOverlapped = true;
             //start the animation sequence depending on the number of points
             if(points >= 100){
+                int saveScore = PointsAndScoreController.Instance.doorPoints; //use these
+                float avgTime = PlayerDataManager.getTime();// use these
+
+                
+                PlayerDataManager.uploadToWingDatabase(wing);
+                PlayerDataManager.uploadToDatabase();
+                //PointsAndScoreController.Instance.ResetPoints();
+
                 hasBeenOverlapped = true;
                 //set the Object to active
                 canvas.transform.Find("Victory").gameObject.SetActive(true);
