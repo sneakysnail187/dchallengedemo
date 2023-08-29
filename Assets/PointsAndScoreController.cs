@@ -18,7 +18,7 @@ public class PointsAndScoreController : MonoBehaviour
     public int currentWingNum = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -34,6 +34,10 @@ public class PointsAndScoreController : MonoBehaviour
     public void incrementEnemyPoints()
     {
         enemyPoints++;
+    }
+    public void resetEnemyPoints()
+    {
+        enemyPoints = 0;
     }
 
     public void updateDoorPoints(int points)

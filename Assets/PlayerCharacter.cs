@@ -11,6 +11,7 @@ public class PlayerCharacter : MonoBehaviour {
 	public GameObject swordUI;
 	public GameObject swordHUD;
 	public GameObject controllerUI;
+	public bool start;
 	//stores the Wing Number where the player is
 	public int currentWingNumber; //we can use this to know where the player is and if they fail, keep them in this wing
 	//stores whether the player has obtained a key to advance in the game - the player loses the key while teleporting initially and has to get it back by solving the challenges
@@ -22,6 +23,7 @@ public class PlayerCharacter : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 	}
 	void Start() {
+		start = true;
 		_health = 2;
 		//has not Yet finshed level
 		hasFinishedLevel = false;

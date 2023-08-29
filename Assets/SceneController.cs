@@ -8,12 +8,10 @@ public class SceneController : MonoBehaviour {
 	public List<GameObject> _enemies;
 	public List<GameObject> spawnPoints;
 	public int enemiesToAdd = 14;
-	public bool isMaze;
 	GameObject[] doors;
 
-	void Awake() {
+	void Start() {
 		_enemies = new List<GameObject>();
-		isMaze = true;
 		SpawnEnemyGroups();
 	}
 
@@ -25,6 +23,7 @@ public class SceneController : MonoBehaviour {
 	}
 
 	public void SpawnEnemyGroups(){
+		PointsAndScoreController.Instance.resetEnemyPoints();
 		for(int i = 0; i < enemiesToAdd;i++ ){
 				if(i < 2){
 					_enemies.Add(SpawnEnemy(gameObject.transform.position));	

@@ -16,7 +16,7 @@ public class WeaponController : MonoBehaviour
     public bool inResearch;
     public RayShooter inp;
     public Pack stuff;
-
+    public BoxCollider swordHitBox;
 
 
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class WeaponController : MonoBehaviour
         inp = gameObject.GetComponentInParent(typeof(RayShooter)) as RayShooter;
         stuff = GetComponent<Pack>();
         anim = sword.GetComponent<Animator>();
+        swordHitBox = sword.GetComponent<BoxCollider>();
         selectWeapon(-1);
     }
 
@@ -71,6 +72,7 @@ public class WeaponController : MonoBehaviour
         //if sword is active
         if(transform.GetChild(0).gameObject.activeSelf){
             //play animation
+            swordHitBox.enabled = true;
             anim.SetBool("Attack", true);
             //play sword sound
             manager.play("SwordAttack");   

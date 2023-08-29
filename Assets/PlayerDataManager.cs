@@ -64,12 +64,11 @@ public static class PlayerDataManager : object
     }
 
     public static void uploadToDatabase(){
-        Debug.Log(getTime());
-        HighScores.UploadScore(name, score, getTime(), 0);
+        HighScores.UploadScore(name, score * ((int)(10/getTime())), getTime(), 0);
     }
 
     public static void uploadToWingDatabase(int wingNum){
-        HighScores.UploadScore(name, score, getWingTime(), wingNum);
+        HighScores.UploadScore(name, wingScore * ((int)(10/getWingTime())), getWingTime(), wingNum);
         resetTime();
         UpdateWingScore(0);
     }

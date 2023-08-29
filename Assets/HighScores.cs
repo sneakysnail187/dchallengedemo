@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class HighScores : MonoBehaviour
@@ -40,31 +41,33 @@ public class HighScores : MonoBehaviour
     IEnumerator DatabaseUpload(string userame, int score, float time, int wing) //Called when sending new score to Website
     {
         if(wing == 1){
-            WWW www = new WWW(webURL + privateCodeAddition + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time));
+            WWW www = new WWW(webURL + privateCodeAddition + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time*100));
             yield return www;
 
             if (string.IsNullOrEmpty(www.error))
             {
                 print("Upload Successful");
+                Debug.Log(score);
                 //DownloadScores(1);
             }
             else print("Error uploading" + www.error);
         }
 
         else if(wing == 2){
-            WWW www = new WWW(webURL + privateCodeSubtraction + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time));
+            WWW www = new WWW(webURL + privateCodeSubtraction + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time*100));
             yield return www;
 
             if (string.IsNullOrEmpty(www.error))
             {
                 print("Upload Successful");
+                Debug.Log(score);
                 //DownloadScores(2);
             }
             else print("Error uploading" + www.error);
         }
 
         else if(wing == 3){
-            WWW www = new WWW(webURL + privateCodeMultiplication + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time));
+            WWW www = new WWW(webURL + privateCodeMultiplication + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time*100));
             yield return www;
 
             if (string.IsNullOrEmpty(www.error))
@@ -76,7 +79,7 @@ public class HighScores : MonoBehaviour
         }
 
         else if(wing == 4){
-            WWW www = new WWW(webURL + privateCodeDivision + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time));
+            WWW www = new WWW(webURL + privateCodeDivision + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time*100));
             yield return www;
 
             if (string.IsNullOrEmpty(www.error))
@@ -88,7 +91,7 @@ public class HighScores : MonoBehaviour
         }
 
         else{
-            WWW www = new WWW(webURL + privateCodeMaster + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time));
+            WWW www = new WWW(webURL + privateCodeMaster + "/add/" + WWW.EscapeURL(userame) + "/" + score + "/" + (int)Math.Round(time*100));
             yield return www;
 
             if (string.IsNullOrEmpty(www.error))
@@ -101,8 +104,7 @@ public class HighScores : MonoBehaviour
         }
     }
 
-    public void DownloadScores(int? wingNum)
-    {
+    public void DownloadScores(int? wingNum){
         StartCoroutine("DatabaseDownload", wingNum);
     }
     IEnumerator DatabaseDownload(int? wingNum)
@@ -179,7 +181,7 @@ public class HighScores : MonoBehaviour
             string[] entryInfo = entries[i].Split(new char[] {'|'});
             string username = entryInfo[0];
             int score = int.Parse(entryInfo[1]);
-            float time = float.Parse(entryInfo[2]);
+            float time = float.Parse(entryInfo[2]) / 100;
             scoreList[i] = new PlayerScore(username,score, time);
             print(scoreList[i].username + ": " + scoreList[i].score + " In " + scoreList[i].time + "Seconds");
         }

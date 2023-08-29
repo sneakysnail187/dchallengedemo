@@ -11,4 +11,7 @@ public class sword : MonoBehaviour
 			Destroy(other.gameObject);
 			}
 	}
+	public void disableCollider(){
+		GetComponent<BoxCollider>().enabled = false;
+	}
 }

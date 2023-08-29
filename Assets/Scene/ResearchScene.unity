@@ -22317,6 +22317,7 @@ MonoBehaviour:
   swordUI: {fileID: 1349239158}
   swordHUD: {fileID: 980685969}
   controllerUI: {fileID: 1361289750}
+  start: 0
   currentWingNumber: 0
   hasDoorKey: 0
   hasFinishedLevel: 0
@@ -25377,7 +25378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.4, y: 0.2}
+  m_AnchoredPosition: {x: 7.4, y: 3.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026270986
@@ -25400,8 +25401,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CONGRATULATIONS!! \n\nYOU HAVE OBTAINED THE SHRINK RAY!\n\nPRESS \"2\"
-    TO eQUIP THE SHRINK RAY ANYTIME."
+  m_text: "CONGRATULATIONS!! \n\nYOU HAVE OBTAINED THE SHRINK RAY!\n\nHold Left Click
+    to shrink your enemies\n\nPRESS 2 TO eQUIP THE SHRINK RAY ANYTIME within the
+    research center."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -25464,7 +25466,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -53.570198, y: 0, z: 0, w: 0}
+  m_margin: {x: -74.16813, y: 0, z: -16.919708, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -37087,6 +37089,7 @@ MonoBehaviour:
   inResearch: 0
   inp: {fileID: 0}
   stuff: {fileID: 0}
+  swordHitBox: {fileID: 0}
 --- !u!114 &1361435639
 MonoBehaviour:
   m_ObjectHideFlags: 0
