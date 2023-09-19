@@ -22356,6 +22356,8 @@ MonoBehaviour:
   jumpInterval: 0.6
   jumpForce: 12
   fallingBonus: 1
+  dashTime: 0.75
+  dashSpeed: 10
   groundCheck: {fileID: 1589815570}
 --- !u!114 &928966113
 MonoBehaviour:

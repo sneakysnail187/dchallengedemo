@@ -19,29 +19,38 @@ public class FPSInput : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float fallingBonus;
     private bool grounded;
+    private bool doubleJumped;
+    public float dashTime;
+    public float dashSpeed;
     public Transform groundCheck;
 
     private float lastJumpTime = 0f;
 
     Vector3 velocity;
+    Vector3 inputDir;
 
-    void Start()
+    void Start() 
     {
+        inputDir = new Vector3(0.0f, 0.0f, 0.0f);
         Application.targetFrameRate = 60;
-
         _charController = GetComponent<CharacterController>();
-        //myUI = GetComponent<UIController>();
 
         grounded = false;
+        doubleJumped = false;
     }
 
     void Update()
     {
-        //transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
+        inputDir.x = Input.GetAxis("Horizontal");
+        inputDir.z = Input.GetAxis("Vertical");
 
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            StartCoroutine(dash(inputDir));
+        }
         // Ensure on ground
         if (grounded/* && velocity.y < 0*/)
         {
+            doubleJumped = false;
             if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastJumpTime + jumpInterval)
             {
                 velocity.y = jumpForce;
@@ -60,31 +69,13 @@ public class FPSInput : MonoBehaviour
             {
                 velocity.y -= fallingBonus;
             }
+            else if(Input.GetKeyDown(KeyCode.Space) && !doubleJumped){
+                velocity.y = jumpForce;
+                doubleJumped = true;
+            }
         }
         velocity.x = Input.GetAxis("Horizontal");
         velocity.z = Input.GetAxis("Vertical");
-
-        //float deltaX = Input.GetAxis("Horizontal");
-        //float deltaZ = Input.GetAxis("Vertical");
-
-        //Vector3 movement = transform.right * deltaX + transform.forward * deltaZ;
-
-        //_charController.Move(movement * speed * Time.deltaTime);
-
-        //// Jump
-        //if (grounded && Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    velocity.y = jumpForce;
-        //}
-
-        //velocity.y += gravity * Time.deltaTime;
-        //if ((_charController.collisionFlags & CollisionFlags.Above) != 0)
-        //{
-        //    if (velocity.y > 0)
-        //    {
-        //        velocity.y = -velocity.y;
-        //    }
-        //}
     }
     private void FixedUpdate()
     {
@@ -93,5 +84,15 @@ public class FPSInput : MonoBehaviour
         _charController.Move(movement * Time.fixedDeltaTime);
 
         grounded = Physics.CheckSphere(groundCheck.position, 0.45f, groundMask);
+    }
+
+    private IEnumerator dash(Vector3 moveDir){
+        float startTime = Time.time;
+
+        while(Time.time < startTime + dashTime){
+            _charController.Move(moveDir * dashSpeed *Time.deltaTime);
+
+            yield return null;
+        }
     }
 }
