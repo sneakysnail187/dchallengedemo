@@ -27,17 +27,19 @@ public class UIPopup : MonoBehaviour
     //stores a reference to the Audio Manager  
     public Audiomanager2 musicManager;
     public GameObject gunUI;
-	  public GameObject swordUI;
-	  public GameObject controllerUI;
-  
+    public GameObject swordUI;
+    public GameObject controllerUI;
+
     //stores whether the player is currently searching for the teleporters
     public static bool isSearching = false;
 
-    void Start(){
-        mainCam = GameObject.Find("Main Camera");
+    void Start()
+    {
+        mainCam = GameObject.Find("Camera Holder");
         player = GameObject.Find("Player");
         //set the welcome UI to active if first time
-        if (firstTimeEntry){
+        if (firstTimeEntry)
+        {
             //set to active
             welcomeUI.SetActive(true);
             //playUI POPUP SOUND
@@ -47,8 +49,7 @@ public class UIPopup : MonoBehaviour
             //firstTimeEntry false
             firstTimeEntry = false;
             //pause functionality
-            
-            mainCam.GetComponent<MouseLook>().enabled = false;
+
             player.GetComponent<MouseLook>().enabled = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -56,59 +57,61 @@ public class UIPopup : MonoBehaviour
     }
 
     //this method is automatically called once movement starts and player leaves trigger
-    void OnTriggerExit (Collider other){
-      //player is currently searching for the teleporters. 
-      isSearching = true;
-      //you can only run this if the trigger has not been overlapped yet.
-    if(other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped){
-        //set the UI to active
-        UIComponentTeleporters.SetActive(true);
-        //prompt the player to find the Teleporters using PromptController
-        GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("FindTheTeleporters");
-        //playUI POPUP SOUND
-        manager.play("PopUp");
-        //set hasBeenOverlapped to true
-        hasBeenOverlapped = true;
-        //timeScale 0
-        //pause functionality
-        Time.timeScale = 0f;
-        mainCam.GetComponent<MouseLook>().enabled = false;
-        player.GetComponent<MouseLook>().enabled = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+    void OnTriggerExit(Collider other)
+    {
+        //player is currently searching for the teleporters. 
+        isSearching = true;
+        //you can only run this if the trigger has not been overlapped yet.
+        if (other.GetComponent<Collider>().tag == "Player" && !hasBeenOverlapped)
+        {
+            //set the UI to active
+            UIComponentTeleporters.SetActive(true);
+            //prompt the player to find the Teleporters using PromptController
+            GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("FindTheTeleporters");
+            //playUI POPUP SOUND
+            manager.play("PopUp");
+            //set hasBeenOverlapped to true
+            hasBeenOverlapped = true;
+            //timeScale 0
+            //pause functionality
+            Time.timeScale = 0f;
+            player.GetComponent<MouseLook>().enabled = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
-  }
 
-  //method to remove the UI
-  //this method is called by a button push only
-  public void removeUI(){
-    //close doors dramatically if player is searching for teleporters
-    if(isSearching && !gunUI.activeSelf && !swordUI.activeSelf && !controllerUI.activeSelf){
-      //door.doorHandler.closeDoor()
-      door1.GetComponent<doorHandler>().closeDoor();
-      door2.GetComponent<doorHandler>().closeDoor();
-      door3.GetComponent<doorHandler>().closeDoor();
-      door4.GetComponent<doorHandler>().closeDoor();
-      //dramatic music
-      musicManager.play("CommonsUpbeat");
-      //turn off all other sounds
-      musicManager.stop("CommonsEerie1");
-      musicManager.stop("CommonsEerie2");
-      isSearching = false;
+    //method to remove the UI
+    //this method is called by a button push only
+    public void removeUI()
+    {
+        //close doors dramatically if player is searching for teleporters
+        if (isSearching && !gunUI.activeSelf && !swordUI.activeSelf && !controllerUI.activeSelf)
+        {
+            //door.doorHandler.closeDoor()
+            door1.GetComponent<doorHandler>().closeDoor();
+            door2.GetComponent<doorHandler>().closeDoor();
+            door3.GetComponent<doorHandler>().closeDoor();
+            door4.GetComponent<doorHandler>().closeDoor();
+            //dramatic music
+            musicManager.play("CommonsUpbeat");
+            //turn off all other sounds
+            musicManager.stop("CommonsEerie1");
+            musicManager.stop("CommonsEerie2");
+            isSearching = false;
+        }
+        //set the UI to inactive
+        UIComponentTeleporters.SetActive(false);
+        welcomeUI.SetActive(false);
+        gunUI.SetActive(false);
+        swordUI.SetActive(false);
+        controllerUI.SetActive(false);
+        //resume functionality only if the Pause Menu is not active
+        //set the Player speed to normal
+        playerSpeed.GetComponent<FPSInput>().speed = 6f;
+        Time.timeScale = 1f;
+        player.GetComponent<MouseLook>().enabled = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
-    //set the UI to inactive
-    UIComponentTeleporters.SetActive(false);
-    welcomeUI.SetActive(false);
-    gunUI.SetActive(false);
-    swordUI.SetActive(false);
-    controllerUI.SetActive(false);
-    //resume functionality only if the Pause Menu is not active
-    //set the Player speed to normal
-    playerSpeed.GetComponent<FPSInput>().speed = 6f;
-    Time.timeScale = 1f;
-    mainCam.GetComponent<MouseLook>().enabled = true;
-    player.GetComponent<MouseLook>().enabled = true;
-    Cursor.visible = false;
-    Cursor.lockState = CursorLockMode.Locked;
-  }
 }
