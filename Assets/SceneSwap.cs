@@ -64,11 +64,17 @@ public class SceneSwap : MonoBehaviour
             xPos = 14.15857f;
             zpos = -132.387f;
         }
+        else if (wingNum == 5) //tutorial
+        {
+            xPos = 14.15857f;
+            ypos = 100;
+            zpos = -132.387f;
+        }
         else
         {
             xPos = 0;
-            ypos = 0;
-            zpos = 0;
+            ypos = 100;
+            zpos = -200;
         }
         //target position for this teleporter
         tp = new Vector3(xPos, ypos, zpos);
@@ -163,6 +169,29 @@ public class SceneSwap : MonoBehaviour
                 yield return null;
             }
 
+        }
+
+        else if(target == "Tutorial"){
+            GameObject.Find("TaskBorder").GetComponent<PromptController>().promptUI("Get90Points");
+            if (SceneManager.GetSceneByName(target).isLoaded) SceneManager.UnloadSceneAsync(target, UnloadSceneOptions.None);
+            AsyncOperation scene = SceneManager.LoadSceneAsync(target, LoadSceneMode.Additive);
+            scene.allowSceneActivation = false;
+            sceneAsync = scene;
+            //animation begin
+            if (tpBox) tpBox.enabled = false;
+            //time pause - so animation must begin before time pause
+            Time.timeScale = 0f;
+            while (scene.progress < 0.9f)
+            {
+                Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
+                yield return null;
+            }
+            sceneAsync.allowSceneActivation = true;
+            if (SceneManager.GetSceneByName(sceneToDelete).isLoaded) SceneManager.UnloadSceneAsync(sceneToDelete);
+            while (!scene.isDone)
+            {
+                yield return null;
+            }
         }
         //--------------------------------------------------------------------------------------------------------
         //level loading code - END

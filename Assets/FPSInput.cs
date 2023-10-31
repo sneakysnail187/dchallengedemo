@@ -27,11 +27,11 @@ public class FPSInput : MonoBehaviour
     private float lastJumpTime = 0f;
 
     Vector3 velocity;
-    Vector3 inputDir;
+    float horizontalAxis;
+    float verticalAxis;
 
     void Start() 
     {
-        inputDir = new Vector3(0.0f, 0.0f, 0.0f);
         Application.targetFrameRate = 60;
         _charController = GetComponent<CharacterController>();
 
@@ -41,11 +41,18 @@ public class FPSInput : MonoBehaviour
 
     void Update()
     {
-        inputDir.x = Input.GetAxis("Horizontal");
-        inputDir.z = Input.GetAxis("Vertical");
+        horizontalAxis = Input.GetAxis("Horizontal");
+        verticalAxis = Input.GetAxis("Vertical");
 
         if(Input.GetKeyDown(KeyCode.LeftShift)){
-            StartCoroutine(dash(inputDir));
+            Vector3 forward = this.gameObject.transform.forward;
+            Vector3 right = this.gameObject.transform.right;
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
+            Vector3 dashDir = forward*verticalAxis + right*horizontalAxis; 
+            StartCoroutine(Dash(dashDir));
         }
         // Ensure on ground
         if (grounded/* && velocity.y < 0*/)
@@ -69,7 +76,7 @@ public class FPSInput : MonoBehaviour
             {
                 velocity.y -= fallingBonus;
             }
-            else if(Input.GetKeyDown(KeyCode.Space) && !doubleJumped){
+            if(Input.GetKeyDown(KeyCode.Space) && !doubleJumped){
                 velocity.y = jumpForce;
                 doubleJumped = true;
             }
@@ -86,13 +93,21 @@ public class FPSInput : MonoBehaviour
         grounded = Physics.CheckSphere(groundCheck.position, 0.45f, groundMask);
     }
 
-    private IEnumerator dash(Vector3 moveDir){
+    public IEnumerator dash(Vector3 moveDir){
         float startTime = Time.time;
-
+        gravity = 0f;
         while(Time.time < startTime + dashTime){
             _charController.Move(moveDir * dashSpeed *Time.deltaTime);
-
             yield return null;
         }
+    }
+
+    public IEnumerator Dash(Vector3 moveDir){
+        yield return dash(moveDir);
+        gravity = 1f;
+    }
+
+    public bool checkGrounded(){
+        return grounded;
     }
 }

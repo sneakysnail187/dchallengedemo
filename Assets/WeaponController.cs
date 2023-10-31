@@ -17,6 +17,7 @@ public class WeaponController : MonoBehaviour
     public RayShooter inp;
     public Pack stuff;
     public BoxCollider swordHitBox;
+    public FPSInput FPS_in;
 
 
     // Start is called before the first frame update
@@ -76,6 +77,9 @@ public class WeaponController : MonoBehaviour
             anim.SetBool("Attack", true);
             //play sword sound
             manager.play("SwordAttack");   
+            if(!FPS_in.checkGrounded()){
+                StartCoroutine(FPS_in.dash(-(transform.forward)));
+            }
         }
 
         //if gun is active
