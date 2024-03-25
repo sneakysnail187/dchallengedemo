@@ -22335,6 +22335,8 @@ GameObject:
   - component: {fileID: 928966108}
   - component: {fileID: 928966111}
   - component: {fileID: 928966118}
+  - component: {fileID: 928966119}
+  - component: {fileID: 928966120}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -22551,6 +22553,30 @@ MonoBehaviour:
   doorPoints: 0
   inGameScene: 0
   currentWingNum: 0
+--- !u!114 &928966119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928966107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84691f10b33a6a64383a1cee6dafe1f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &928966120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928966107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2616a06da469e364680c16177c66c550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &930751935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23716,6 +23742,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 508e187f943980c4084f366a8959d135, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 508e187f943980c4084f366a8959d135, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 508e187f943980c4084f366a8959d135, type: 3}
       propertyPath: m_Layer
