@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    //references to the UI of player info
+    public GameObject nameText;
+    public GameObject scoreText;
+    //references to the player data manager
+    public PlayerDataCache dataController;
     public GameObject canvas;
     public static GameObject mainCam;
     public static GameObject player;
@@ -23,6 +28,10 @@ public class UIController : MonoBehaviour
         mainCam = GameObject.Find("Main Camera");
     }
     void Update(){
+        //CODE THAT GOVERNS THE INFO UI
+        //update the name according to the save file.
+        nameText.GetComponent<TMP_Text>().text = dataController.GetName();
+        scoreText.GetComponent<TMP_Text>().text = dataController.GetScore().ToString();
         //CODE THAT GOVERNS THE ANSWER UI
         //entering the collider
         if(AnswerTriggerFire){

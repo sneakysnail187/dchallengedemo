@@ -8,5 +8,5 @@ public class PlayerDataJson
 {
     public string name;
     public int HighScore;
-    public int PlayerID;
+    public string PlayerID;
 }
